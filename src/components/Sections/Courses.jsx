@@ -106,8 +106,8 @@ const TabButton = styled.button`
 
 const CourseCard = styled(motion.div)`
   background-image: ${props => props.$activeTab === 'liberal' ? 
-    "url('/2025/08/liberal.png')" :
-    "url('/2025/08/ideal.png')"};
+    `url('${process.env.PUBLIC_URL}/2025/08/liberal.png')` :
+    `url('${process.env.PUBLIC_URL}/2025/08/ideal.png')`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

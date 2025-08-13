@@ -264,7 +264,7 @@ const BusinessInquiry = () => {
         loop 
         muted 
         playsInline
-        src="/2025/07/ifbusiness.mp4"
+        src={`${process.env.PUBLIC_URL}/2025/07/ifbusiness.mp4`}
       />
       <VideoOverlay />
       

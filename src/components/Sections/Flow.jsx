@@ -251,7 +251,7 @@ const Flow = () => {
           
           <FlowImageWrapper variants={itemVariants} className="cyber-frame">
             <FlowImage
-              src={isMobile ? "/2025/04/flow_sp.png" : "/2025/04/flow_pc.png"}
+              src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/flow_sp.png` : `${process.env.PUBLIC_URL}/2025/04/flow_pc.png`}
               alt="入塾までの流れ"
             />
             

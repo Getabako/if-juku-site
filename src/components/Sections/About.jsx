@@ -150,7 +150,7 @@ const About = () => {
           
           <AboutImage
             variants={itemVariants}
-            src={isMobile ? "/2025/04/if塾概要sp-1.png" : "/2025/04/if塾横スクロールPC.png"}
+            src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/if塾概要sp-1.png` : `${process.env.PUBLIC_URL}/2025/04/if塾横スクロールPC.png`}
             alt="if(塾)について"
           />
         </motion.div>

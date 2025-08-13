@@ -306,7 +306,7 @@ const Kitazuna = () => {
         loop 
         muted 
         playsInline
-        src="/2025/07/kitazuna.mp4"
+        src={`${process.env.PUBLIC_URL}/2025/07/kitazuna.mp4`}
       />
       <VideoOverlay />
       

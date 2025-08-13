@@ -201,7 +201,7 @@ const Challenge = () => {
           <TwoColumnLayout>
             <ChallengeImage
               variants={itemVariants}
-              src={isMobile ? "/2025/04/名称未設定のデザイン-34.png" : "/2025/04/能動的に学ぶ.png"}
+              src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/名称未設定のデザイン-34.png` : `${process.env.PUBLIC_URL}/2025/04/能動的に学ぶ.png`}
               alt="if(チャレンジ) - 能動的に学ぶ力を身につける"
             />
             

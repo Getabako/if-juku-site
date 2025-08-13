@@ -185,42 +185,42 @@ const ChallengeForBeginner = () => {
     {
       id: 1,
       title: "Quest 1",
-      image: "/2025/04/quest1.png",
+      image: `${process.env.PUBLIC_URL}/2025/04/quest1.png`,
       shortDesc: "動画編集にチャレンジ",
       fullDesc: "動画編集ソフトを使って、自分だけのオリジナル動画を作成します。カット、エフェクト、BGMの追加など、基本的な動画編集技術を習得します。"
     },
     {
       id: 2,
       title: "Quest 2",
-      image: "/2025/04/quest2.png",
+      image: `${process.env.PUBLIC_URL}/2025/04/quest2.png`,
       shortDesc: "マインクラフトで建築",
       fullDesc: "マインクラフトを使って創造力を発揮し、自分だけの建築物を作成します。基本的な建築技術から応用まで、楽しく学習できます。"
     },
     {
       id: 3,
       title: "Quest 3",
-      image: "/2025/04/quest3.png",
+      image: `${process.env.PUBLIC_URL}/2025/04/quest3.png`,
       shortDesc: "プログラミング基礎",
       fullDesc: "ビジュアルプログラミングから始めて、プログラミングの基本概念を学習します。ゲーム感覚で楽しく論理的思考を身につけます。"
     },
     {
       id: 4,
       title: "Quest 4",
-      image: "/2025/04/quest4.png",
+      image: `${process.env.PUBLIC_URL}/2025/04/quest4.png`,
       shortDesc: "デジタルアート制作",
       fullDesc: "デジタルツールを使って、イラストやアート作品を制作します。創造性を発揮しながら、デジタル技術を習得できます。"
     },
     {
       id: 5,
       title: "Quest 5",
-      image: "/2025/04/quest5.png",
+      image: `${process.env.PUBLIC_URL}/2025/04/quest5.png`,
       shortDesc: "3Dモデリング体験",
       fullDesc: "3Dモデリングソフトを使って、立体的な作品を作成します。空間認識能力を養いながら、新しい表現方法を学びます。"
     },
     {
       id: 6,
       title: "Quest 6",
-      image: "/2025/04/quest6.png",
+      image: `${process.env.PUBLIC_URL}/2025/04/quest6.png`,
       shortDesc: "総合プロジェクト",
       fullDesc: "これまでに学習した技術を組み合わせて、オリジナルの作品を完成させます。企画から完成まで、一連の制作プロセスを体験します。"
     }

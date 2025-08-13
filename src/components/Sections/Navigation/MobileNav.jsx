@@ -244,7 +244,7 @@ const MobileNav = ({ swiperRef, sections }) => {
     <MobileNavContainer>
       <MobileHeader>
         <MobileLogo 
-          src="/2025/04/logo.png"
+          src={`${process.env.PUBLIC_URL}/2025/04/logo.png`}
           alt="if(塾)"
           onClick={() => handleScrollTo('#main-visual')}
         />

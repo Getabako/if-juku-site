@@ -107,12 +107,12 @@ const BlogPost: React.FC = () => {
     const match = url.match(/\/(\d{4})\/(\d{2})\/([^\/]+)$/);
     if (match) {
       const [, year, month, filename] = match;
-      return `/${year}/${month}/${filename}`;
+      return `${process.env.PUBLIC_URL}/${year}/${month}/${filename}`;
     }
     
-    // 既に相対パスの場合はそのまま返す
+    // 既に相対パスの場合はPUBLIC_URLを付加
     if (url.startsWith('/')) {
-      return url;
+      return `${process.env.PUBLIC_URL}${url}`;
     }
     
     return url;
@@ -123,7 +123,7 @@ const BlogPost: React.FC = () => {
     if (!content) return '';
     
     // img src属性のURLを変換
-    return content.replace(/https?:\/\/[^\/]+\/wp-content\/uploads\/(\d{4})\/(\d{2})\/([^"'\s]+)/g, '/$1/$2/$3');
+    return content.replace(/https?:\/\/[^\/]+\/wp-content\/uploads\/(\d{4})\/(\d{2})\/([^"'\s]+)/g, `${process.env.PUBLIC_URL}/$1/$2/$3`);
   };
 
   return (

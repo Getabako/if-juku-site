@@ -36,7 +36,7 @@ const BlogPost: React.FC = () => {
         }
         
         // インデックスから記事を検索
-        const indexModule = await import('./data/posts/index.json');
+        const indexModule = await import('../data/posts/index.json');
         const allPosts = indexModule.default.posts;
         const postMeta = allPosts.find((p: any) => p.id === postId);
         
@@ -47,7 +47,7 @@ const BlogPost: React.FC = () => {
         
         // カテゴリ別の詳細データを読み込み
         try {
-          const postModule = await import(`./data/posts/${postMeta.category}/${postId}.json`);
+          const postModule = await import(`../data/posts/${postMeta.category}/${postId}.json`);
           setPost(postModule.default);
         } catch (err) {
           console.error(`Failed to load post details for ${postId}:`, err);

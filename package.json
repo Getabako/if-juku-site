@@ -35,7 +35,9 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "vercel-build": "npm run build"
+    "vercel-build": "npm run build",
+    "check-images": "node scripts/check-images.js",
+    "prebuild": "npm run check-images"
   },
   "eslintConfig": {
     "extends": [

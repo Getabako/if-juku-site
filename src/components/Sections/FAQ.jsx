@@ -384,7 +384,7 @@ const FAQ = () => {
   };
 
   const getCharacterImage = () => {
-    const baseImage = currentImageIndex === 0 ? '/2025/02/getabako0.png' : '/2025/02/getabako1.png';
+    const baseImage = currentImageIndex === 0 ? `${process.env.PUBLIC_URL}/2025/02/getabako0.png` : `${process.env.PUBLIC_URL}/2025/02/getabako1.png`;
     return baseImage;
   };
 

@@ -226,26 +226,16 @@ const PowerUp = () => {
   ];
 
   const mobileImages = [
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp2.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp3.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp4.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp5.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp6.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp7.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp8.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp9.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp10.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp11.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp12.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp13.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp14.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp15.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp16.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp17.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp18.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp19.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp20.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicsp21.png`
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc5.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc6.png`,
+    `${process.env.PUBLIC_URL}/2025/04/ifcomicpc7.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc8.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc9.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc10.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc11.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc12.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc13.png`,
+    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc14.png`
   ];
 
   const images = isMobile ? mobileImages : pcImages;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
+import { getAssetPath } from '../../utils/paths';
 
 const PowerUpContainer = styled.section`
   position: relative;
@@ -213,29 +214,29 @@ const PowerUp = () => {
 
   // PC版とモバイル版の画像データ
   const pcImages = [
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc5.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc6.png`,
-    `${process.env.PUBLIC_URL}/2025/04/ifcomicpc7.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc8.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc9.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc10.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc11.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc12.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc13.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc14.png`
+    getAssetPath('2025/03/ifcomicpc5.png'),
+    getAssetPath('2025/03/ifcomicpc6.png'),
+    getAssetPath('2025/04/ifcomicpc7.png'),
+    getAssetPath('2025/03/ifcomicpc8.png'),
+    getAssetPath('2025/03/ifcomicpc9.png'),
+    getAssetPath('2025/03/ifcomicpc10.png'),
+    getAssetPath('2025/03/ifcomicpc11.png'),
+    getAssetPath('2025/03/ifcomicpc12.png'),
+    getAssetPath('2025/03/ifcomicpc13.png'),
+    getAssetPath('2025/03/ifcomicpc14.png')
   ];
 
   const mobileImages = [
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc5.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc6.png`,
-    `${process.env.PUBLIC_URL}/2025/04/ifcomicpc7.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc8.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc9.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc10.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc11.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc12.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc13.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc14.png`
+    getAssetPath('2025/03/ifcomicpc5.png'),
+    getAssetPath('2025/03/ifcomicpc6.png'),
+    getAssetPath('2025/04/ifcomicpc7.png'),
+    getAssetPath('2025/03/ifcomicpc8.png'),
+    getAssetPath('2025/03/ifcomicpc9.png'),
+    getAssetPath('2025/03/ifcomicpc10.png'),
+    getAssetPath('2025/03/ifcomicpc11.png'),
+    getAssetPath('2025/03/ifcomicpc12.png'),
+    getAssetPath('2025/03/ifcomicpc13.png'),
+    getAssetPath('2025/03/ifcomicpc14.png')
   ];
 
   const images = isMobile ? mobileImages : pcImages;

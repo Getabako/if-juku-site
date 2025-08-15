@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import { getAssetPath } from '../../utils/paths';
 
 const FAQContainer = styled.section`
   position: relative;
@@ -384,7 +385,7 @@ const FAQ = () => {
   };
 
   const getCharacterImage = () => {
-    const baseImage = currentImageIndex === 0 ? `${process.env.PUBLIC_URL}/2025/02/getabako0.png` : `${process.env.PUBLIC_URL}/2025/02/getabako1.png`;
+    const baseImage = currentImageIndex === 0 ? getAssetPath('2025/02/getabako0.png') : getAssetPath('2025/02/getabako1.png');
     return baseImage;
   };
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
+import { getAssetPath } from '../../utils/paths';
 
 const FlowContainer = styled.section`
   position: relative;
@@ -251,7 +252,7 @@ const Flow = () => {
           
           <FlowImageWrapper variants={itemVariants} className="cyber-frame">
             <FlowImage
-              src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/flow_sp.png` : `${process.env.PUBLIC_URL}/2025/04/flow_pc.png`}
+              src={isMobile ? getAssetPath('2025/04/flow_sp.png') : getAssetPath('2025/04/flow_pc.png')}
               alt="入塾までの流れ"
             />
             

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
@@ -80,7 +80,7 @@ const ScrollingWrapper = styled.div`
   }
 `;
 
-const VideoCard = styled(motion.div)`
+const VideoCard = styled(motion.a)`
   min-width: 400px;
   height: 300px;
   margin: 0 1rem;
@@ -93,6 +93,7 @@ const VideoCard = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
   
   &:hover {
     transform: translateY(-5px) scale(1.02);
@@ -221,66 +222,6 @@ const ViewChannelButton = styled(motion.a)`
   }
 `;
 
-const ModalOverlay = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 2rem;
-`;
-
-const ModalContent = styled(motion.div)`
-  background: ${theme.colors.background.primary};
-  border-radius: 12px;
-  padding: 2rem;
-  max-width: 900px;
-  width: 100%;
-  max-height: 90vh;
-  overflow: auto;
-  position: relative;
-  border: 2px solid ${theme.colors.primary.main};
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: scale(1.2);
-  }
-`;
-
-const IframeWrapper = styled.div`
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-top: 1rem;
-  
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-`;
-
 // YouTube Data APIを使わずに動画を表示する方法:
 // 
 // 方法1: 手動で動画IDを更新（現在の実装）
@@ -298,7 +239,6 @@ const IframeWrapper = styled.div`
 // - クォータ制限あり（10,000ユニット/日）
 
 const YouTube = () => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
 
   // if(塾)チャンネルの実際の動画データ
   // 動画IDを更新する場合:
@@ -370,14 +310,6 @@ const YouTube = () => {
   // スクロール用に動画を複製
   const scrollVideos = [...popularVideos, ...popularVideos];
 
-  const handleVideoClick = (video) => {
-    setSelectedVideo(video);
-  };
-
-  const closeModal = () => {
-    setSelectedVideo(null);
-  };
-
   return (
     <YouTubeContainer id="youtube">
       <SectionTitle
@@ -394,7 +326,9 @@ const YouTube = () => {
           {scrollVideos.map((video, index) => (
             <VideoCard
               key={`${video.id}-${index}`}
-              onClick={() => handleVideoClick(video)}
+              href={`https://www.youtube.com/watch?v=${video.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -426,33 +360,6 @@ const YouTube = () => {
       >
         YouTubeチャンネルを見る
       </ViewChannelButton>
-
-      {selectedVideo && (
-        <ModalOverlay
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={closeModal}
-        >
-          <ModalContent
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <CloseButton onClick={closeModal}>×</CloseButton>
-            <h2 style={{ color: 'white', marginBottom: '1rem' }}>{selectedVideo.title}</h2>
-            <IframeWrapper>
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
-                title={selectedVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </IframeWrapper>
-          </ModalContent>
-        </ModalOverlay>
-      )}
     </YouTubeContainer>
   );
 };

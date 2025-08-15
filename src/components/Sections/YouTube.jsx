@@ -180,6 +180,7 @@ const VideoInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const VideoTitle = styled.h3`
@@ -193,12 +194,7 @@ const VideoTitle = styled.h3`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 1.4;
-`;
-
-const VideoViews = styled.span`
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
+  text-align: center;
 `;
 
 const ViewChannelButton = styled(motion.a)`
@@ -241,66 +237,45 @@ const ViewChannelButton = styled(motion.a)`
 const YouTube = () => {
 
   // if(塾)チャンネルの実際の動画データ
-  // 動画IDを更新する場合:
-  // 1. YouTubeの動画URLから動画IDを取得（URLの?v=の後の部分）
-  // 2. 下記の配列に追加または更新
-  // 例: https://www.youtube.com/watch?v=VIDEO_ID → VIDEO_IDを使用
   const popularVideos = [
     {
       id: '0F4SIptjCDs',
       title: '日本で一番nowい塾 if(塾)',
-      views: '100+ 回視聴',
       thumbnail: 'https://i.ytimg.com/vi/0F4SIptjCDs/maxresdefault.jpg'
     },
     {
       id: 'pH7pgybx-ao',
       title: '"誰でも通える未来型教室" 高校生が仮想空間で学ぶ学習塾',
-      views: '500+ 回視聴',
       thumbnail: 'https://i.ytimg.com/vi/pH7pgybx-ao/maxresdefault.jpg'
     },
     {
       id: 'jGvWryXcp6Y',
       title: 'if(塾)高崎圧倒的停滞…',
-      views: '200+ 回視聴',
       thumbnail: 'https://i.ytimg.com/vi/jGvWryXcp6Y/maxresdefault.jpg'
     },
-    // 以下は実際のチャンネル動画IDに置き換えてください
-    // YouTubeチャンネルページから動画URLをコピーして、
-    // ?v=の後の部分を下記のidに設定してください
-
     {
-      id: 'M7lc1UVf-VE', // 実際の動画IDに置き換え
+      id: 'REPLACE_WITH_ACTUAL_ID_1', // 実際の動画IDに置き換えてください
       title: '【2024振り返り】if(塾)って、1年間何してたの？',
-      views: '800+ 回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/M7lc1UVf-VE/maxresdefault.jpg'
+      thumbnail: 'https://i.ytimg.com/vi/REPLACE_WITH_ACTUAL_ID_1/maxresdefault.jpg'
     },
     {
-      id: 'K4TOrB7at0Y', // 実際の動画IDに置き換え
+      id: 'REPLACE_WITH_ACTUAL_ID_2', // 実際の動画IDに置き換えてください
       title: '【塾頭よりご挨拶】if(塾)チャンネル開設！',
-      views: '1,500+ 回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/K4TOrB7at0Y/maxresdefault.jpg'
+      thumbnail: 'https://i.ytimg.com/vi/REPLACE_WITH_ACTUAL_ID_2/maxresdefault.jpg'
     },
     {
-      id: 'nCgQDjiotG0', // 実際の動画IDに置き換え
-      title: 'if(塾)Y君プロゲーマーへの道！',
-      views: '600+ 回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/nCgQDjiotG0/maxresdefault.jpg'
-    },
-    {
-      id: 'P5VhHOg89Kw', // 実際の動画IDに置き換え
-      title: '【記録】山﨑塾長のこれまでの歩み。',
-      views: '900+ 回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/P5VhHOg89Kw/maxresdefault.jpg'
+      id: 'REPLACE_WITH_ACTUAL_ID_3', // 実際の動画IDに置き換えてください
+      title: '【最速よりご挨拶】if(塾)チャンネル開設！',
+      thumbnail: 'https://i.ytimg.com/vi/REPLACE_WITH_ACTUAL_ID_3/maxresdefault.jpg'
     }
   ];
 
-  // 動画IDの更新方法を記載したコメント
-  // 新しい動画を追加する場合:
+  // 動画IDの更新方法:
   // 1. YouTubeチャンネルページ (https://www.youtube.com/@if-juku) にアクセス
   // 2. 表示したい動画をクリック
   // 3. URLから動画ID（?v=の後の文字列）をコピー
   // 4. 上記配列に新しいオブジェクトを追加:
-  //    { id: '動画ID', title: '動画タイトル', views: '視聴回数', thumbnail: 'サムネイルURL' }
+  //    { id: '動画ID', title: '動画タイトル', thumbnail: 'https://i.ytimg.com/vi/動画ID/maxresdefault.jpg' }
 
   // スクロール用に動画を複製
   const scrollVideos = [...popularVideos, ...popularVideos];
@@ -339,7 +314,6 @@ const YouTube = () => {
               </VideoThumbnail>
               <VideoInfo>
                 <VideoTitle>{video.title}</VideoTitle>
-                <VideoViews>{video.views}</VideoViews>
               </VideoInfo>
             </VideoCard>
           ))}

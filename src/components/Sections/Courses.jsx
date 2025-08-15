@@ -202,6 +202,7 @@ const InfoLabel = styled.div`
   font-size: 0.9rem;
   color: ${theme.colors.text.secondary};
   margin-bottom: 0.5rem;
+  font-weight: bold;
 `;
 
 const InfoValue = styled.div`
@@ -244,7 +245,7 @@ const Courses = () => {
       tag: "小学生～中学生推奨",
       description: "マインクラフトで学ぶ創造力・基礎ITスキルコース",
       frequency: "週1回から参加可能",
-      target: "小学生～中学生にオススメ",
+      skills: "創造力と基礎的なITスキルを楽しく習得",
       features: [
         "マインクラフトをメタバース化した空間で自由に探索・建築",
         "AI先生やゲームコンテンツを活用した遊び感覚の学習",
@@ -257,7 +258,7 @@ const Courses = () => {
       tag: "中学生～高校生推奨",
       description: "AIと起業を学ぶ自己実現コース",
       frequency: "週2～3回推奨",
-      target: "中学生～高校生にオススメ",
+      skills: "将来のキャリアに直結する実践的なスキルを習得",
       features: [
         "AIを活用したプログラミングやビジネスモデルの構築",
         "起業家精神を育成し、自分の興味や特性を活かしたプロジェクト企画・実行",
@@ -343,8 +344,8 @@ const Courses = () => {
                 <InfoValue>{currentCourse.frequency}</InfoValue>
               </InfoItem>
               <InfoItem>
-                <InfoLabel>対象</InfoLabel>
-                <InfoValue>{currentCourse.target}</InfoValue>
+                <InfoLabel>習得スキル</InfoLabel>
+                <InfoValue>{currentCourse.skills}</InfoValue>
               </InfoItem>
             </CourseInfo>
             

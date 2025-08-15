@@ -51,62 +51,51 @@ const SectionTitle = styled(motion.h2)`
   }
 `;
 
-const TabContainer = styled.div`
+const CourseTabs = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
+  gap: 1rem;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
   }
 `;
 
-const TabButton = styled.button`
+const CourseTabButton = styled.button`
   background: ${props => props.active ? 
     `linear-gradient(45deg, ${theme.colors.primary.main}, ${theme.colors.primary.dark})` : 
-    'transparent'};
-  border: 2px solid ${theme.colors.primary.main};
-  color: ${theme.colors.text.primary};
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
+    'rgba(0, 0, 0, 0.5)'};
+  border: 2px solid ${props => props.active ? 
+    theme.colors.primary.main : 
+    'rgba(255, 255, 255, 0.3)'};
+  color: ${props => props.active ? 
+    theme.colors.text.primary : 
+    'rgba(255, 255, 255, 0.6)'};
+  padding: 0.8rem 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   transition: all ${theme.animations.duration.normal};
-  font-family: ${theme.fonts.primary};
+  font-family: ${theme.fonts.secondary};
   position: relative;
   overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-  }
+  backdrop-filter: blur(5px);
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px ${theme.colors.primary.main};
-    
-    &::before {
-      left: 100%;
-    }
+    transform: ${props => !props.active && 'scale(1.05)'};
+    box-shadow: 0 0 15px ${theme.colors.primary.main};
+    border-color: ${theme.colors.primary.main};
+    color: ${theme.colors.text.primary};
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 0.6rem 1rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
   
   @media (max-width: 480px) {
     padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -160,31 +149,13 @@ const CourseCard = styled(motion.div)`
 const CourseHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 1rem;
 `;
 
-const CourseTitle = styled.h3`
-  font-size: 2rem;
-  color: ${theme.colors.primary.main};
-  font-family: ${theme.fonts.secondary};
-  background: rgba(0, 0, 0, 0.85);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  display: inline-block;
-  text-shadow: 
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000,
-    ${theme.colors.glow.blue};
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.5rem;
-  }
-`;
+// CourseTitle removed - no longer needed
 
 const CourseTag = styled.span`
   background: linear-gradient(45deg, ${theme.colors.secondary.main}, ${theme.colors.secondary.dark});
@@ -331,22 +302,6 @@ const Courses = () => {
           コース紹介
         </SectionTitle>
         
-        <TabContainer>
-          <TabButton
-            active={activeTab === 'liberal'}
-            onClick={() => setActiveTab('liberal')}
-            className="glitch-effect"
-          >
-            リベラルコース
-          </TabButton>
-          <TabButton
-            active={activeTab === 'selfrealization'}
-            onClick={() => setActiveTab('selfrealization')}
-            className="glitch-effect"
-          >
-            自己実現コース
-          </TabButton>
-        </TabContainer>
         
         <AnimatePresence mode="wait">
           <CourseCard
@@ -359,7 +314,22 @@ const Courses = () => {
             className="cyber-frame neon-glow"
           >
             <CourseHeader>
-              <CourseTitle>{currentCourse.title}</CourseTitle>
+              <CourseTabs>
+                <CourseTabButton
+                  active={activeTab === 'liberal'}
+                  onClick={() => setActiveTab('liberal')}
+                  className="cyber-pulse"
+                >
+                  リベラルコース
+                </CourseTabButton>
+                <CourseTabButton
+                  active={activeTab === 'selfrealization'}
+                  onClick={() => setActiveTab('selfrealization')}
+                  className="cyber-pulse"
+                >
+                  自己実現コース
+                </CourseTabButton>
+              </CourseTabs>
               <CourseTag>{currentCourse.tag}</CourseTag>
             </CourseHeader>
             

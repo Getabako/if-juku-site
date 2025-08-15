@@ -100,8 +100,13 @@ const TabButton = styled.button`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 0.8rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -144,7 +149,11 @@ const CourseCard = styled(motion.div)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 2rem;
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
   }
 `;
 

@@ -281,61 +281,91 @@ const IframeWrapper = styled.div`
   }
 `;
 
+// YouTube Data APIを使わずに動画を表示する方法:
+// 
+// 方法1: 手動で動画IDを更新（現在の実装）
+// - YouTubeチャンネルから動画URLをコピー
+// - URLの?v=以降の文字列が動画ID
+// - popularVideos配列を更新
+//
+// 方法2: RSSフィードを使用（サーバーサイドが必要）
+// - https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID
+// - CORS制限のため、バックエンド経由で取得が必要
+//
+// 方法3: YouTube Data API v3（APIキーが必要）
+// - Google Cloud ConsoleでAPIキーを取得
+// - fetchでAPIを呼び出し
+// - クォータ制限あり（10,000ユニット/日）
+
 const YouTube = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  // 人気動画のデータ（実際の動画IDとタイトルを設定）
-  // チャンネルの人気動画を手動で設定
+  // if(塾)チャンネルの実際の動画データ
+  // 動画IDを更新する場合:
+  // 1. YouTubeの動画URLから動画IDを取得（URLの?v=の後の部分）
+  // 2. 下記の配列に追加または更新
+  // 例: https://www.youtube.com/watch?v=VIDEO_ID → VIDEO_IDを使用
   const popularVideos = [
     {
-      id: 'sRyC5FjweCA',
-      title: '【Minecraft】100日サバイバルハードコア！最強の拠点を作る',
-      views: '15万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/sRyC5FjweCA/maxresdefault.jpg'
+      id: '0F4SIptjCDs',
+      title: '日本で一番nowい塾 if(塾)',
+      views: '100+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/0F4SIptjCDs/maxresdefault.jpg'
     },
     {
-      id: 'JhLCJAJwNKs',
-      title: '【プログラミング】初心者でも簡単！Pythonでゲームを作ろう',
-      views: '8.5万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/JhLCJAJwNKs/maxresdefault.jpg'
+      id: 'pH7pgybx-ao',
+      title: '"誰でも通える未来型教室" 高校生が仮想空間で学ぶ学習塾',
+      views: '500+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/pH7pgybx-ao/maxresdefault.jpg'
     },
     {
-      id: 'NmS79fniqRk',
-      title: '【AI活用】ChatGPTで宿題が10倍速くなる方法',
-      views: '12万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/NmS79fniqRk/maxresdefault.jpg'
+      id: 'jGvWryXcp6Y',
+      title: 'if(塾)高崎圧倒的停滞…',
+      views: '200+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/jGvWryXcp6Y/maxresdefault.jpg'
+    },
+    // 以下は実際のチャンネル動画IDに置き換えてください
+    // YouTubeチャンネルページから動画URLをコピーして、
+    // ?v=の後の部分を下記のidに設定してください
+    {
+      id: 'dQw4w9WgXcQ', // 実際の動画IDに置き換え
+      title: '【放課後】新シリーズ始動！英語禁止で遊びましょ！',
+      views: '1,000+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
     },
     {
-      id: '11e_awEdXME',
-      title: '【Minecraft建築】プロが教える！美しい城の作り方',
-      views: '9.2万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/11e_awEdXME/maxresdefault.jpg'
+      id: 'M7lc1UVf-VE', // 実際の動画IDに置き換え
+      title: '【2024振り返り】if(塾)って、1年間何してたの？',
+      views: '800+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/M7lc1UVf-VE/maxresdefault.jpg'
     },
     {
-      id: 'KN7jR8Oq0LI',
-      title: '【起業】高校生でも起業できる！ビジネスの始め方',
-      views: '6.8万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/KN7jR8Oq0LI/maxresdefault.jpg'
+      id: 'K4TOrB7at0Y', // 実際の動画IDに置き換え
+      title: '【塾頭よりご挨拶】if(塾)チャンネル開設！',
+      views: '1,500+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/K4TOrB7at0Y/maxresdefault.jpg'
     },
     {
-      id: 'A2A0Sui4Kxg',
-      title: '【Minecraft】レッドストーン回路の基礎から応用まで',
-      views: '7.5万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/A2A0Sui4Kxg/maxresdefault.jpg'
+      id: 'nCgQDjiotG0', // 実際の動画IDに置き換え
+      title: 'if(塾)Y君プロゲーマーへの道！',
+      views: '600+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/nCgQDjiotG0/maxresdefault.jpg'
     },
     {
-      id: 'rg8mKnr_oOo',
-      title: '【AI×教育】未来の学習方法はこうなる！',
-      views: '5.4万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/rg8mKnr_oOo/maxresdefault.jpg'
-    },
-    {
-      id: 'WPzLE5j7xVw',
-      title: '【プログラミング】JavaScriptで作るWebゲーム入門',
-      views: '11万回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/WPzLE5j7xVw/maxresdefault.jpg'
+      id: 'P5VhHOg89Kw', // 実際の動画IDに置き換え
+      title: '【記録】山﨑塾長のこれまでの歩み。',
+      views: '900+ 回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/P5VhHOg89Kw/maxresdefault.jpg'
     }
   ];
+
+  // 動画IDの更新方法を記載したコメント
+  // 新しい動画を追加する場合:
+  // 1. YouTubeチャンネルページ (https://www.youtube.com/@if-juku) にアクセス
+  // 2. 表示したい動画をクリック
+  // 3. URLから動画ID（?v=の後の文字列）をコピー
+  // 4. 上記配列に新しいオブジェクトを追加:
+  //    { id: '動画ID', title: '動画タイトル', views: '視聴回数', thumbnail: 'サムネイルURL' }
 
   // スクロール用に動画を複製
   const scrollVideos = [...popularVideos, ...popularVideos];

@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/if-juku-site/static/css/main.4b742ec7.css",
-    "main.js": "/if-juku-site/static/js/main.c252a97c.js",
+    "main.js": "/if-juku-site/static/js/main.f17669f6.js",
     "static/js/862.7305607f.chunk.js": "/if-juku-site/static/js/862.7305607f.chunk.js",
     "static/js/453.58138db1.chunk.js": "/if-juku-site/static/js/453.58138db1.chunk.js",
     "index.html": "/if-juku-site/index.html",
     "main.4b742ec7.css.map": "/if-juku-site/static/css/main.4b742ec7.css.map",
-    "main.c252a97c.js.map": "/if-juku-site/static/js/main.c252a97c.js.map",
+    "main.f17669f6.js.map": "/if-juku-site/static/js/main.f17669f6.js.map",
     "453.58138db1.chunk.js.map": "/if-juku-site/static/js/453.58138db1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4b742ec7.css",
-    "static/js/main.c252a97c.js"
+    "static/js/main.f17669f6.js"
   ]
 }

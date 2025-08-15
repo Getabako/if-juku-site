@@ -210,7 +210,8 @@ const CourseInfo = styled.div`
 `;
 
 const InfoItem = styled.div`
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
   border: 1px solid ${theme.colors.primary.main};
   border-radius: 8px;
   padding: 1rem;

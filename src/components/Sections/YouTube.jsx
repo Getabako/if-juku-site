@@ -267,12 +267,7 @@ const YouTube = () => {
     // 以下は実際のチャンネル動画IDに置き換えてください
     // YouTubeチャンネルページから動画URLをコピーして、
     // ?v=の後の部分を下記のidに設定してください
-    {
-      id: 'dQw4w9WgXcQ', // 実際の動画IDに置き換え
-      title: '【放課後】新シリーズ始動！英語禁止で遊びましょ！',
-      views: '1,000+ 回視聴',
-      thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg'
-    },
+
     {
       id: 'M7lc1UVf-VE', // 実際の動画IDに置き換え
       title: '【2024振り返り】if(塾)って、1年間何してたの？',

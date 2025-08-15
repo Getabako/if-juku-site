@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 
@@ -9,434 +9,420 @@ const YouTubeContainer = styled.section`
   height: 100vh;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: ${theme.colors.background.primary};
-`;
-
-const PlayButtonBackground = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-  opacity: 0.05;
-  
-  &::before {
-    content: '▶';
-    position: absolute;
-    top: 20%;
-    left: 15%;
-    font-size: 8rem;
-    color: ${theme.colors.primary.main};
-    animation: pulse-play 4s ease-in-out infinite;
-  }
-  
-  &::after {
-    content: '▶';
-    position: absolute;
-    bottom: 20%;
-    right: 15%;
-    font-size: 6rem;
-    color: ${theme.colors.secondary.main};
-    animation: pulse-play 4s ease-in-out infinite 2s;
-  }
-  
-  @keyframes pulse-play {
-    0%, 100% { transform: scale(1); opacity: 0.05; }
-    50% { transform: scale(1.2); opacity: 0.1; }
-  }
-`;
-
-const ContentWrapper = styled.div`
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  width: 100%;
   padding: 2rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  
-  /* カスタムスクロールバー */
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: ${theme.colors.primary.main};
-    border-radius: 4px;
-    
-    &:hover {
-      background: ${theme.colors.primary.light};
-    }
-  }
 `;
 
 const SectionTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: ${theme.colors.primary.main};
   text-shadow: ${theme.colors.glow.blue};
   font-family: ${theme.fonts.secondary};
   animation: twinkle 2s infinite;
   
-  @media (max-width: ${theme.breakpoints.mobile}) {
+  @media (max-width: 768px) {
     font-size: 2rem;
-    margin-bottom: 2rem;
   }
 `;
 
-const VideoGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+const scrollRight = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+`;
+
+const ScrollContainer = styled.div`
+  width: 100%;
+  overflow: hidden;
+  margin: 2rem 0;
+  position: relative;
   
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(to right, ${theme.colors.background.primary}, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    background: linear-gradient(to left, ${theme.colors.background.primary}, transparent);
+    z-index: 2;
+    pointer-events: none;
+  }
+`;
+
+const ScrollingWrapper = styled.div`
+  display: flex;
+  animation: ${scrollRight} 60s linear infinite;
+  
+  &:hover {
+    animation-play-state: paused;
   }
 `;
 
 const VideoCard = styled(motion.div)`
-  background: rgba(26, 26, 26, 0.9);
-  border: 2px solid ${theme.colors.primary.main};
+  min-width: 400px;
+  height: 300px;
+  margin: 0 1rem;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 0, 0, 0.3);
   border-radius: 12px;
   overflow: hidden;
-  position: relative;
-  transition: all ${theme.animations.duration.normal};
-  backdrop-filter: blur(10px);
   cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+    border-color: #ff0000;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 255, 255, 0.1));
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff0000, #ff4444, #ff0000);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  &:hover::before {
+    opacity: 0.5;
+  }
+  
+  @media (max-width: 768px) {
+    min-width: 300px;
+    height: 250px;
   }
 `;
 
 const VideoThumbnail = styled.div`
-  position: relative;
   width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, ${theme.colors.primary.main}, ${theme.colors.secondary.main});
+  height: 70%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  ${VideoCard}:hover & img {
+    transform: scale(1.1);
+  }
+`;
+
+const PlayButton = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
   
-  &::before {
+  &::after {
     content: '';
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+  }
+  
+  ${VideoCard}:hover & {
+    background: rgba(255, 0, 0, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+`;
+
+const VideoInfo = styled.div`
+  flex: 1;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const VideoTitle = styled.h3`
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+`;
+
+const VideoViews = styled.span`
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+`;
+
+const ViewChannelButton = styled(motion.a)`
+  background: linear-gradient(135deg, #ff0000, #cc0000);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+    background: linear-gradient(135deg, #ff0000, #ff4444);
+  }
+`;
+
+const ModalOverlay = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+`;
+
+const ModalContent = styled(motion.div)`
+  background: ${theme.colors.background.primary};
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+  border: 2px solid ${theme.colors.primary.main};
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
+
+const IframeWrapper = styled.div`
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 1rem;
+  
+  iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    border: none;
   }
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    height: 150px;
-  }
-`;
-
-const ChannelInfo = styled(motion.div)`
-  background: rgba(26, 26, 26, 0.95);
-  border: 2px solid ${theme.colors.primary.main};
-  border-radius: 16px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  backdrop-filter: blur(15px);
-  box-shadow: 
-    0 0 30px rgba(0, 255, 255, 0.3),
-    inset 0 0 20px rgba(0, 255, 255, 0.1);
-`;
-
-const ChannelName = styled.h3`
-  font-size: 2rem;
-  color: ${theme.colors.primary.main};
-  margin-bottom: 0.5rem;
-  font-family: ${theme.fonts.secondary};
-  text-shadow: ${theme.colors.glow.blue};
-`;
-
-const ChannelHandle = styled.div`
-  font-size: 1.2rem;
-  color: ${theme.colors.secondary.main};
-  margin-bottom: 1rem;
-  font-weight: 500;
-`;
-
-const ChannelDescription = styled.p`
-  font-size: 1.1rem;
-  color: ${theme.colors.text.primary};
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-`;
-
-const PlayButton = styled(motion.div)`
-  position: absolute;
-  z-index: 2;
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: ${theme.colors.background.primary};
-  transition: all ${theme.animations.duration.normal};
-  
-  &::before {
-    content: '▶';
-    margin-left: 3px;
-  }
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-`;
-
-const VideoInfo = styled.div`
-  padding: 1.5rem;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1rem;
-  }
-`;
-
-const VideoTitle = styled.h3`
-  font-size: 1.1rem;
-  color: ${theme.colors.primary.main};
-  margin-bottom: 0.5rem;
-  font-family: ${theme.fonts.secondary};
-  line-height: 1.3;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1rem;
-  }
-`;
-
-const VideoDescription = styled.p`
-  font-size: 0.9rem;
-  color: ${theme.colors.text.secondary};
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.8rem;
-  }
-`;
-
-const VideoMeta = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: ${theme.colors.text.secondary};
-  opacity: 0.8;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.7rem;
-  }
-`;
-
-const ViewCount = styled.span`
-  &::before {
-    content: '👁 ';
-  }
-`;
-
-const PublishDate = styled.span`
-  &::before {
-    content: '📅 ';
-  }
-`;
-
-const ChannelButton = styled(motion.button)`
-  background: linear-gradient(45deg, #ff0000, #cc0000);
-  border: 2px solid #ff0000;
-  color: white;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 25px;
-  cursor: pointer;
-  margin: 2rem auto 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all ${theme.animations.duration.normal};
-  font-family: ${theme.fonts.primary};
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-  }
-  
-  &::before {
-    content: '📺';
-  }
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-  }
-`;
-
-const PlaceholderText = styled.div`
-  text-align: center;
-  color: ${theme.colors.text.secondary};
-  font-size: 1.1rem;
-  margin-top: 2rem;
-  padding: 2rem;
-  background: rgba(0, 255, 255, 0.1);
-  border: 1px solid ${theme.colors.primary.main};
-  border-radius: 8px;
 `;
 
 const YouTube = () => {
-  // if(塾)チャンネルの動画情報
-  const channelInfo = {
-    name: "if(塾)",
-    handle: "@if-juku", 
-    url: "https://www.youtube.com/@if-juku",
-    description: "AIとプログラミングを学ぶオンライン塾",
-    subscribers: "最新の学習動画を配信中"
-  };
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const videoPlaceholders = [
+  // 人気動画のデータ（実際の動画IDとタイトルを設定）
+  // チャンネルの人気動画を手動で設定
+  const popularVideos = [
     {
-      id: 1,
-      title: "if(塾)の学習方法紹介",
-      description: "AIを活用した効率的な学習方法をご紹介します。",
-      thumbnail: "🎓"
+      id: 'sRyC5FjweCA',
+      title: '【Minecraft】100日サバイバルハードコア！最強の拠点を作る',
+      views: '15万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/sRyC5FjweCA/maxresdefault.jpg'
     },
     {
-      id: 2,
-      title: "生徒作品発表会",
-      description: "if(塾)の生徒が制作した素晴らしい作品をご覧ください。",
-      thumbnail: "🎨"
+      id: 'JhLCJAJwNKs',
+      title: '【プログラミング】初心者でも簡単！Pythonでゲームを作ろう',
+      views: '8.5万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/JhLCJAJwNKs/maxresdefault.jpg'
     },
     {
-      id: 3,
-      title: "プログラミング入門講座",
-      description: "初心者でも分かりやすいプログラミングの基礎を解説。",
-      thumbnail: "💻"
+      id: 'NmS79fniqRk',
+      title: '【AI活用】ChatGPTで宿題が10倍速くなる方法',
+      views: '12万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/NmS79fniqRk/maxresdefault.jpg'
+    },
+    {
+      id: '11e_awEdXME',
+      title: '【Minecraft建築】プロが教える！美しい城の作り方',
+      views: '9.2万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/11e_awEdXME/maxresdefault.jpg'
+    },
+    {
+      id: 'KN7jR8Oq0LI',
+      title: '【起業】高校生でも起業できる！ビジネスの始め方',
+      views: '6.8万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/KN7jR8Oq0LI/maxresdefault.jpg'
+    },
+    {
+      id: 'A2A0Sui4Kxg',
+      title: '【Minecraft】レッドストーン回路の基礎から応用まで',
+      views: '7.5万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/A2A0Sui4Kxg/maxresdefault.jpg'
+    },
+    {
+      id: 'rg8mKnr_oOo',
+      title: '【AI×教育】未来の学習方法はこうなる！',
+      views: '5.4万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/rg8mKnr_oOo/maxresdefault.jpg'
+    },
+    {
+      id: 'WPzLE5j7xVw',
+      title: '【プログラミング】JavaScriptで作るWebゲーム入門',
+      views: '11万回視聴',
+      thumbnail: 'https://i.ytimg.com/vi/WPzLE5j7xVw/maxresdefault.jpg'
     }
   ];
 
-  const handleChannelClick = () => {
-    window.open('https://www.youtube.com/@if-juku', '_blank');
+  // スクロール用に動画を複製
+  const scrollVideos = [...popularVideos, ...popularVideos];
+
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
   };
 
-  const handleVideoClick = () => {
-    window.open(channelInfo.url, '_blank');
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
+  const closeModal = () => {
+    setSelectedVideo(null);
   };
 
   return (
     <YouTubeContainer id="youtube">
-      <PlayButtonBackground />
+      <SectionTitle
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="twinkling-text"
+      >
+        YouTube
+      </SectionTitle>
       
-      <ContentWrapper>
-        <SectionTitle
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="twinkling-text"
-        >
-          YouTube
-        </SectionTitle>
-        
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-        >
-          <ChannelInfo variants={itemVariants} className="cyber-frame">
-            <ChannelName>{channelInfo.name}</ChannelName>
-            <ChannelHandle>{channelInfo.handle}</ChannelHandle>
-            <ChannelDescription>{channelInfo.description}</ChannelDescription>
-            <ChannelDescription>{channelInfo.subscribers}</ChannelDescription>
-          </ChannelInfo>
+      <ScrollContainer>
+        <ScrollingWrapper>
+          {scrollVideos.map((video, index) => (
+            <VideoCard
+              key={`${video.id}-${index}`}
+              onClick={() => handleVideoClick(video)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <VideoThumbnail>
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  onError={(e) => {
+                    e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                  }}
+                />
+                <PlayButton />
+              </VideoThumbnail>
+              <VideoInfo>
+                <VideoTitle>{video.title}</VideoTitle>
+                <VideoViews>{video.views}</VideoViews>
+              </VideoInfo>
+            </VideoCard>
+          ))}
+        </ScrollingWrapper>
+      </ScrollContainer>
+      
+      <ViewChannelButton
+        href="https://www.youtube.com/@if-juku"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        YouTubeチャンネルを見る
+      </ViewChannelButton>
 
-          <VideoGrid variants={containerVariants}>
-            {videoPlaceholders.map((video) => (
-              <VideoCard
-                key={video.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="cyber-frame"
-                onClick={handleVideoClick}
-              >
-                <VideoThumbnail>
-                  <motion.div
-                    style={{ fontSize: '4rem', zIndex: 2, position: 'relative' }}
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    {video.thumbnail}
-                  </motion.div>
-                  <PlayButton
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  />
-                </VideoThumbnail>
-                
-                <VideoInfo>
-                  <VideoTitle>{video.title}</VideoTitle>
-                  <VideoDescription>{video.description}</VideoDescription>
-                </VideoInfo>
-              </VideoCard>
-            ))}
-          </VideoGrid>
-          
-          <ChannelButton
-            onClick={handleChannelClick}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+      {selectedVideo && (
+        <ModalOverlay
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeModal}
+        >
+          <ModalContent
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            YouTubeチャンネルへ
-          </ChannelButton>
-        </motion.div>
-      </ContentWrapper>
+            <CloseButton onClick={closeModal}>×</CloseButton>
+            <h2 style={{ color: 'white', marginBottom: '1rem' }}>{selectedVideo.title}</h2>
+            <IframeWrapper>
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.id}?autoplay=1`}
+                title={selectedVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </IframeWrapper>
+          </ModalContent>
+        </ModalOverlay>
+      )}
     </YouTubeContainer>
   );
 };

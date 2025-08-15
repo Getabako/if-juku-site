@@ -1,47 +1,88 @@
-# Getting Started with Create React App
+# if(塾) - AIと起業が学べる未来型教室
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## プロジェクト概要
+- **名前**: if(塾)公式サイト
+- **目標**: 現代的でインタラクティブな塾のランディングページ
+- **特徴**: 
+  - React + TypeScriptによるモダンなSPA
+  - GitHub Pages対応のサブパスルーティング
+  - アニメーション豊富なUI/UX
+  - レスポンシブデザイン
 
-## Available Scripts
+## URLs
+- **Production**: https://getabako.github.io/if-juku-site/
+- **GitHub**: https://github.com/Getabako/if-juku-site
 
-In the project directory, you can run:
+## 最近の更新内容 (2025-01-15)
 
-### `npm start`
+### YouTubeセクションの改善
+- ✅ 架空の動画から実際のif(塾)チャンネルの動画に置き換え
+- ✅ 動画カードクリック時の挙動を変更：
+  - Before: モーダルで埋め込み再生（音声のみ再生される問題あり）
+  - After: 直接YouTubeページに遷移して動画再生
+- ✅ 実際の動画IDとタイトルを設定
+- ✅ 動画更新ガイドをドキュメント化
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 実装済みの主要機能
+- ✅ Materialsセクション: Minecraft関連記事のスクロールカード表示（右→左）
+- ✅ Newsセクション: 非Minecraft記事のスクロールカード表示（左→右）  
+- ✅ YouTubeセクション: チャンネル動画のスクロールカード表示
+- ✅ Coursesセクション: 背景画像の更新（liberal.png, ideal.png）
+- ✅ GitHub Pages サブパス対応（/if-juku-site）
+- ✅ PUBLIC_URL環境変数の適切な処理
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## データアーキテクチャ
+- **フロントエンド**: React 18 + TypeScript
+- **スタイリング**: styled-components + Tailwind CSS
+- **アニメーション**: Framer Motion
+- **ルーティング**: React Router v6
+- **デプロイ**: GitHub Pages (gh-pages branch)
 
-### `npm test`
+## ユーザーガイド
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### YouTube動画の更新方法
+1. YouTubeチャンネルから動画URLをコピー
+2. URLから動画ID（?v=以降）を抽出
+3. `src/components/Sections/YouTube.jsx`の`popularVideos`配列を更新
+4. ビルドしてデプロイ
 
-### `npm run build`
+詳細は`docs/youtube-video-update-guide.md`を参照
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### ローカル開発
+```bash
+npm install
+npm start          # 開発サーバー起動
+npm run build      # 本番ビルド
+npm run deploy     # GitHub Pagesへデプロイ
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## デプロイメント
+- **Platform**: GitHub Pages
+- **Status**: ✅ Active
+- **Tech Stack**: React + TypeScript + styled-components
+- **Last Updated**: 2025-01-15
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## プロジェクト構造
+```
+webapp/
+├── src/
+│   ├── components/
+│   │   └── Sections/      # 各セクションコンポーネント
+│   ├── utils/
+│   │   └── paths.js       # PUBLIC_URL処理
+│   └── data/
+│       └── posts.json     # ブログ記事データ
+├── public/
+│   └── images/            # 画像アセット
+├── docs/
+│   └── youtube-video-update-guide.md
+└── scripts/
+    └── check-images.js    # 画像パス検証
+```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# Deploy trigger
+## 今後の改善案
+- [ ] YouTube Data API統合（自動更新）
+- [ ] ブログ記事のCMS統合
+- [ ] お問い合わせフォームの実装
+- [ ] 多言語対応
+- [ ] パフォーマンス最適化

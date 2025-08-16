@@ -158,7 +158,7 @@ const JobRequestButton = styled.button`
 `;
 
 const Challenge = () => {
-  const isMobile = useMediaQuery({ maxWidth: theme.breakpoints.mobile });
+  const isMobile = useMediaQuery({ maxWidth: '768px' });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -186,6 +186,11 @@ const Challenge = () => {
     window.open('https://service.if-juku.net', '_blank');
   };
 
+  // デバイスに応じて適切な画像を選択
+  const challengeImageSrc = isMobile 
+    ? getAssetPath('2025/08/if-challenge-sp.png')
+    : getAssetPath('2025/08/if-challenge-pc.png');
+
   return (
     <ChallengeContainer id="challenge">
       <ContentWrapper>
@@ -202,7 +207,7 @@ const Challenge = () => {
           <TwoColumnLayout>
             <ChallengeImage
               variants={itemVariants}
-              src={getAssetPath('2025/04/logo.png')}
+              src={challengeImageSrc}
               alt="if(チャレンジ) - 能動的に学ぶ力を身につける"
             />
             

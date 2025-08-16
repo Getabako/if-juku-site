@@ -100,41 +100,45 @@ const CourseTabButton = styled.button`
 `;
 
 const CourseCard = styled(motion.div)`
-  background-image: ${props => props.$activeTab === 'liberal' ? 
-    `url('${getAssetPath('2025/08/liberal.png')}')` :
-    `url('${getAssetPath('2025/08/ideal.png')}')`};
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
   padding: 3rem;
-  position: relative;
   overflow: hidden;
+  isolation: isolate;
   
+  /* Background image layer */
   &::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-      ${theme.colors.primary.main}, 
-      ${theme.colors.primary.dark},
-      ${theme.colors.secondary.main},
-      ${theme.colors.primary.main}
-    );
-    background-size: 400% 400%;
-    z-index: -1;
-    animation: gradient-border 10s ease infinite;
-    border-radius: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: ${props => props.$activeTab === 'liberal' ? 
+      `url('${getAssetPath('2025/08/liberal.png')}')` :
+      `url('${getAssetPath('2025/08/ideal.png')}')`};
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
   }
   
-  @keyframes gradient-border {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  /* Semi-transparent overlay for better text readability */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    z-index: -1;
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
@@ -147,12 +151,14 @@ const CourseCard = styled(motion.div)`
 `;
 
 const CourseHeader = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 1rem;
+  z-index: 1;
 `;
 
 // CourseTitle removed - no longer needed
@@ -168,6 +174,7 @@ const CourseTag = styled.span`
 `;
 
 const CourseDescription = styled.p`
+  position: relative;
   font-size: 1.1rem;
   color: ${theme.colors.text.primary};
   line-height: 1.8;
@@ -175,6 +182,7 @@ const CourseDescription = styled.p`
   background: rgba(0, 0, 0, 0.85);
   padding: 1rem;
   border-radius: 8px;
+  z-index: 1;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     font-size: 1rem;
@@ -183,10 +191,12 @@ const CourseDescription = styled.p`
 `;
 
 const CourseInfo = styled.div`
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+  z-index: 1;
 `;
 
 const InfoItem = styled.div`
@@ -212,9 +222,11 @@ const InfoValue = styled.div`
 `;
 
 const FeatureList = styled.ul`
+  position: relative;
   list-style: none;
   padding: 0;
   margin: 0;
+  z-index: 1;
 `;
 
 const FeatureItem = styled.li`

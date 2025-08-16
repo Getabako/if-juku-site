@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/if-juku-site/static/css/main.193d6f52.css",
-    "main.js": "/if-juku-site/static/js/main.edc8d1f3.js",
-    "static/js/862.7305607f.chunk.js": "/if-juku-site/static/js/862.7305607f.chunk.js",
+    "main.css": "/if-juku-site/static/css/main.20399cdb.css",
+    "main.js": "/if-juku-site/static/js/main.0f79a2ca.js",
     "static/js/453.58138db1.chunk.js": "/if-juku-site/static/js/453.58138db1.chunk.js",
     "index.html": "/if-juku-site/index.html",
-    "main.193d6f52.css.map": "/if-juku-site/static/css/main.193d6f52.css.map",
-    "main.edc8d1f3.js.map": "/if-juku-site/static/js/main.edc8d1f3.js.map",
+    "main.20399cdb.css.map": "/if-juku-site/static/css/main.20399cdb.css.map",
+    "main.0f79a2ca.js.map": "/if-juku-site/static/js/main.0f79a2ca.js.map",
     "453.58138db1.chunk.js.map": "/if-juku-site/static/js/453.58138db1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.193d6f52.css",
-    "static/js/main.edc8d1f3.js"
+    "static/css/main.20399cdb.css",
+    "static/js/main.0f79a2ca.js"
   ]
 }

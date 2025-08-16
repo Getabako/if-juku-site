@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'if-juku-site',
       script: 'npx',
-      args: 'serve -s build -l 3000',
+      args: 'serve -s build -l 3000 --single',
       env: {
         NODE_ENV: 'production',
         PORT: 3000

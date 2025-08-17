@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from './styles/theme';
 import { getAssetPath } from './utils/paths';
+import { disableSwiper, enableSwiper } from './utils/disableSwiper';
 import postsData from './data/posts.json';
 
 // スタイル定義
@@ -295,6 +296,16 @@ const BlogPost: React.FC = () => {
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // コンポーネントマウント時にスワイプ機能を無効化
+  useEffect(() => {
+    disableSwiper();
+    
+    // クリーンアップ関数でスワイプ機能を再有効化
+    return () => {
+      enableSwiper();
+    };
+  }, []);
 
   useEffect(() => {
     const loadPost = () => {

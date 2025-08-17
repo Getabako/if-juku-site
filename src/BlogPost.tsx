@@ -296,27 +296,58 @@ interface Post {
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [post, setPost] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(true);
+  // 初期データを即座に設定
+  const initialPost = id ? postsData.posts.find((p: any) => p.id === parseInt(id)) || null : null;
+  const [post, setPost] = useState<Post | null>(initialPost);
+  const [loading, setLoading] = useState(!initialPost);
   const [error, setError] = useState<string | null>(null);
+  
+  // 初期判定
+  const checkIfMaterial = (postData: Post | null) => {
+    if (!postData) return false;
+    const titleLower = postData.title.toLowerCase();
+    const contentLower = (postData.content || '').toLowerCase();
+    const categoriesLower = postData.categories.map((cat: string) => cat.toLowerCase());
+    
+    return titleLower.includes('minecraft') || 
+           titleLower.includes('マイクラ') ||
+           contentLower.includes('minecraft') ||
+           contentLower.includes('マイクラ') ||
+           categoriesLower.some((cat: string) => cat.includes('minecraft') || cat.includes('マイクラ'));
+  };
+  
+  const [isMaterialPost, setIsMaterialPost] = useState(checkIfMaterial(initialPost));
 
   // コンポーネントマウント時にスワイプ機能を無効化とスクロール位置リセット
   useEffect(() => {
-    disableSwiper();
-    window.scrollTo(0, 0);
+    // 少し遅延を入れてDOMが完全に読み込まれるのを待つ
+    const timer = setTimeout(() => {
+      disableSwiper();
+      window.scrollTo(0, 0);
+    }, 100);
     
     // クリーンアップ関数でスワイプ機能を再有効化
     return () => {
+      clearTimeout(timer);
       enableSwiper();
     };
   }, []);
 
   useEffect(() => {
+    // 初期データがある場合はスキップ
+    if (initialPost) {
+      setLoading(false);
+      return;
+    }
+    
     const loadPost = () => {
-      if (!id) return;
+      if (!id) {
+        setError('記事IDが指定されていません');
+        setLoading(false);
+        return;
+      }
       
       try {
-        setLoading(true);
         setError(null);
         
         const postId = parseInt(id);
@@ -336,6 +367,7 @@ const BlogPost: React.FC = () => {
         }
         
         setPost(foundPost);
+        setIsMaterialPost(checkIfMaterial(foundPost));
         
       } catch (err) {
         console.error('Error loading post:', err);
@@ -345,8 +377,9 @@ const BlogPost: React.FC = () => {
       }
     };
 
+    // 即座に実行
     loadPost();
-  }, [id]);
+  }, [id, initialPost]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -414,7 +447,9 @@ const BlogPost: React.FC = () => {
       <ContentWrapper>
         <BackLinks>
           <BackLink to="/">← ホームに戻る</BackLink>
-          <BackLink to="/blog">← 記事一覧に戻る</BackLink>
+          <BackLink to={isMaterialPost ? "/materials" : "/blog"}>
+            ← {isMaterialPost ? "オンライン教材一覧" : "ブログ記事一覧"}に戻る
+          </BackLink>
         </BackLinks>
         
         <Article

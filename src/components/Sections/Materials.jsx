@@ -194,7 +194,7 @@ const Materials = () => {
   };
 
   const handleViewAll = () => {
-    navigate('/blog/minecraft');
+    navigate('/materials');
   };
 
   const formatDate = (dateString) => {

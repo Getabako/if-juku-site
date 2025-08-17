@@ -40,9 +40,24 @@ const createPostHTML = (post) => {
     // img srcの変換
     return content.replace(/src="\/([^"]*)"/g, 'src="/if-juku-site/$1"');
   };
+  
+  // 記事がMinecraft関連かどうかを判定
+  const isMaterialPost = () => {
+    const titleLower = post.title.toLowerCase();
+    const contentLower = (post.content || '').toLowerCase();
+    const categoriesLower = post.categories.map(cat => cat.toLowerCase());
+    
+    return titleLower.includes('minecraft') || 
+           titleLower.includes('マイクラ') ||
+           contentLower.includes('minecraft') ||
+           contentLower.includes('マイクラ') ||
+           categoriesLower.some(cat => cat.includes('minecraft') || cat.includes('マイクラ'));
+  };
 
   const processedContent = convertContentImages(post.content || '');
   const featuredImage = convertImageUrl(post.featuredImage);
+  const listUrl = isMaterialPost() ? '/if-juku-site/materials' : '/if-juku-site/blog';
+  const listText = isMaterialPost() ? 'オンライン教材一覧' : 'ブログ記事一覧';
 
   return `<!DOCTYPE html>
 <html lang="ja">
@@ -203,7 +218,7 @@ const createPostHTML = (post) => {
     <!-- 静的コンテンツ（JavaScriptが無効な場合やSPAがロードされない場合のフォールバック） -->
     <div id="static-content" class="static-post-container">
       <div class="static-post-wrapper">
-        <a href="/if-juku-site/blog" class="static-post-back">← ブログ一覧に戻る</a>
+        <a href="${listUrl}" class="static-post-back">← ${listText}に戻る</a>
         <article class="static-post-article">
           <header class="static-post-header">
             <h1 class="static-post-title">${escapeHtml(post.title)}</h1>

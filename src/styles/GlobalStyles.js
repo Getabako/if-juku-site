@@ -10,20 +10,36 @@ export const GlobalStyles = createGlobalStyle`
 
   html, body {
     height: 100%;
-    overflow: hidden;
     font-family: ${theme.fonts.primary};
     background: ${theme.colors.background.primary};
     color: ${theme.colors.text.primary};
   }
 
+  /* Only apply overflow hidden on homepage with swiper */
+  .homepage-container html,
+  .homepage-container body {
+    overflow: hidden;
+  }
+
   #root {
+    min-height: 100vh;
+  }
+
+  .App {
+    min-height: 100vh;
+  }
+
+  /* Swiper pages should have overflow hidden */
+  .swiper-page {
     height: 100vh;
     overflow: hidden;
   }
 
-  .App {
-    height: 100vh;
-    overflow: hidden;
+  /* Normal pages should allow scrolling */
+  .scrollable-page {
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   /* Swiper基本スタイル */

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Navigation.css';
+import './NavigationTransparency.css';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

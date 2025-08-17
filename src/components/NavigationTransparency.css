@@ -1,0 +1,49 @@
+/* Navigation Transparency Override Styles */
+/* This file ensures navigation transparency works correctly */
+
+/* Force transparent navigation with glass effect */
+.cyber-nav-container,
+nav.cyber-nav-container,
+div.cyber-nav-container,
+header .cyber-nav-container,
+#root .cyber-nav-container,
+.App .cyber-nav-container {
+  background: rgba(10, 14, 39, 0.3) !important;
+  background-color: rgba(10, 14, 39, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  opacity: 1 !important;
+}
+
+/* Remove any solid backgrounds that might be applied */
+.cyber-nav-container::before,
+.cyber-nav-container::after {
+  background: transparent !important;
+}
+
+/* Ensure the navigation content is visible */
+.cyber-nav {
+  background: transparent !important;
+}
+
+/* Mobile navigation transparency */
+.cyber-mobile-nav__overlay {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+}
+
+.cyber-mobile-nav__container {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+}
+
+/* Hamburger menu visibility */
+.cyber-hamburger {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border-radius: 8px;
+  padding: 5px;
+}

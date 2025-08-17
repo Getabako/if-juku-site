@@ -320,15 +320,18 @@ const BlogPost: React.FC = () => {
 
   // コンポーネントマウント時にスワイプ機能を無効化とスクロール位置リセット
   useEffect(() => {
-    // 少し遅延を入れてDOMが完全に読み込まれるのを待つ
-    const timer = setTimeout(() => {
-      disableSwiper();
-      window.scrollTo(0, 0);
-    }, 100);
+    // 即座に実行
+    disableSwiper();
+    window.scrollTo(0, 0);
+    
+    // 静的HTMLを確実に非表示にする
+    const staticContent = document.getElementById('static-content');
+    if (staticContent) {
+      staticContent.style.display = 'none';
+    }
     
     // クリーンアップ関数でスワイプ機能を再有効化
     return () => {
-      clearTimeout(timer);
       enableSwiper();
     };
   }, []);

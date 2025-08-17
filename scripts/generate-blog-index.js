@@ -190,11 +190,24 @@ const createBlogIndexHTML = () => {
       }
     </style>
     <script type="text/javascript">
-      // SPAフォールバック
-      window.addEventListener('DOMContentLoaded', function() {
-        if (window.React || document.getElementById('root').children.length > 0) {
-          var staticContent = document.getElementById('static-content');
-          if (staticContent) staticContent.style.display = 'none';
+      // 静的コンテンツを即座に非表示にする
+      document.addEventListener('DOMContentLoaded', function() {
+        var staticContent = document.getElementById('static-content');
+        if (staticContent) {
+          // Reactアプリのロードを待つ
+          var checkReactLoaded = setInterval(function() {
+            var rootElement = document.getElementById('root');
+            if (rootElement && rootElement.children.length > 0) {
+              staticContent.style.display = 'none';
+              clearInterval(checkReactLoaded);
+            }
+          }, 100);
+          
+          // 3秒後には確実に非表示にする
+          setTimeout(function() {
+            staticContent.style.display = 'none';
+            clearInterval(checkReactLoaded);
+          }, 3000);
         }
       });
     </script>
@@ -204,7 +217,7 @@ const createBlogIndexHTML = () => {
     <div id="root"></div>
     
     <!-- 静的コンテンツ -->
-    <div id="static-content" class="blog-index-container">
+    <div id="static-content" class="blog-index-container" style="display: none;">
       <div class="blog-index-wrapper">
         <a href="/if-juku-site/" class="home-link">← ホームに戻る</a>
         <header class="blog-index-header">

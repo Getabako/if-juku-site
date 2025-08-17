@@ -243,6 +243,12 @@ const MaterialsList: React.FC = () => {
     disableSwiper();
     window.scrollTo(0, 0);
     
+    // 静的HTMLを確実に非表示にする
+    const staticContent = document.getElementById('static-content');
+    if (staticContent) {
+      staticContent.style.display = 'none';
+    }
+    
     // クリーンアップ関数でスワイプ機能を再有効化
     return () => {
       enableSwiper();

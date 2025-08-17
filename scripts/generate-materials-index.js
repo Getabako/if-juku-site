@@ -252,10 +252,35 @@ const createMaterialsIndexHTML = () => {
         }
       }
     </style>
+    <script type="text/javascript">
+      // 静的コンテンツを即座に非表示にする
+      document.addEventListener('DOMContentLoaded', function() {
+        var staticContent = document.getElementById('static-content');
+        if (staticContent) {
+          // Reactアプリのロードを待つ
+          var checkReactLoaded = setInterval(function() {
+            var rootElement = document.getElementById('root');
+            if (rootElement && rootElement.children.length > 0 && rootElement.querySelector('.App')) {
+              staticContent.style.display = 'none';
+              clearInterval(checkReactLoaded);
+            }
+          }, 100);
+          
+          // 3秒後には確実に非表示にする
+          setTimeout(function() {
+            staticContent.style.display = 'none';
+            clearInterval(checkReactLoaded);
+          }, 3000);
+        }
+      });
+    </script>
   </head>
   <body>
-    <div id="root">
-      <div class="materials-container">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- 静的コンテンツ -->
+    <div id="static-content" class="materials-container" style="display: none;">
         <div class="content-wrapper">
           <div class="back-links">
             <a href="/if-juku-site/" class="back-link">← ホームに戻る</a>
@@ -279,7 +304,9 @@ const createMaterialsIndexHTML = () => {
         </div>
       </div>
     </div>
-    <script defer src="/if-juku-site/static/js/bundle.js"></script>
+    
+    <div id="modal-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 10000;"></div>
+    <script defer src="/if-juku-site/static/js/main.869972f9.js"></script>
   </body>
 </html>`;
 };

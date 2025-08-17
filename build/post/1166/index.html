@@ -140,12 +140,24 @@
       }
     </style>
     <script type="text/javascript">
-      // SPAフォールバック - もしReactアプリがロードされていない場合のみ表示
-      window.addEventListener('DOMContentLoaded', function() {
-        // Reactアプリがロードされた場合、静的コンテンツを隠す
-        if (window.React || document.getElementById('root').children.length > 0) {
-          var staticContent = document.getElementById('static-content');
-          if (staticContent) staticContent.style.display = 'none';
+      // 静的コンテンツを即座に非表示にする
+      document.addEventListener('DOMContentLoaded', function() {
+        var staticContent = document.getElementById('static-content');
+        if (staticContent) {
+          // Reactアプリのロードを待つ
+          var checkReactLoaded = setInterval(function() {
+            var rootElement = document.getElementById('root');
+            if (rootElement && rootElement.children.length > 0) {
+              staticContent.style.display = 'none';
+              clearInterval(checkReactLoaded);
+            }
+          }, 100);
+          
+          // 3秒後には確実に非表示にする
+          setTimeout(function() {
+            staticContent.style.display = 'none';
+            clearInterval(checkReactLoaded);
+          }, 3000);
         }
       });
     </script>
@@ -154,8 +166,8 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
-    <!-- 静的コンテンツ（JavaScriptが無効な場合やSPAがロードされない場合のフォールバック） -->
-    <div id="static-content" class="static-post-container">
+    <!-- 静的コンテンツ（JavaScriptが無効な場合のフォールバック） -->
+    <div id="static-content" class="static-post-container" style="display: none;">
       <div class="static-post-wrapper">
         <a href="/if-juku-site/materials" class="static-post-back">← オンライン教材一覧に戻る</a>
         <article class="static-post-article">

@@ -38,7 +38,7 @@
     "vercel-build": "npm run build",
     "check-images": "node scripts/check-images.js",
     "prebuild": "npm run check-images",
-    "generate-static": "node scripts/generate-static-posts.js && node scripts/generate-blog-index.js"
+    "generate-static": "node scripts/generate-static-posts.js && node scripts/generate-blog-index.js && node scripts/generate-materials-index.js"
   },
   "eslintConfig": {
     "extends": [

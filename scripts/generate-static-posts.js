@@ -66,10 +66,13 @@ const createPostHTML = (post) => {
       .static-post-container {
         min-height: 100vh;
         padding: 2rem;
+        overflow-y: auto;
+        height: auto;
       }
       .static-post-wrapper {
         max-width: 900px;
         margin: 0 auto;
+        padding-bottom: 4rem;
       }
       .static-post-back {
         display: inline-block;
@@ -86,8 +89,9 @@ const createPostHTML = (post) => {
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
-        overflow: hidden;
+        overflow: visible;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-bottom: 2rem;
       }
       .static-post-header {
         padding: 3rem;
@@ -123,6 +127,9 @@ const createPostHTML = (post) => {
         padding: 3rem;
         line-height: 1.8;
         font-size: 1.1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        color: rgba(255, 255, 255, 0.9);
       }
       .static-post-content img {
         max-width: 100%;

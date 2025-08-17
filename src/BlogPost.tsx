@@ -144,6 +144,9 @@ const Excerpt = styled.div`
 const Body = styled.div`
   font-size: 1.1rem;
   line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -297,9 +300,10 @@ const BlogPost: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // コンポーネントマウント時にスワイプ機能を無効化
+  // コンポーネントマウント時にスワイプ機能を無効化とスクロール位置リセット
   useEffect(() => {
     disableSwiper();
+    window.scrollTo(0, 0);
     
     // クリーンアップ関数でスワイプ機能を再有効化
     return () => {
@@ -448,7 +452,7 @@ const BlogPost: React.FC = () => {
           <Content>
             {post.excerpt && (
               <Excerpt>
-                <p>{post.excerpt.substring(0, 200)}...</p>
+                <p>{post.excerpt}</p>
               </Excerpt>
             )}
             

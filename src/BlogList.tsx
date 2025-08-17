@@ -17,6 +17,7 @@ const BlogListContainer = styled.div`
 const ContentWrapper = styled.div`
   max-width: 1400px;
   margin: 0 auto;
+  padding-bottom: 4rem;
 `;
 
 const Header = styled.div`
@@ -433,7 +434,10 @@ const BlogList: React.FC = () => {
     <BlogListContainer>
       <ContentWrapper>
         <Header>
-          <BackLink to="/">← ホームに戻る</BackLink>
+          <div style={{ display: 'flex', gap: '2rem', marginBottom: '2rem' }}>
+            <BackLink to="/">← ホームに戻る</BackLink>
+            <BackLink to="/materials" style={{ color: '#4CAF50' }}>📚 オンライン教材を見る</BackLink>
+          </div>
           <Title
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -452,14 +456,7 @@ const BlogList: React.FC = () => {
           >
             すべて
           </CategoryButton>
-          <CategoryButton
-            $active={selectedCategory === 'minecraft'}
-            onClick={() => handleCategoryChange('minecraft')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Minecraft
-          </CategoryButton>
+
           {Object.entries(categoryNames).filter(([key]) => key !== 'minecraft').map(([key, name]) => (
             <CategoryButton
               key={key}

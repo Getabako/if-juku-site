@@ -8,6 +8,7 @@ import { theme } from './styles/theme';
 import HomePage from './pages/HomePage';
 import BlogPost from './BlogPost';
 import BlogList from './BlogList';
+import MaterialsList from './MaterialsList';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:category" element={<BlogList />} />
+            <Route path="/materials" element={<MaterialsList />} />
             <Route path="/post/:id" element={<BlogPost />} />
           </Routes>
         </div>

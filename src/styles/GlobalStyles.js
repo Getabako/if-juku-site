@@ -158,4 +158,26 @@ export const GlobalStyles = createGlobalStyle`
   .glitch-effect:hover {
     animation: glitch 0.3s;
   }
+  
+  /* Force navigation transparency globally */
+  nav, 
+  nav[class*="Nav"],
+  nav[class*="nav"],
+  [class*="NavContainer"],
+  [class*="nav-container"],
+  [class*="cyber-nav"] {
+    background: rgba(10, 14, 39, 0.3) !important;
+    background-color: rgba(10, 14, 39, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  
+  /* Remove any solid backgrounds from navigation */
+  nav::before,
+  nav::after,
+  [class*="NavContainer"]::before,
+  [class*="NavContainer"]::after {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
 `;

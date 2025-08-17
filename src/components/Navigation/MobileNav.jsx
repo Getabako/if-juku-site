@@ -10,8 +10,10 @@ const MobileNavContainer = styled.nav`
   left: 0;
   right: 0;
   z-index: ${theme.zIndex.navigation};
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 14, 39, 0.3) !important;
+  background-color: rgba(10, 14, 39, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   border-bottom: 2px solid ${theme.colors.primary.main};
   padding: 1rem;
 

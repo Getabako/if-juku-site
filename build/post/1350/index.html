@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Minecraftでよく使われるgameruleコマンドの一覧と使い方について説明します。※Minecraft 1.20.1でのやり方です。統合版ではありません
+
+①落下ダメージをなくそう！
+
+まずは落下ダメージを無効化してみましょう！コマンドの構文は以下の通りです。
+
+/gamerule..." />
+    <meta property="og:title" content="Minecraft gameruleコマンド一覧と使い方(JE1.20.1)" />
+    <meta property="og:description" content="Minecraftでよく使われるgameruleコマンドの一覧と使い方について説明します。※Minecraft 1.20.1でのやり方です。統合版ではありません
+
+①落下ダメージをなくそう！
+
+まずは落下ダメージを無効化してみましょう！コマンドの構文は以下の通りです。
+
+/gamerule..." />
+    <meta property="og:image" content="/if-juku-site/2025/02/1.png" />
+    <title>Minecraft gameruleコマンド一覧と使い方(JE1.20.1) - if(塾)</title>
+    <link href="/if-juku-site/static/css/main.20399cdb.css" rel="stylesheet">
+    <style>
+      body { 
+        margin: 0; 
+        background: #0a0e27;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      }
+      .static-post-container {
+        min-height: 100vh;
+        padding: 2rem;
+      }
+      .static-post-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .static-post-back {
+        display: inline-block;
+        color: #8a2387;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.3s;
+      }
+      .static-post-back:hover {
+        color: #e94057;
+      }
+      .static-post-article {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      .static-post-header {
+        padding: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .static-post-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+      }
+      .static-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
+      .static-post-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .static-post-category {
+        background: linear-gradient(135deg, #8a2387, #e94057);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+      }
+      .static-post-content {
+        padding: 3rem;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+      .static-post-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+      .static-post-content h2 {
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(138, 35, 135, 0.5);
+      }
+      .static-post-content h3 {
+        color: white;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .static-post-content p {
+        margin: 1rem 0;
+      }
+      .static-post-content a {
+        color: #8a2387;
+        transition: color 0.3s;
+      }
+      .static-post-content a:hover {
+        color: #e94057;
+      }
+      .static-post-content pre {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+      .static-post-content code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .static-post-title {
+          font-size: 1.8rem;
+        }
+        .static-post-header {
+          padding: 2rem 1.5rem;
+        }
+        .static-post-content {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      // SPAフォールバック - もしReactアプリがロードされていない場合のみ表示
+      window.addEventListener('DOMContentLoaded', function() {
+        // Reactアプリがロードされた場合、静的コンテンツを隠す
+        if (window.React || document.getElementById('root').children.length > 0) {
+          var staticContent = document.getElementById('static-content');
+          if (staticContent) staticContent.style.display = 'none';
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- 静的コンテンツ（JavaScriptが無効な場合やSPAがロードされない場合のフォールバック） -->
+    <div id="static-content" class="static-post-container">
+      <div class="static-post-wrapper">
+        <a href="/if-juku-site/blog" class="static-post-back">← ブログ一覧に戻る</a>
+        <article class="static-post-article">
+          <header class="static-post-header">
+            <h1 class="static-post-title">Minecraft gameruleコマンド一覧と使い方(JE1.20.1)</h1>
+            <div class="static-post-meta">
+              <span>📅 2023年9月5日</span>
+              <span>✍️ akitaclark0731-03@gmail.com</span>
+            </div>
+            
+            <div class="static-post-categories">
+              <span class="static-post-category">Minecraft</span><span class="static-post-category">Minecraft Java</span>
+            </div>
+            
+          </header>
+          <div class="static-post-content">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft gameruleコマンド一覧と使い方(JE1.20.1)" />
+            Minecraftでよく使われるgameruleコマンドの一覧と使い方について説明します。※Minecraft 1.20.1でのやり方です。統合版ではありません
+
+①落下ダメージをなくそう！
+
+まずは落下ダメージを無効化してみましょう！コマンドの構文は以下の通りです。
+
+/gamerule fallDamage false
+
+ミニゲームで落下ダメージを無くしたい時などに使ってみましょう！
+
+②コマンドログを消してみよう！
+
+次にコマンドブロックでコマンドを実行した時に表示されるコマンドログを消してみましょう！コマンドの構文は以下の通りです。
+
+/gamerule commandBlockOutput false
+
+③ウィザーの爆発でブロックを破壊されないようにしよう！
+
+ウィザーの爆発でブロックを破壊されないようにしてみよう！クリーパーなどの爆発でも破壊されなくなります。コマンドの構文は以下の通りです。
+
+/gamerule mobGriefing false
+
+gameruleコマンド一覧表（JE1.20.1）
+
+ gamerule名 内容 初期値firedamage火のダメージを受けるかどうかtruefalldamage落下ダメージを受けるかどうかtruekeepInventory死んだ時にアイテムをばらまかなくなるfalselogAdminCommandsサーバーの管理ログの表示・非表示truemobGriefingクリーパーなどの爆発でブロックが破壊されるかtruenaturalRegeneration満腹の時に自然回復できるかどうかtruepvp他のプレイヤーを攻撃できるかtruerandomTickSpeed植物の生長スピードなど3reducedDebugInfoデバック情報の表示・非表示falsesendCommandFeedbackプレイヤーが実行したコマンドログをチャット欄に表示するかどうかtrueshowDeathMessages死亡メッセージの表示・非表示truespawnRadius初期スタート地点のリスポーン範囲10spectatorsGenerateChunksスペクテイターモードでチャンクを生成するかどうかtrueannounceAdvancements進捗の達成をチャット欄に表示・非表示truecommandBlocksEnabledコマンドブロックが使用できるかtruedisableElytraMovementChecエリトラの速度チェックをするかfalsecommandBlockOutputコマンドブロックの実行ログ表示・非表示truedoDaylightCycle時間を進めるかtruedoEntityDropsエンティティを破壊したときにドロップするかtruedoFireTick火が燃え広がるかtruedoLimitedCrafting解放されていないレシピのクラフトを禁止するfalsedoMobLootモブがアイテムや経験値をドロップするかtruedoMobSpawningモブが自然にスポーンするかtruedoTileDropsブロックを破壊した時にドロップするかtruedoWeatherCycle天気が自然に変わるかtruedrowningdamage溺れてる時ダメージを受けるかtruemaxCommandChainLengthチェーンコマンドブロックがチェーンする回数65536maxEntityCrammingプライヤー,モブが重ねられる数24spectatorsGenerateChunksスペクテイター時チャンクを生成するかtrue
+
+今回はこれで終わりです！ありがとうございました！
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div id="modal-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 10000;"></div>
+    <script defer="defer" src="/if-juku-site/static/js/main.cd221f0a.js"></script>
+  </body>
+</html>

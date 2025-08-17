@@ -1,10 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navigation.css';
 import './NavigationTransparency.css';
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenus, setActiveSubmenus] = useState<string[]>([]);
+
+  // Force navigation transparency on mount
+  useEffect(() => {
+    const applyTransparency = () => {
+      const navContainer = document.querySelector('.cyber-nav-container') as HTMLElement;
+      if (navContainer) {
+        navContainer.style.background = 'rgba(10, 14, 39, 0.3)';
+        navContainer.style.backgroundColor = 'rgba(10, 14, 39, 0.3)';
+        navContainer.style.backdropFilter = 'blur(10px)';
+        (navContainer.style as any).webkitBackdropFilter = 'blur(10px)';
+      }
+
+      const mobileOverlay = document.querySelector('.cyber-mobile-nav__overlay') as HTMLElement;
+      if (mobileOverlay) {
+        mobileOverlay.style.background = 'rgba(0, 0, 0, 0.3)';
+        mobileOverlay.style.backdropFilter = 'blur(5px)';
+        (mobileOverlay.style as any).webkitBackdropFilter = 'blur(5px)';
+      }
+
+      const mobileContainer = document.querySelector('.cyber-mobile-nav__container') as HTMLElement;
+      if (mobileContainer) {
+        mobileContainer.style.background = 'rgba(0, 0, 0, 0.7)';
+        mobileContainer.style.backdropFilter = 'blur(15px)';
+        (mobileContainer.style as any).webkitBackdropFilter = 'blur(15px)';
+      }
+    };
+
+    // Apply immediately and after a short delay to ensure it overrides any other styles
+    applyTransparency();
+    setTimeout(applyTransparency, 100);
+    setTimeout(applyTransparency, 500);
+
+    // Also apply on window load
+    window.addEventListener('load', applyTransparency);
+    return () => window.removeEventListener('load', applyTransparency);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,7 +67,21 @@ const Navigation: React.FC = () => {
   return (
     <>
       {/* PC Navigation */}
-      <div className="cyber-nav-container">
+      <div 
+        className="cyber-nav-container"
+        style={{
+          background: 'rgba(10, 14, 39, 0.3)',
+          backgroundColor: 'rgba(10, 14, 39, 0.3)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          zIndex: 1000,
+          borderBottom: '1px solid rgba(0, 195, 255, 0.2)'
+        }}
+      >
         <nav className="cyber-nav">
           <ul className="cyber-nav__list">
             <li className="cyber-nav__item has-submenu">
@@ -115,8 +165,23 @@ const Navigation: React.FC = () => {
 
       {/* Mobile Navigation */}
       <div className={`cyber-mobile-nav ${isOpen ? 'is-active' : ''}`}>
-        <div className="cyber-mobile-nav__overlay" onClick={toggleMenu}></div>
-        <div className="cyber-mobile-nav__container">
+        <div 
+          className="cyber-mobile-nav__overlay" 
+          onClick={toggleMenu}
+          style={{
+            background: 'rgba(0, 0, 0, 0.3)',
+            backdropFilter: 'blur(5px)',
+            WebkitBackdropFilter: 'blur(5px)'
+          }}
+        ></div>
+        <div 
+          className="cyber-mobile-nav__container"
+          style={{
+            background: 'rgba(0, 0, 0, 0.7)',
+            backdropFilter: 'blur(15px)',
+            WebkitBackdropFilter: 'blur(15px)'
+          }}
+        >
           <div className="cyber-mobile-nav__header">
             <div className="cyber-mobile-nav__title">if(MENU)</div>
             <button className="cyber-mobile-nav__close" onClick={toggleMenu}>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { theme } from './styles/theme';
 import { getAssetPath } from './utils/paths';
 import { disableSwiper, enableSwiper } from './utils/disableSwiper';
+import { injectNavigationTransparency } from './styles/navigationOverride';
 import postsData from './data/posts.json';
 
 // スタイル定義
@@ -309,6 +310,7 @@ const BlogList: React.FC = () => {
   // コンポーネントマウント時にスワイプ機能を無効化
   useEffect(() => {
     disableSwiper();
+    injectNavigationTransparency();
     window.scrollTo(0, 0);
     
     // 静的HTMLを確実に非表示にする

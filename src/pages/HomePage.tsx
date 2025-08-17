@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel, Pagination, Keyboard } from 'swiper/modules';
 import { useSwiper } from '../hooks/useSwiper';
+import { injectNavigationTransparency } from '../styles/navigationOverride';
 
 // Swiper styles
 import 'swiper/css';
@@ -56,6 +57,11 @@ const sections = [
 
 const HomePage: React.FC = () => {
   const { swiperRef, handleSlideChange } = useSwiper(sections.length);
+  
+  useEffect(() => {
+    // Force navigation transparency on homepage
+    injectNavigationTransparency();
+  }, []);
 
   const swiperConfig = {
     direction: 'vertical' as const,

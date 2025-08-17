@@ -5,9 +5,9 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 195, 255, 0.3);
+  background: transparent;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 195, 255, 0.1);
 }
 
 .cyber-nav {
@@ -35,7 +35,7 @@
 }
 
 .cyber-nav__link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   padding: 8px 10px;
   display: block;
@@ -44,6 +44,7 @@
   letter-spacing: 0.3px;
   position: relative;
   white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .cyber-nav__link::after {
@@ -72,8 +73,9 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.95);
-  border: 1px solid rgba(0, 195, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 195, 255, 0.2);
   border-radius: 5px;
   padding: 10px 0;
   min-width: 200px;
@@ -96,13 +98,14 @@
 }
 
 .cyber-nav__sublink {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   padding: 8px 20px;
   display: block;
   transition: all 0.2s ease;
   font-size: 13px;
   white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .cyber-nav__sublink:hover {
@@ -178,7 +181,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
 }
 
 .cyber-mobile-nav__container {
@@ -188,8 +192,9 @@
   width: 80%;
   max-width: 350px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.95);
-  border-left: 1px solid rgba(0, 195, 255, 0.3);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  border-left: 1px solid rgba(0, 195, 255, 0.2);
   transform: translateX(100%);
   transition: transform 0.3s ease;
   overflow-y: auto;
@@ -204,7 +209,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid rgba(0, 195, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 195, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .cyber-mobile-nav__title {
@@ -263,7 +269,7 @@
 }
 
 .cyber-mobile-nav__link {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: none;
   padding: 10px 0;
   display: block;
@@ -273,6 +279,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cyber-mobile-nav__toggle {
@@ -308,7 +315,7 @@
 }
 
 .cyber-mobile-nav__sublink {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   padding: 8px 0;
   display: block;
@@ -316,11 +323,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .cyber-mobile-nav__buttons {
   padding: 20px;
-  border-top: 1px solid rgba(0, 195, 255, 0.3);
+  border-top: 1px solid rgba(0, 195, 255, 0.2);
   margin-top: auto;
 }
 

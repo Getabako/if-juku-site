@@ -165,11 +165,12 @@ export const GlobalStyles = createGlobalStyle`
   nav[class*="nav"],
   [class*="NavContainer"],
   [class*="nav-container"],
-  [class*="cyber-nav"] {
-    background: rgba(10, 14, 39, 0.3) !important;
-    background-color: rgba(10, 14, 39, 0.3) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
+  [class*="cyber-nav"],
+  header[class*="Header"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   
   /* Remove any solid backgrounds from navigation */

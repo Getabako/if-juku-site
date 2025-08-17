@@ -10,11 +10,7 @@ const MobileNavContainer = styled.nav`
   left: 0;
   right: 0;
   z-index: ${theme.zIndex.navigation};
-  background: rgba(10, 14, 39, 0.3) !important;
-  background-color: rgba(10, 14, 39, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border-bottom: 2px solid ${theme.colors.primary.main};
+  background: transparent !important;
   padding: 1rem;
 
   @media (min-width: ${theme.breakpoints.pc}) {

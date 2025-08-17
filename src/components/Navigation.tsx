@@ -8,10 +8,7 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 14, 39, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border-bottom: 1px solid rgba(0, 195, 255, 0.2);
+  background: transparent !important;
   padding: 1rem 2rem;
   
   @media (max-width: 768px) {
@@ -34,9 +31,8 @@ const HamburgerButton = styled.button`
   justify-content: space-around;
   width: 40px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(0, 195, 255, 0.3);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 195, 255, 0.5);
   border-radius: 8px;
   cursor: pointer;
   padding: 8px;

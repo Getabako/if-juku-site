@@ -1,24 +1,32 @@
 /* Navigation Transparency Override Styles */
-/* This file ensures navigation transparency works correctly */
+/* This file ensures navigation is completely transparent without blur */
 
-/* Force transparent navigation with glass effect */
+/* Force transparent navigation without blur effect */
 .cyber-nav-container,
 nav.cyber-nav-container,
 div.cyber-nav-container,
 header .cyber-nav-container,
 #root .cyber-nav-container,
-.App .cyber-nav-container {
-  background: rgba(10, 14, 39, 0.3) !important;
-  background-color: rgba(10, 14, 39, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
+.App .cyber-nav-container,
+header,
+nav {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   opacity: 1 !important;
+  border: none !important;
 }
 
 /* Remove any solid backgrounds that might be applied */
 .cyber-nav-container::before,
-.cyber-nav-container::after {
+.cyber-nav-container::after,
+header::before,
+header::after,
+nav::before,
+nav::after {
   background: transparent !important;
+  display: none !important;
 }
 
 /* Ensure the navigation content is visible */
@@ -28,22 +36,30 @@ header .cyber-nav-container,
 
 /* Mobile navigation transparency */
 .cyber-mobile-nav__overlay {
-  background: rgba(0, 0, 0, 0.3) !important;
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .cyber-mobile-nav__container {
-  background: rgba(0, 0, 0, 0.7) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-/* Hamburger menu visibility */
-.cyber-hamburger {
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(5px) !important;
-  -webkit-backdrop-filter: blur(5px) !important;
-  border-radius: 8px;
-  padding: 5px;
+/* Hamburger menu visibility with dark background */
+.cyber-hamburger,
+button[class*="Hamburger"] {
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(0, 255, 255, 0.5) !important;
+  border-radius: 8px !important;
+  padding: 5px !important;
+}
+
+/* Logo visibility enhancement */
+img[alt*="if"],
+.logo {
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 1)) drop-shadow(0 0 20px rgba(0, 0, 0, 0.8)) !important;
 }

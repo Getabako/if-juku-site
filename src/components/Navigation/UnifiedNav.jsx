@@ -10,10 +10,7 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
   z-index: ${theme.zIndex.navigation};
-  background: rgba(10, 14, 39, 0.3) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  background: transparent !important;
   padding: 1rem 2rem;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
@@ -33,11 +30,11 @@ const Logo = styled.img`
   height: 40px;
   width: auto;
   cursor: pointer;
-  filter: drop-shadow(0 0 10px ${theme.colors.primary.main});
+  filter: drop-shadow(0 0 10px ${theme.colors.primary.main}) drop-shadow(0 0 20px rgba(0, 0, 0, 0.8));
   transition: all 0.3s ease;
   
   &:hover {
-    filter: drop-shadow(0 0 20px ${theme.colors.primary.main});
+    filter: drop-shadow(0 0 20px ${theme.colors.primary.main}) drop-shadow(0 0 30px rgba(0, 0, 0, 0.9));
     transform: scale(1.05);
   }
   
@@ -53,9 +50,8 @@ const HamburgerButton = styled.button`
   justify-content: space-around;
   width: 40px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.5);
   border-radius: 8px;
   cursor: pointer;
   padding: 8px;

@@ -20,12 +20,14 @@ export const injectNavigationTransparency = () => {
     header .cyber-nav-container,
     #root .cyber-nav-container,
     .App .cyber-nav-container,
-    body .cyber-nav-container {
-      background: rgba(10, 14, 39, 0.3) !important;
-      background-color: rgba(10, 14, 39, 0.3) !important;
+    body .cyber-nav-container,
+    header,
+    nav {
+      background: transparent !important;
+      background-color: transparent !important;
       background-image: none !important;
-      backdrop-filter: blur(10px) !important;
-      -webkit-backdrop-filter: blur(10px) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
       opacity: 1 !important;
     }
     
@@ -58,11 +60,13 @@ export const injectNavigationTransparency = () => {
       -webkit-backdrop-filter: blur(15px) !important;
     }
     
-    /* Hamburger menu with subtle background */
-    .cyber-hamburger {
-      background: rgba(0, 0, 0, 0.3) !important;
-      backdrop-filter: blur(5px) !important;
-      -webkit-backdrop-filter: blur(5px) !important;
+    /* Hamburger menu with dark background for visibility */
+    .cyber-hamburger,
+    button[class*="Hamburger"] {
+      background: rgba(0, 0, 0, 0.7) !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid rgba(0, 255, 255, 0.5) !important;
       border-radius: 8px !important;
       padding: 5px !important;
     }
@@ -92,16 +96,15 @@ export const injectNavigationTransparency = () => {
     const navContainer = document.querySelector('.cyber-nav-container') as HTMLElement;
     if (navContainer) {
       navContainer.style.cssText = `
-        background: rgba(10, 14, 39, 0.3) !important;
-        background-color: rgba(10, 14, 39, 0.3) !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
         z-index: 1000 !important;
-        border-bottom: 1px solid rgba(0, 195, 255, 0.2) !important;
       `;
     }
   }, 100);

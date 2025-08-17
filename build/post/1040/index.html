@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Minecraft Java版のサバイバルでのウィザーの倒し方を紹介します！※Ver 1.20.1での場合です。
+
+ウィザーの召喚方法・ウィザースケルトンの頭×3・ソウルサンド×4ゴーレムを作るときのように置きます..." />
+    <meta property="og:title" content="Minecraft Java版 サバイバルでのウィザーの倒し方" />
+    <meta property="og:description" content="Minecraft Java版のサバイバルでのウィザーの倒し方を紹介します！※Ver 1.20.1での場合です。
+
+ウィザーの召喚方法・ウィザースケルトンの頭×3・ソウルサンド×4ゴーレムを作るときのように置きます..." />
+    <meta property="og:image" content="/if-juku-site/2023/07/2023-07-05_06.18.45-1024x534.png" />
+    <title>Minecraft Java版 サバイバルでのウィザーの倒し方 - if(塾)</title>
+    <link href="/if-juku-site/static/css/main.20399cdb.css" rel="stylesheet">
+    <style>
+      body { 
+        margin: 0; 
+        background: #0a0e27;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      }
+      .static-post-container {
+        min-height: 100vh;
+        padding: 2rem;
+        overflow-y: auto;
+        height: auto;
+      }
+      .static-post-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding-bottom: 4rem;
+      }
+      .static-post-back {
+        display: inline-block;
+        color: #8a2387;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.3s;
+      }
+      .static-post-back:hover {
+        color: #e94057;
+      }
+      .static-post-article {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        overflow: visible;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-bottom: 2rem;
+      }
+      .static-post-header {
+        padding: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .static-post-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+      }
+      .static-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
+      .static-post-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .static-post-category {
+        background: linear-gradient(135deg, #8a2387, #e94057);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+      }
+      .static-post-content {
+        padding: 3rem;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .static-post-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+      .static-post-content h2 {
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(138, 35, 135, 0.5);
+      }
+      .static-post-content h3 {
+        color: white;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .static-post-content p {
+        margin: 1rem 0;
+      }
+      .static-post-content a {
+        color: #8a2387;
+        transition: color 0.3s;
+      }
+      .static-post-content a:hover {
+        color: #e94057;
+      }
+      .static-post-content pre {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+      .static-post-content code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .static-post-title {
+          font-size: 1.8rem;
+        }
+        .static-post-header {
+          padding: 2rem 1.5rem;
+        }
+        .static-post-content {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      // SPAフォールバック - もしReactアプリがロードされていない場合のみ表示
+      window.addEventListener('DOMContentLoaded', function() {
+        // Reactアプリがロードされた場合、静的コンテンツを隠す
+        if (window.React || document.getElementById('root').children.length > 0) {
+          var staticContent = document.getElementById('static-content');
+          if (staticContent) staticContent.style.display = 'none';
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- 静的コンテンツ（JavaScriptが無効な場合やSPAがロードされない場合のフォールバック） -->
+    <div id="static-content" class="static-post-container">
+      <div class="static-post-wrapper">
+        <a href="/if-juku-site/blog" class="static-post-back">← ブログ一覧に戻る</a>
+        <article class="static-post-article">
+          <header class="static-post-header">
+            <h1 class="static-post-title">Minecraft Java版 サバイバルでのウィザーの倒し方</h1>
+            <div class="static-post-meta">
+              <span>📅 2023年7月5日</span>
+              <span>✍️ akitaclark0731-01@gmail.com</span>
+            </div>
+            
+            <div class="static-post-categories">
+              <span class="static-post-category">Minecraft</span><span class="static-post-category">Minecraft Java</span>
+            </div>
+            
+          </header>
+          <div class="static-post-content">
+            <img src="/if-juku-site/2023/07/2023-07-05_06.18.45-1024x534.png" alt="Minecraft Java版 サバイバルでのウィザーの倒し方" />
+            Minecraft Java版のサバイバルでのウィザーの倒し方を紹介します！※Ver 1.20.1での場合です。
+
+ウィザーの召喚方法・ウィザースケルトンの頭×3・ソウルサンド×4ゴーレムを作るときのように置きます ※草が生えていたりすると召喚できません。
+
+素材の入手方法
+
+ソウルサンドは、ネザーの各所にあります。
+
+ウィザースケルトンの頭は、ウィザースケルトンから一定の確率（2.5%）でドロップします
+
+ドロップ増加3をつけると、5.5%になります。(統合版は8.5%)
+
+おすすめの装備
+
+自分にマイクラのスキルがあると思う人は鉄フルで大丈夫でしょう()自信のない人は鉄フルのエンチャント、心配性の人はダイヤ装備を入れたら良いでしょう
+
+倒し方
+
+ウィザーの体力が半分になると弓などの遠距離攻撃が利かなくなるのでそれまで削り続きましょう。半分になると高度を下げてくるので剣などで殴り続けましょう
+
+番外編
+
+どうしても倒せない!自分に倒せるか不安だ..という人へ!ハメ技を使いましょう!ネザーのY座標123辺りの岩盤にめり込むように横方向で召喚します
+
+以上！ウィザーの倒し方でした
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div id="modal-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 10000;"></div>
+    <script defer="defer" src="/if-juku-site/static/js/main.cd221f0a.js"></script>
+  </body>
+</html>

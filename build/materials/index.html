@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="if(塾) - Minecraftを使った楽しいプログラミング学習教材" />
+    <title>オンライン教材 - if(塾)</title>
+    <link href="/if-juku-site/static/css/main.20399cdb.css" rel="stylesheet">
+    <style>
+      body { 
+        margin: 0; 
+        background: linear-gradient(135deg, #0a0e27 0%, #1a1e37 100%);
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        min-height: 100vh;
+      }
+      .materials-container {
+        min-height: 100vh;
+        padding: 2rem;
+      }
+      .content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 4rem;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .back-links {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      .back-link {
+        color: #4CAF50;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+      .back-link:hover {
+        color: #81C784;
+        transform: translateX(-5px);
+      }
+      .blog-link {
+        color: #8a2387;
+      }
+      .blog-link:hover {
+        color: #f27121;
+      }
+      .title {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #4CAF50, #81C784);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+      .subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+      }
+      .post-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(76, 175, 80, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+      }
+      .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+        border-color: #4CAF50;
+      }
+      .post-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.2));
+        overflow: hidden;
+      }
+      .post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .post-card:hover .post-image img {
+        transform: scale(1.1);
+      }
+      .post-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .post-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
+      }
+      .post-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+        margin: 0 0 1rem 0;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .post-excerpt {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex: 1;
+      }
+      .categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .category {
+        background: linear-gradient(135deg, #4CAF50, #81C784);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+      .read-more {
+        color: #4CAF50;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      .post-card:hover .read-more {
+        color: #81C784;
+        transform: translateX(5px);
+      }
+      .no-posts {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.2rem;
+        padding: 4rem 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 1px solid rgba(76, 175, 80, 0.2);
+      }
+      @media (max-width: 768px) {
+        .title {
+          font-size: 2rem;
+        }
+        .subtitle {
+          font-size: 1rem;
+        }
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+        .back-links {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="materials-container">
+        <div class="content-wrapper">
+          <div class="back-links">
+            <a href="/if-juku-site/" class="back-link">← ホームに戻る</a>
+            <a href="/if-juku-site/blog/" class="back-link blog-link">📝 ブログ記事を見る</a>
+          </div>
+          
+          <div class="header">
+            <h1 class="title">オンライン教材</h1>
+            <p class="subtitle">Minecraftを使った楽しいプログラミング学習</p>
+          </div>
+
+          
+            <div class="posts-grid">
+              
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/4246/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2024/12/スクリーンショット-2024-12-18-152518.png" alt="中学特別支援学級から国立大学へ行けた話" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2024/12/6</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">中学特別支援学級から国立大学へ行けた話</h2>
+          
+            <p class="post-excerpt">今回は、中学校特別支援学級（情緒）から地方国立大学に合格できた話をしたいと思います。
+
+大学が視野にすら全く入っていなかった中学
+
+　中学校の頃、私は特別支援学級（情緒）に所属していて、大学など全く考...</p>
+          
+          
+            <div class="categories">
+              <span class="category">if(夢)</span><span class="category">if塾ブログ</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/4287/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2024/12/59A4540-1024x683.jpg" alt="TDK寮「TSUGUBA」のイベントに参加して、多くの方にif(塾)のマイクラを体験していただきました！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2024/10/7</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">TDK寮「TSUGUBA」のイベントに参加して、多くの方にif(塾)のマイクラを体験していただきました！</h2>
+          
+          
+            <div class="categories">
+              <span class="category">お知らせ</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/4291/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2024/12/IMG20240915114235-1024x768.jpg" alt="なるテック様と横手市にてイベントに参加しました！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2024/9/16</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">なるテック様と横手市にてイベントに参加しました！</h2>
+          
+            <p class="post-excerpt">なるテック様と横手市にてマイクラ体験会を開きました！また同イベントにて、eスポーツ大会も開催されておりif(塾)のメンバーが出場し、予選を勝ち抜き決勝トーナメントまで進出しました！
+
+oppo_2...</p>
+          
+          
+            <div class="categories">
+              <span class="category">お知らせ</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/3549/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="ifアスレチックヒント動画" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2024/5/24</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">ifアスレチックヒント動画</h2>
+          
+            <p class="post-excerpt">チェックポイント0
+
+チェックポイント1
+
+チェックポイント2
+
+チェックポイント3
+
+チェックポイント4
+
+チェックポイント5
+
+チェックポイント6
+
+チェックポイント7
+
+チェックポイント8
+
+チ...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1454/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/10/スクリーンショット-2023-10-11-140122.png" alt="Minecraft if鬼ごっこ紹介" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/10/13</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft if鬼ごっこ紹介</h2>
+          
+            <p class="post-excerpt">if塾でMinecraft鬼ごっこを制作しました。まずはルール説明動画をご覧下さい
+
+https://youtu.be/sEfvNwmRgns
+
+if鬼ルール 詳細
+
+必要要件
+
+最少要件推奨要件2人...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span><span class="category">鬼ごっこ</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1335/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft Java版　便利操作" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/5</span>
+            <span>✍️ akitaclark0731-02@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft Java版　便利操作</h2>
+          
+            <p class="post-excerpt">※Java......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1339/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft clearコマンド使い方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/5</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft clearコマンド使い方</h2>
+          
+            <p class="post-excerpt">Minecraftのclearコマンドの使い方を説明します。※Minecraft......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1350/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft gameruleコマンド一覧と使い方(JE1.20.1)" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/5</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft gameruleコマンド一覧と使い方(JE1.20.1)</h2>
+          
+            <p class="post-excerpt">Minecraftでよく使われるgameruleコマンドの一覧と使い方について説明します。※Minecraft 1.20.1でのやり方です。統合版ではありません
+
+①落下ダメージをなくそう！
+
+まずは...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1369/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/09/image-2.png" alt="Minecraft tellrawコマンド使い方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/5</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft tellrawコマンド使い方</h2>
+          
+            <p class="post-excerpt">Minecraftでミニゲーム開始時などにチャット欄に表示される文の出し方を解説します。
+
+①全員にHalloと表示してみよう！
+
+まずはHalloと表示してみましょう！コマンドの構文は以下の通りです...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1195/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/08/スクリーンショット-2023-08-31-234255-1024x797.png" alt="Minecraft fillコマンドの使い方(おまけsetblock)(java1.20.1)" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/1</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft fillコマンドの使い方(おまけsetblock)(java1.20.1)</h2>
+          
+            <p class="post-excerpt">１種類のブロックでできた直方体を出現させることができるfillコマンドについて紹介します。
+
+fillの構文
+
+fillの構文は以下の通りです。順番に説明します。/fill......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1249/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/09/image-1024x626.png" alt="Minecraft summonコマンド使い方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/1</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft summonコマンド使い方</h2>
+          
+            <p class="post-excerpt">Minecraftでよく使われる、summonコマンドの使い方について説明します。ここではsummonコマンドを使って、様々な物を出したいと思います。
+
+※イメージ
+
+①自分の好きなMobを出してみよ...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1300/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/09/スクリーンショット-2023-09-01-192056-1024x576.png" alt="Minecraft effectコマンドの使い方(java1.20.1)" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/9/1</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft effectコマンドの使い方(java1.20.1)</h2>
+          
+            <p class="post-excerpt">マイクラでサバイバルをしていて、ポーションを飲んだり、金のリンゴを食べたり、海底神殿に近づいたりなどをしたときにつくいろいろな効果のことをエフェクトと言います。そのエフェクトを自由につけたり消したり、...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1235/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/08/image-4-1024x141.png" alt="Minecraft giveコマンド使い方（最強の防具）" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/8/31</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft giveコマンド使い方（最強の防具）</h2>
+          
+            <p class="post-excerpt">Minecraftですごく使われる、giveコマンドについて説明します。ここではgiveコマンドを使った最強の防具の作り方も説明します。
+
+①自分に何かを64個(本)与えよう！
+
+今回は例として自分に...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1159/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/08/image.png" alt="Minecraft gamemodeコマンドの使い方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/8/30</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft gamemodeコマンドの使い方</h2>
+          
+            <p class="post-excerpt">※Minecraftバージョン1.20.1のやり方です。チートの許可がオンである必要がありますMinecraftのgamemodeの使い方を紹介します。
+
+ゲームモードコマンドはgamemodeなので...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1166/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/08/スクリーンショット-2023-08-29-224354-1024x241.png" alt="コマンドを実行する対象、ターゲットセレクター(java1.20.1)" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/8/30</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">コマンドを実行する対象、ターゲットセレクター(java1.20.1)</h2>
+          
+            <p class="post-excerpt">コマンドでよく見かける@sや@eなど。「何を表しているかわからない」「違いがわからない」と困ったことはありませんか？これらはコマンドを実行する対象を表しています。普通にプレイヤーIDを書くよりもこれら...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1202/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecracft tpコマンドの使い方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/8/30</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecracft tpコマンドの使い方</h2>
+          
+            <p class="post-excerpt">Minecraftでよく使うtpコマンドの使い方について説明します。※チートの許可がオンである必要があります。
+
+①自分を高いところから落としてみよう！
+
+まずは自分を高いところから落としてみましょう...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1064/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/07/スクリーンショット-2023-07-04-204243.png" alt="コマンドブロックの基礎知識(java1.20)" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/8/29</span>
+            <span>✍️ akitaclark0731-03@gmail.com</span>
+          </div>
+          <h2 class="post-title">コマンドブロックの基礎知識(java1.20)</h2>
+          
+            <p class="post-excerpt">コマンドブロックに書いた内容がうまく動かないときはありませんか？中途半端な知識では思い通りにいかないかもしれません。そこで、今回はコマンドブロックの基礎知識を紹介します。コマンドブロックの特性をしっか...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1171/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft killコマンド使い方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/8/29</span>
+            <span>✍️ akitaclark0731-02@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft killコマンド使い方</h2>
+          
+            <p class="post-excerpt">Minecraftでよく使われる、killコマンドの説明です。
+
+※killコマンドイメージ
+
+①自分で自分を倒してみよう！
+
+まずは自分で自分を倒してみましょうコマンドの構成は
+
+/kill......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1040/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/07/2023-07-05_06.18.45-1024x534.png" alt="Minecraft Java版 サバイバルでのウィザーの倒し方" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/7/5</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft Java版 サバイバルでのウィザーの倒し方</h2>
+          
+            <p class="post-excerpt">Minecraft Java版のサバイバルでのウィザーの倒し方を紹介します！※Ver 1.20.1での場合です。
+
+ウィザーの召喚方法・ウィザースケルトンの頭×3・ソウルサンド×4ゴーレムを作るときの...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1016/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft Java版 操作方法①" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/6/30</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft Java版 操作方法①</h2>
+          
+            <p class="post-excerpt">Minecraft Java版のの基本的な操作を紹介します！※Ver 1.20.1での場合です。
+
+ステップ1 歩こう！
+
+Wキーで前進、Sキーで後進、Aキーで左、Dで右へ歩きます！
+
+ステップ2.....</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1025/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraft Java版 操作方法②" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/6/30</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraft Java版 操作方法②</h2>
+          
+            <p class="post-excerpt">Minecraft Java版の基本的な操作を紹介します！※Ver 1.20.1での場合です。
+
+ステップ1 インベントリを開こう！
+
+Eキーを押すことで開くことができます！閉じる時はもう一度Eキーを...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/971/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraftで音の出る斧を作ろう！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/5/19</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftで音の出る斧を作ろう！</h2>
+          
+            <p class="post-excerpt">Minecraftで実況者がやっているゲームに出て来る、倒したら斧が壊れ、音の出る斧の作り方を説明しますこれはJava 1.19.2で作成しました。
+
+ステップ① 一撃斧を作ろう！
+
+コマンドブロック...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/975/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/05/スクリーンショット-2023-05-13-200609.png" alt="Minecraftでボスバーデスタイマーを作ろう！（上級編）" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/5/13</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftでボスバーデスタイマーを作ろう！（上級編）</h2>
+          
+            <p class="post-excerpt">Minecraftでアスレチックなどにある、タイマーの作り方を説明します！今回はボスバーを活用したタイマーです。
+
+※イメージ
+
+ステップ① スコアボードとボスバーを作成しよう！
+
+コマンドブロックを...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/962/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/05/image.png" alt="Minecraftでタイマーを作ろう！！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/5/9</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftでタイマーを作ろう！！</h2>
+          
+            <p class="post-excerpt">Minecraftでアスレチックなどにある、タイマーの作り方を説明します！これはJava 1.19.2で作成しました。
+
+※イメージ
+
+ステップ① オブジェクトを作成しよう！
+
+コマンドブロックを入手...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/951/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraftで爆弾弓を作ろう！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/4/18</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftで爆弾弓を作ろう！</h2>
+          
+            <p class="post-excerpt">Minecraftでミニゲームなどによくある。弓を打って矢が刺さった場所が爆発するコマンドをここでは説明します。
+
+※イメージ
+
+ステップ①......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/954/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraftで強力な雪玉爆弾を作ろう！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/4/18</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftで強力な雪玉爆弾を作ろう！</h2>
+          
+            <p class="post-excerpt">MinecraftでPVPゲームによくある。雪玉爆弾の作り方をここでは紹介します。
+
+ステップ①......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/936/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/04/Minecraft_-1.19.2-マルチプレイ（サードパーティーのサーバー）-2023_04_16-14_40_01-1024x538.png" alt="Minecraftで超簡単なPVPゲームを作ろう！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/4/17</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftで超簡単なPVPゲームを作ろう！</h2>
+          
+            <p class="post-excerpt">Minecraftで誰でも出来る、超簡単なPVPゲームのコマンドを説明します。このゲームでは開始時に「試合開始」、ゲーム終了時に「試合終了」と表示させる方法と、ゲーム開始時のアイテム配布や効果の付与方...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/912/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/04/Minecraft_-1.19.2-2023_04_13-17_14_00-1024x538.png" alt="Minecraftでジップラインを作ろう！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/4/7</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftでジップラインを作ろう！</h2>
+          
+            <p class="post-excerpt">FPSゲームなどによくある、ジップラインをMinecraftで作りたいと思います。ここでは簡単なジップラインの作り方を説明します。
+
+※完成イメージ
+
+ステップ①......</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/899/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/03/Minecraft-1.19.4-シングルプレイ-2023_03_19-9_47_41-1024x538.png" alt="Minecraftで最強の武器を作ろう！" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2023/3/19</span>
+            <span>✍️ akitaclark0731-01@gmail.com</span>
+          </div>
+          <h2 class="post-title">Minecraftで最強の武器を作ろう！</h2>
+          
+            <p class="post-excerpt">Minecraftでサバイバルでは作れない最強の武器の作り方を紹介します。ver1.19.4
+
+※イメージ
+
+①最強の剣を作ろう！
+
+まずは最強の剣を作ります！コマンドの構成は
+
+/
+
+/give @...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+      <article class="post-card" onclick="window.location.href='/if-juku-site/post/1/'">
+        
+          <div class="post-image">
+            <img src="/if-juku-site/2023/03/Minecraft_-1.19.2-シングルプレイ-2023_03_13-15_08_44-1024x538.png" alt="Minecraft タイトルコマンド出し方マニュアル" onerror="this.style.display='none'">
+          </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span>📅 2022/11/8</span>
+            <span>✍️ getabako</span>
+          </div>
+          <h2 class="post-title">Minecraft タイトルコマンド出し方マニュアル</h2>
+          
+            <p class="post-excerpt">Minecraftで/titleコマンドを出してみよう！
+
+Minecraftで実況者がやっているミニゲームなどで開始時などに、「〇〇ゲームスタート！」とよく見る方が多いと思いますが、ここではその文字...</p>
+          
+          
+            <div class="categories">
+              <span class="category">Minecraft</span><span class="category">Minecraft Java</span>
+            </div>
+          
+          <div class="read-more">続きを読む →</div>
+        </div>
+      </article>
+    
+            </div>
+          
+        </div>
+      </div>
+    </div>
+    <script defer src="/if-juku-site/static/js/bundle.js"></script>
+  </body>
+</html>

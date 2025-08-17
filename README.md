@@ -12,6 +12,13 @@
 ## URLs
 - **Production**: https://getabako.github.io/if-juku-site/
 - **GitHub**: https://github.com/Getabako/if-juku-site
+- **ブログ一覧**: https://getabako.github.io/if-juku-site/blog/
+- **ブログ記事**: https://getabako.github.io/if-juku-site/post/[記事ID]/
+
+## デプロイ情報
+- **デプロイブランチ**: gh-pages
+- **自動デプロイ**: mainブランチへのプッシュで自動的にGitHub Actionsがデプロイ
+- **ビルドコマンド**: `npm run build` (静的HTMLも同時生成)
 
 ## 最近の更新内容 (2025-01-15)
 

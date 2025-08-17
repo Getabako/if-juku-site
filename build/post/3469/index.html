@@ -140,26 +140,38 @@
       }
     </style>
     <script type="text/javascript">
-      // 静的コンテンツを即座に非表示にする
-      document.addEventListener('DOMContentLoaded', function() {
-        var staticContent = document.getElementById('static-content');
-        if (staticContent) {
-          // Reactアプリのロードを待つ
-          var checkReactLoaded = setInterval(function() {
-            var rootElement = document.getElementById('root');
-            if (rootElement && rootElement.children.length > 0) {
-              staticContent.style.display = 'none';
-              clearInterval(checkReactLoaded);
-            }
-          }, 100);
+      // 静的コンテンツの表示制御
+      (function() {
+        // 初期状態で静的コンテンツを非表示
+        var style = document.createElement('style');
+        style.textContent = '#static-content { display: none !important; }';
+        document.head.appendChild(style);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          var staticContent = document.getElementById('static-content');
+          var rootElement = document.getElementById('root');
           
-          // 3秒後には確実に非表示にする
-          setTimeout(function() {
-            staticContent.style.display = 'none';
-            clearInterval(checkReactLoaded);
-          }, 3000);
-        }
-      });
+          if (staticContent && rootElement) {
+            var checkCount = 0;
+            var maxChecks = 30; // 3秒間チェック
+            
+            var checkReactLoaded = setInterval(function() {
+              checkCount++;
+              
+              // Reactアプリがロードされたかチェック
+              if (rootElement.children.length > 0 && rootElement.querySelector('.App')) {
+                // Reactアプリがロードされた
+                clearInterval(checkReactLoaded);
+              } else if (checkCount >= maxChecks) {
+                // タイムアウト - 静的コンテンツを表示
+                style.textContent = '';
+                staticContent.style.display = 'block';
+                clearInterval(checkReactLoaded);
+              }
+            }, 100);
+          }
+        });
+      })();
     </script>
   </head>
   <body>
@@ -167,7 +179,7 @@
     <div id="root"></div>
     
     <!-- 静的コンテンツ（JavaScriptが無効な場合のフォールバック） -->
-    <div id="static-content" class="static-post-container" style="display: none;">
+    <div id="static-content" class="static-post-container">
       <div class="static-post-wrapper">
         <a href="/if-juku-site/blog" class="static-post-back">← ブログ記事一覧に戻る</a>
         <article class="static-post-article">
@@ -212,6 +224,6 @@ B先生の授業をする・明るい表情をしている・楽しいそうに�
     </div>
     
     <div id="modal-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 10000;"></div>
-    <script defer="defer" src="/if-juku-site/static/js/main.cd221f0a.js"></script>
+    <script defer="defer" src="/if-juku-site/static/js/main.ed265cc8.js"></script>
   </body>
 </html>

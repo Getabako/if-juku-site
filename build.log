@@ -1,0 +1,56 @@
+Creating an optimized production build...
+Compiled with warnings.
+
+[eslint] 
+src/BlogPost.tsx
+  Line 404:21:  Unnecessary escape character: \/  no-useless-escape
+
+src/MaterialsList.tsx
+  Line 5:10:  'theme' is defined but never used  @typescript-eslint/no-unused-vars
+
+src/components/Sections/Courses.jsx
+  Line 166:7:  'CourseTag' is assigned a value but never used     no-unused-vars
+  Line 180:7:  'MobileAgeTag' is assigned a value but never used  no-unused-vars
+
+src/components/Sections/FAQ.jsx
+  Line 2:8:     'ReactDOM' is defined but never used                 no-unused-vars
+  Line 4:18:    'AnimatePresence' is defined but never used          no-unused-vars
+  Line 267:7:   'ContinuePrompt' is assigned a value but never used  no-unused-vars
+  Line 284:10:  'isTyping' is assigned a value but never used        no-unused-vars
+
+src/components/Sections/Flow.jsx
+  Line 164:7:  'FlowText' is assigned a value but never used  no-unused-vars
+
+src/components/Sections/MainVisual.jsx
+  Line 193:10:  'videoLoaded' is assigned a value but never used  no-unused-vars
+  Line 194:10:  'videoError' is assigned a value but never used   no-unused-vars
+
+src/components/Sections/Schedule.jsx
+  Line 110:7:  'CalendarHeader' is assigned a value but never used       no-unused-vars
+  Line 148:7:  'CalendarPlaceholder' is assigned a value but never used  no-unused-vars
+  Line 208:9:  'isMobile' is assigned a value but never used             no-unused-vars
+
+src/components/Sections/Services.jsx
+  Line 1:17:  'useState' is defined but never used  no-unused-vars
+
+src/styles/GlobalStyles.js
+  Line 1:8:  'styled' is defined but never used  no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  259.26 kB (+2.45 kB)  build/static/js/main.04964c10.js
+  3.97 kB               build/static/css/main.20399cdb.css
+  1.76 kB               build/static/js/453.58138db1.chunk.js
+
+The project was built assuming it is hosted at /if-juku-site/.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+

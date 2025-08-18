@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
@@ -190,68 +190,133 @@ const FeatureList = styled(motion.div)`
 `;
 
 const FeatureItem = styled(motion.div)`
-  background: rgba(20, 20, 20, 0.85);
+  position: relative;
   border: 1px solid rgba(0, 255, 255, 0.6);
   border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
   transition: all ${theme.animations.duration.normal};
+  min-height: 200px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: ${theme.colors.secondary.main};
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    min-height: 150px;
+  }
+`;
+
+const FeatureBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+`;
+
+const FeatureContent = styled.div`
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: overlay;
-  
-  &:hover {
-    transform: translateY(-5px);
-    background: rgba(25, 25, 25, 0.9);
-    border-color: ${theme.colors.secondary.main};
-    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
-  }
+  text-align: center;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 1rem;
   }
 `;
 
-const FeatureIcon = styled.div`
-  width: 80px;
-  height: 80px;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
-  }
+const FeatureText = styled.div`
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-shadow: 
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 0 10px rgba(0, 255, 255, 0.5);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
   }
 `;
 
-const FeatureText = styled.div`
-  color: ${theme.colors.text.primary};
-  font-size: 1rem;
-  font-weight: 500;
+const FeatureDescription = styled(motion.div)`
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 `;
 
 const BusinessInquiry = () => {
+  const [expandedService, setExpandedService] = useState(null);
+  
   const handleButtonClick = () => {
     window.open('https://service.if-juku.net/', '_blank');
+  };
+  
+  const services = [
+    {
+      id: 'ai',
+      title: 'AI導入サポート',
+      image: '2025/02/ai-robot.png',
+      description: '最新のAI技術を活用して、業務効率化と生産性向上を実現。ChatGPT、Claude、画像生成AIなど、最適なAIソリューションを提案します。'
+    },
+    {
+      id: 'system',
+      title: 'システム開発',
+      image: '2025/02/system-dev.png',
+      description: 'Webアプリケーション、モバイルアプリ、業務システムまで、フルスタック開発で企業のデジタル化をサポートします。'
+    },
+    {
+      id: 'marketing',
+      title: 'マーケティング支援',
+      image: '2025/02/marketing.png',
+      description: 'デジタルマーケティング戦略の立案から、SNS運用、SEO対策まで、総合的なマーケティングソリューションを提供します。'
+    }
+  ];
+  
+  const toggleService = (id) => {
+    setExpandedService(expandedService === id ? null : id);
   };
 
   const containerVariants = {
@@ -308,26 +373,33 @@ const BusinessInquiry = () => {
           </MessageContainer>
 
           <FeatureList variants={containerVariants}>
-            <FeatureItem variants={itemVariants}>
-              <FeatureIcon>
-                <img src={getAssetPath('2025/02/ai-robot.png')} alt="AI導入サポート" />
-              </FeatureIcon>
-              <FeatureText>AI導入サポート</FeatureText>
-            </FeatureItem>
-            
-            <FeatureItem variants={itemVariants}>
-              <FeatureIcon>
-                <img src={getAssetPath('2025/02/system-dev.png')} alt="システム開発" />
-              </FeatureIcon>
-              <FeatureText>システム開発</FeatureText>
-            </FeatureItem>
-            
-            <FeatureItem variants={itemVariants}>
-              <FeatureIcon>
-                <img src={getAssetPath('2025/02/marketing.png')} alt="マーケティング支援" />
-              </FeatureIcon>
-              <FeatureText>マーケティング支援</FeatureText>
-            </FeatureItem>
+            {services.map(service => (
+              <FeatureItem 
+                key={service.id}
+                variants={itemVariants}
+                onClick={() => toggleService(service.id)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FeatureBackground>
+                  <img src={getAssetPath(service.image)} alt={service.title} />
+                </FeatureBackground>
+                <FeatureContent>
+                  <FeatureText>{service.title}</FeatureText>
+                  <FeatureDescription 
+                    $isExpanded={expandedService === service.id}
+                    initial={false}
+                    animate={{ 
+                      opacity: expandedService === service.id ? 1 : 0,
+                      height: expandedService === service.id ? 'auto' : 0 
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {service.description}
+                  </FeatureDescription>
+                </FeatureContent>
+              </FeatureItem>
+            ))}
           </FeatureList>
           
           <CTAButton

@@ -154,7 +154,6 @@ const MessageCard = styled(motion.div)`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #f4f1e8;
   padding: 3rem;
   box-shadow: 
     0 0 30px rgba(0, 255, 255, 0.3),

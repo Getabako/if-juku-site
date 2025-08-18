@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
@@ -142,65 +142,98 @@ const FeatureGrid = styled(motion.div)`
 `;
 
 const FeatureCard = styled(motion.div)`
-  background: rgba(20, 20, 20, 0.85);
+  position: relative;
   border: 1px solid rgba(134, 239, 172, 0.6);
   border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
   transition: all ${theme.animations.duration.normal};
+  min-height: 200px;
   
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(134, 239, 172, 0.15);
     border-color: rgba(134, 239, 172, 0.9);
-    background: rgba(25, 25, 25, 0.9);
   }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    min-height: 150px;
+  }
+`;
+
+const FeatureBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+`;
+
+const FeatureContent = styled.div`
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 1rem;
   }
 `;
 
-const FeatureIcon = styled.div`
-  width: 80px;
-  height: 80px;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(134, 239, 172, 0.5));
-  }
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0.5rem;
-  }
-`;
-
 const FeatureTitle = styled.div`
   color: #86efac;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: bold;
   margin-bottom: 0.5rem;
+  text-shadow: 
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,
+    0 0 10px rgba(134, 239, 172, 0.5);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     font-size: 1rem;
   }
 `;
 
-const FeatureText = styled.div`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+const FeatureDescription = styled(motion.div)`
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
   line-height: 1.4;
+  padding: 0.5rem 0;
+  overflow: hidden;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 `;
 
@@ -263,8 +296,35 @@ const CTAButton = styled(motion.button)`
 `;
 
 const Kitazuna = () => {
+  const [expandedFeature, setExpandedFeature] = useState(null);
+  
   const handleButtonClick = () => {
     window.open('https://kitazuna.if-juku.net/', '_blank');
+  };
+  
+  const features = [
+    {
+      id: 'controller',
+      title: 'コントローラーサポート',
+      image: '2025/02/controller.png',
+      description: 'PCコントローラーを使って直感的な操作でゲームが楽しめます。キーボード操作も可能です。'
+    },
+    {
+      id: 'character',
+      title: 'キャラクターカスタマイズ',
+      image: '2025/02/character.png',
+      description: '自分だけのオリジナルキャラクターを作成。見た目や能力をカスタマイズできます。'
+    },
+    {
+      id: 'stage',
+      title: 'ステージクリエイト',
+      image: '2025/02/stage.png',
+      description: 'オリジナルステージを作成して、友達と共有。創造力を発揮しよう！'
+    }
+  ];
+  
+  const toggleFeature = (id) => {
+    setExpandedFeature(expandedFeature === id ? null : id);
   };
 
   const containerVariants = {
@@ -329,28 +389,41 @@ const Kitazuna = () => {
 
           <FeatureGrid variants={containerVariants}>
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>
+              <FeatureBackground>
                 <img src={getAssetPath('2025/02/kunio-design.png')} alt="キャラクターデザイン" />
-              </FeatureIcon>
-              <FeatureTitle>キャラクターデザインは緒方孝治氏</FeatureTitle>
-              <FeatureText>熱血硬派くにおくんシリーズのデザイナー</FeatureText>
+              </FeatureBackground>
+              <FeatureContent>
+                <FeatureTitle>キャラクターデザインは緒方孝治氏</FeatureTitle>
+                <FeatureDescription>熱血硬派くにおくんシリーズのデザイナー</FeatureDescription>
+              </FeatureContent>
             </FeatureCard>
             
-            <FeatureCard variants={itemVariants}>
-              <FeatureIcon>
-                <img src={getAssetPath('2025/02/creator-rpg.png')} alt="クリエイター参加型RPG" />
-              </FeatureIcon>
-              <FeatureTitle>クリエイター参加型秋田RPG</FeatureTitle>
-              <FeatureText>実際に開発にも参加できる！</FeatureText>
-            </FeatureCard>
-            
-            <FeatureCard variants={itemVariants}>
-              <FeatureIcon>
-                <img src={getAssetPath('2025/02/game-shop.png')} alt="ゲーム内ショップ" />
-              </FeatureIcon>
-              <FeatureTitle>ゲーム内ショップで収益化体験</FeatureTitle>
-              <FeatureText>商品を開発して実際の収益化を体験</FeatureText>
-            </FeatureCard>
+            {features.map(feature => (
+              <FeatureCard 
+                key={feature.id}
+                variants={itemVariants}
+                onClick={() => toggleFeature(feature.id)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FeatureBackground>
+                  <img src={getAssetPath(feature.image)} alt={feature.title} />
+                </FeatureBackground>
+                <FeatureContent>
+                  <FeatureTitle>{feature.title}</FeatureTitle>
+                  <FeatureDescription
+                    initial={false}
+                    animate={{ 
+                      opacity: expandedFeature === feature.id ? 1 : 0,
+                      height: expandedFeature === feature.id ? 'auto' : 0 
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {feature.description}
+                  </FeatureDescription>
+                </FeatureContent>
+              </FeatureCard>
+            ))}
           </FeatureGrid>
           
           <CTAButton

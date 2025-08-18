@@ -46,13 +46,17 @@ const SectionTitle = styled(motion.h2)`
 
 const QuestGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
   margin-bottom: 3rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    max-width: 100%;
   }
 `;
 

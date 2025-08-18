@@ -148,43 +148,17 @@ const SectionTitle = styled(motion.h2)`
 `;
 
 const MessageCard = styled(motion.div)`
-  background-image: url(${getAssetPath('2025/02/message-background.jpeg')});
+  position: relative;
+  border: 2px solid ${theme.colors.primary.main};
+  border-radius: 12px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 2px solid ${theme.colors.primary.main};
-  border-radius: 12px;
+  background-color: #f4f1e8;
   padding: 3rem;
-  position: relative;
-  overflow: hidden;
   box-shadow: 
     0 0 30px rgba(0, 255, 255, 0.3),
     inset 0 0 20px rgba(0, 255, 255, 0.1);
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-      ${theme.colors.primary.main}, 
-      ${theme.colors.primary.dark},
-      ${theme.colors.secondary.main},
-      ${theme.colors.primary.main}
-    );
-    background-size: 400% 400%;
-    z-index: -1;
-    animation: gradient-border 10s ease infinite;
-    border-radius: inherit;
-  }
-  
-  @keyframes gradient-border {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 2rem;
@@ -192,6 +166,8 @@ const MessageCard = styled(motion.div)`
 `;
 
 const MessageContent = styled.div`
+  position: relative;
+  z-index: 1;
   text-align: left;
   color: #2c2c2c;
   line-height: 1.8;
@@ -251,6 +227,8 @@ const HighlightText = styled.span`
 `;
 
 const SignatureSection = styled(motion.div)`
+  position: relative;
+  z-index: 1;
   border-top: 2px solid ${theme.colors.primary.main};
   padding-top: 2rem;
   display: flex;
@@ -371,7 +349,12 @@ const Message = () => {
             if(メッセージ)
           </SectionTitle>
           
-          <MessageCard variants={itemVariants} className="cyber-frame">
+          <MessageCard 
+            variants={itemVariants} 
+            className="cyber-frame"
+            style={{
+              backgroundImage: `url('${getAssetPath('2025/02/message-background.jpeg')}')`,
+            }}>
             <MessageContent>
               <motion.p variants={itemVariants}>
                 現代は目まぐるしく変化する時代です。<HighlightText>AIの活用</HighlightText>は今後さらに重要になり、教育の在り方も変わっていくでしょう。

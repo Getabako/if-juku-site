@@ -304,22 +304,22 @@ const Kitazuna = () => {
   
   const features = [
     {
-      id: 'controller',
-      title: 'コントローラーサポート',
-      image: '2025/02/controller.png',
-      description: 'PCコントローラーを使って直感的な操作でゲームが楽しめます。キーボード操作も可能です。'
+      id: 'designer',
+      title: '緒方孝治氏デザイン',
+      image: '2025/02/kunio-design.png',
+      description: '熱血硬派くにおくんシリーズのキャラクターデザイナーが手がける本格的なゲームデザイン。'
     },
     {
-      id: 'character',
-      title: 'キャラクターカスタマイズ',
-      image: '2025/02/character.png',
-      description: '自分だけのオリジナルキャラクターを作成。見た目や能力をカスタマイズできます。'
+      id: 'creator',
+      title: 'クリエイターとして参加',
+      image: '2025/02/creator.png',
+      description: 'プレイヤーだけでなく、ゲームクリエイターとして参加可能。自分の作品を世界に発信しよう。'
     },
     {
-      id: 'stage',
-      title: 'ステージクリエイト',
-      image: '2025/02/stage.png',
-      description: 'オリジナルステージを作成して、友達と共有。創造力を発揮しよう！'
+      id: 'monetize',
+      title: 'ゲーム内ショップでマネタイズ',
+      image: '2025/02/shop.png',
+      description: 'ゲーム内のショップシステムで、作成したアイテムやコンテンツを販売し、実際の収益化が可能。'
     }
   ];
   
@@ -388,16 +388,6 @@ const Kitazuna = () => {
           </GameDescription>
 
           <FeatureGrid variants={containerVariants}>
-            <FeatureCard variants={itemVariants}>
-              <FeatureBackground>
-                <img src={getAssetPath('2025/02/kunio-design.png')} alt="キャラクターデザイン" />
-              </FeatureBackground>
-              <FeatureContent>
-                <FeatureTitle>キャラクターデザインは緒方孝治氏</FeatureTitle>
-                <FeatureDescription>熱血硬派くにおくんシリーズのデザイナー</FeatureDescription>
-              </FeatureContent>
-            </FeatureCard>
-            
             {features.map(feature => (
               <FeatureCard 
                 key={feature.id}

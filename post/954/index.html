@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="MinecraftでPVPゲームによくある。雪玉爆弾の作り方をここでは紹介します。
+
+ステップ①..." />
+    <meta property="og:title" content="Minecraftで強力な雪玉爆弾を作ろう！" />
+    <meta property="og:description" content="MinecraftでPVPゲームによくある。雪玉爆弾の作り方をここでは紹介します。
+
+ステップ①..." />
+    <meta property="og:image" content="/if-juku-site/2025/02/1.png" />
+    <title>Minecraftで強力な雪玉爆弾を作ろう！ - if(塾)</title>
+    <link href="/if-juku-site/static/css/main.20399cdb.css" rel="stylesheet">
+    <style>
+      body { 
+        margin: 0; 
+        background: #0a0e27;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      }
+      .static-post-container {
+        min-height: 100vh;
+        padding: 2rem;
+        overflow-y: auto;
+        height: auto;
+      }
+      .static-post-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding-bottom: 4rem;
+      }
+      .static-post-back {
+        display: inline-block;
+        color: #8a2387;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.3s;
+      }
+      .static-post-back:hover {
+        color: #e94057;
+      }
+      .static-post-article {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        overflow: visible;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-bottom: 2rem;
+      }
+      .static-post-header {
+        padding: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .static-post-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+      }
+      .static-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
+      .static-post-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .static-post-category {
+        background: linear-gradient(135deg, #8a2387, #e94057);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+      }
+      .static-post-content {
+        padding: 3rem;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .static-post-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+      .static-post-content h2 {
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(138, 35, 135, 0.5);
+      }
+      .static-post-content h3 {
+        color: white;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .static-post-content p {
+        margin: 1rem 0;
+      }
+      .static-post-content a {
+        color: #8a2387;
+        transition: color 0.3s;
+      }
+      .static-post-content a:hover {
+        color: #e94057;
+      }
+      .static-post-content pre {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+      .static-post-content code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .static-post-title {
+          font-size: 1.8rem;
+        }
+        .static-post-header {
+          padding: 2rem 1.5rem;
+        }
+        .static-post-content {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      // 静的コンテンツの表示制御
+      (function() {
+        // 初期状態で静的コンテンツを非表示
+        var style = document.createElement('style');
+        style.textContent = '#static-content { display: none !important; }';
+        document.head.appendChild(style);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          var staticContent = document.getElementById('static-content');
+          var rootElement = document.getElementById('root');
+          
+          if (staticContent && rootElement) {
+            var checkCount = 0;
+            var maxChecks = 30; // 3秒間チェック
+            
+            var checkReactLoaded = setInterval(function() {
+              checkCount++;
+              
+              // Reactアプリがロードされたかチェック
+              if (rootElement.children.length > 0 && rootElement.querySelector('.App')) {
+                // Reactアプリがロードされた
+                clearInterval(checkReactLoaded);
+              } else if (checkCount >= maxChecks) {
+                // タイムアウト - 静的コンテンツを表示
+                style.textContent = '';
+                staticContent.style.display = 'block';
+                clearInterval(checkReactLoaded);
+              }
+            }, 100);
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- 静的コンテンツ（JavaScriptが無効な場合のフォールバック） -->
+    <div id="static-content" class="static-post-container">
+      <div class="static-post-wrapper">
+        <a href="/if-juku-site/materials" class="static-post-back">← オンライン教材一覧に戻る</a>
+        <article class="static-post-article">
+          <header class="static-post-header">
+            <h1 class="static-post-title">Minecraftで強力な雪玉爆弾を作ろう！</h1>
+            <div class="static-post-meta">
+              <span>📅 2023年4月18日</span>
+              <span>✍️ akitaclark0731-01@gmail.com</span>
+            </div>
+            
+            <div class="static-post-categories">
+              <span class="static-post-category">Minecraft</span>
+            </div>
+            
+          </header>
+          <div class="static-post-content">
+            <img src="/if-juku-site/2025/02/1.png" alt="Minecraftで強力な雪玉爆弾を作ろう！" />
+            MinecraftでPVPゲームによくある。雪玉爆弾の作り方をここでは紹介します。
+
+ステップ① 雪玉が着弾した場所を爆発させよう！
+
+状態としては雪玉が着弾した場所にクリーパーが召喚されて、召喚した瞬間に爆破する仕組みです。
+
+コマンドブロックをリピート、常時実行にし以下を入力します。
+
+execute at @e[type=snowball] unless block ~ ~-1 ~ air run summon creeper ~ ~ ~ {ExplosionRadius:3,Fuse:0,Invulnerable:1}
+
+これで完成です！雪玉爆弾を投げましょう！
+
+ステップ②(応用編) 威力を変えてみよう！
+
+威力を変更する場合、以下の数字を変更します。
+
+execute at @e[type=snowball] unless block ~ ~-1 ~ air run summon creeper ~ ~ ~ {ExplosionRadius:3,Fuse:0,Invulnerable:1}
+
+赤くしたExplosionRadiusの数字を、ここでは3にしていますが、この数字を大きくするほど威力が上がります。※大きくしすぎると動作が重くなる場合があります。
+
+ExplosionRadiusの数字を変更する方法もありますが、召喚するクリーパーを帯電クリーパーにする方法もあります。※帯電クリーパーは通常のクリーパーに比べて爆破威力が2倍になります。帯電クリーパーにする場合、以下のコマンドを追加します。
+
+execute at @e[type=snowball] unless block ~ ~-1 ~ air run summon creeper ~ ~ ~ {ExplosionRadius:3,Fuse:0,Invulnerable:1,powered:1b}
+
+赤くした[powered:1b]を追加すると帯電クリーパーになります。
+
+ステップ③(応用編) 名前を変えてみよう！
+
+通常、雪玉爆弾で爆破に巻き込まれた場合「〇〇はクリーパーに爆破された」と表示されますが、このクリーパーの部分を好き名前に変更することができます。名前を変更する場合、以下のコマンドを追加します。
+
+execute at @e[type=snowball] unless block ~ ~-1 ~ air run summon creeper ~ ~ ~ {CustomName:"\"〇〇〇〇\"",CustomNameVisible:1,ExplosionRadius:3,Fuse:0,Invulnerable:1}
+
+赤いコマンドの〇〇〇〇の部分に好きな名前を入力することで、変更することができます。例えば、「雪玉爆弾」にした場合、「〇〇は雪玉爆弾に爆破された」に変更されます。
+
+以上で完了です！好きな名前の雪玉爆弾を作ってPVPゲームで使ってみてはいかがでしょうか？
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div id="modal-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 10000;"></div>
+    <script defer="defer" src="/if-juku-site/static/js/main.ed265cc8.js"></script>
+  </body>
+</html>

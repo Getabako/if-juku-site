@@ -168,8 +168,14 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 20px;
+    width: 48%;
+    aspect-ratio: 1.2 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -284,6 +290,19 @@ const FeatureDescription = styled(motion.div)`
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     font-size: 0.85rem;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto 0;
   }
 `;
 
@@ -404,14 +423,16 @@ const BusinessInquiry = () => {
             ))}
           </FeatureList>
           
-          <CTAButton
-            onClick={handleButtonClick}
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            サービス詳細を見る
-          </CTAButton>
+          <ButtonContainer>
+            <CTAButton
+              onClick={handleButtonClick}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              サービス詳細を見る
+            </CTAButton>
+          </ButtonContainer>
         </motion.div>
       </ContentWrapper>
     </BusinessContainer>

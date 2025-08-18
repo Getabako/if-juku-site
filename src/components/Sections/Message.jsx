@@ -150,13 +150,26 @@ const MessageCard = styled(motion.div)`
   position: relative;
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   padding: 3rem;
   box-shadow: 
     0 0 30px rgba(0, 255, 255, 0.3),
     inset 0 0 20px rgba(0, 255, 255, 0.1);
+  background: none !important;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('${process.env.PUBLIC_URL}/2025/02/message-background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    z-index: 0;
+  }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 2rem;
@@ -349,11 +362,7 @@ const Message = () => {
           
           <MessageCard 
             variants={itemVariants} 
-            className="cyber-frame"
-            style={{
-              backgroundImage: `url('${getAssetPath('2025/02/message-background.jpeg')}')`,
-              backgroundColor: 'transparent'
-            }}>
+            className="cyber-frame">
             <MessageContent>
               <motion.p variants={itemVariants}>
                 現代は目まぐるしく変化する時代です。<HighlightText>AIの活用</HighlightText>は今後さらに重要になり、教育の在り方も変わっていくでしょう。

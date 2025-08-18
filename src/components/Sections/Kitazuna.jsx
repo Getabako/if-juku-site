@@ -290,8 +290,27 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 20px;
+    width: 48%;
+    aspect-ratio: 1.2 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto 0;
   }
 `;
 
@@ -312,13 +331,13 @@ const Kitazuna = () => {
     {
       id: 'creator',
       title: 'クリエイターとして参加',
-      image: '2025/02/creator.png',
+      image: '2025/02/kitazuna-creator.png',
       description: 'プレイヤーだけでなく、ゲームクリエイターとして参加可能。自分の作品を世界に発信しよう。'
     },
     {
       id: 'monetize',
       title: 'ゲーム内ショップでマネタイズ',
-      image: '2025/02/shop.png',
+      image: '2025/02/kitazuna-monetize.png',
       description: 'ゲーム内のショップシステムで、作成したアイテムやコンテンツを販売し、実際の収益化が可能。'
     }
   ];
@@ -418,14 +437,16 @@ const Kitazuna = () => {
             ))}
           </FeatureGrid>
           
-          <CTAButton
-            onClick={handleButtonClick}
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            ゲーム情報を見る
-          </CTAButton>
+          <ButtonContainer>
+            <CTAButton
+              onClick={handleButtonClick}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              ゲーム情報を見る
+            </CTAButton>
+          </ButtonContainer>
         </motion.div>
       </ContentWrapper>
     </KitazunaContainer>

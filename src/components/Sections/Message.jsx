@@ -148,7 +148,7 @@ const SectionTitle = styled(motion.h2)`
 `;
 
 const MessageCard = styled(motion.div)`
-  background-image: url(${getAssetPath('2025/02/vintagepaper.jpeg')});
+  background-image: url(${getAssetPath('2025/02/message-bg.jpeg')});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

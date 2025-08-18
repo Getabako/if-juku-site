@@ -22,7 +22,7 @@ const VideoBackground = styled.video`
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.7;
 `;
 
 const VideoOverlay = styled.div`
@@ -32,9 +32,9 @@ const VideoOverlay = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, 
-    rgba(10, 10, 10, 0.85) 0%,
-    rgba(0, 0, 0, 0.75) 50%,
-    rgba(10, 10, 10, 0.85) 100%
+    rgba(10, 10, 10, 0.5) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(10, 10, 10, 0.5) 100%
   );
   z-index: 1;
 `;

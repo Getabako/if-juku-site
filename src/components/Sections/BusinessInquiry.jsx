@@ -200,6 +200,10 @@ const FeatureItem = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
   
   &:hover {
     transform: translateY(-5px);
@@ -214,11 +218,23 @@ const FeatureItem = styled(motion.div)`
 `;
 
 const FeatureIcon = styled.div`
-  font-size: 2.5rem;
+  width: 80px;
+  height: 80px;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+  }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    width: 60px;
+    height: 60px;
     margin-bottom: 0.5rem;
   }
 `;
@@ -293,17 +309,23 @@ const BusinessInquiry = () => {
 
           <FeatureList variants={containerVariants}>
             <FeatureItem variants={itemVariants}>
-              <FeatureIcon>🤖</FeatureIcon>
+              <FeatureIcon>
+                <img src={getAssetPath('2025/02/ai-support.png')} alt="AI導入サポート" />
+              </FeatureIcon>
               <FeatureText>AI導入サポート</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>
-              <FeatureIcon>💻</FeatureIcon>
+              <FeatureIcon>
+                <img src={getAssetPath('2025/02/ai-support.png')} alt="システム開発" />
+              </FeatureIcon>
               <FeatureText>システム開発</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>
-              <FeatureIcon>📢</FeatureIcon>
+              <FeatureIcon>
+                <img src={getAssetPath('2025/02/ai-support.png')} alt="マーケティング支援" />
+              </FeatureIcon>
               <FeatureText>マーケティング支援</FeatureText>
             </FeatureItem>
           </FeatureList>

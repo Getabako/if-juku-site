@@ -12,7 +12,6 @@ const MessageContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${theme.colors.background.primary};
 `;
 
 const FireworksBackground = styled.div`
@@ -353,6 +352,7 @@ const Message = () => {
             className="cyber-frame"
             style={{
               backgroundImage: `url('${getAssetPath('2025/02/message-background.jpeg')}')`,
+              backgroundColor: 'transparent'
             }}>
             <MessageContent>
               <motion.p variants={itemVariants}>

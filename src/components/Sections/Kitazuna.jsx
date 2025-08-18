@@ -392,6 +392,8 @@ const Kitazuna = () => {
               <FeatureCard 
                 key={feature.id}
                 variants={itemVariants}
+                onMouseEnter={() => setExpandedFeature(feature.id)}
+                onMouseLeave={() => setExpandedFeature(null)}
                 onClick={() => toggleFeature(feature.id)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

@@ -377,6 +377,8 @@ const BusinessInquiry = () => {
               <FeatureItem 
                 key={service.id}
                 variants={itemVariants}
+                onMouseEnter={() => setExpandedService(service.id)}
+                onMouseLeave={() => setExpandedService(null)}
                 onClick={() => toggleService(service.id)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

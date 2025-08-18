@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import { getAssetPath } from '../../utils/paths';
 
 const MessageContainer = styled.section`
   position: relative;
@@ -147,13 +148,14 @@ const SectionTitle = styled(motion.h2)`
 `;
 
 const MessageCard = styled(motion.div)`
-  background: rgba(26, 26, 26, 0.9);
+  background-image: url(${getAssetPath('2025/02/vintagepaper.jpeg')});
+  background-size: cover;
+  background-position: center;
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
   padding: 3rem;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
   box-shadow: 
     0 0 30px rgba(0, 255, 255, 0.3),
     inset 0 0 20px rgba(0, 255, 255, 0.1);
@@ -190,21 +192,15 @@ const MessageCard = styled(motion.div)`
 
 const MessageContent = styled.div`
   text-align: left;
-  color: ${theme.colors.text.primary};
-  line-height: 2;
+  color: #2c2c2c;
+  line-height: 1.8;
   font-size: 1.2rem;
   margin-bottom: 3rem;
   
   p {
-    margin-bottom: 1.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-shadow: 
-      -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000,
-      0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
     
     &:last-child {
       margin-bottom: 0;
@@ -223,22 +219,15 @@ const MessageContent = styled.div`
 `;
 
 const HighlightText = styled.span`
-  color: ${theme.colors.secondary.main};
+  color: #e63946;
   font-weight: bold;
-  text-shadow: 
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000,
-    0 0 10px ${theme.colors.secondary.main};
   background: linear-gradient(90deg, 
     transparent 0%,
-    rgba(255, 107, 0, 0.15) 50%,
+    rgba(230, 57, 70, 0.1) 50%,
     transparent 100%
   );
-  padding: 0 0.5rem;
+  padding: 0 0.3rem;
   border-radius: 4px;
-  animation: glow-pulse 3s ease-in-out infinite alternate;
   
   @keyframes glow-pulse {
     0% { 
@@ -282,17 +271,15 @@ const SignatureItem = styled.div`
 `;
 
 const SignatureRole = styled.div`
-  color: ${theme.colors.text.secondary};
+  color: #4a4a4a;
   font-size: 0.9rem;
-  opacity: 0.8;
 `;
 
 const SignatureName = styled.div`
-  color: ${theme.colors.primary.main};
+  color: #2c2c2c;
   font-size: 1.2rem;
   font-weight: bold;
   font-family: ${theme.fonts.secondary};
-  text-shadow: ${theme.colors.glow.blue};
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     font-size: 1.1rem;
@@ -388,23 +375,18 @@ const Message = () => {
               <motion.p variants={itemVariants}>
                 現代は目まぐるしく変化する時代です。<HighlightText>AIの活用</HighlightText>は今後さらに重要になり、教育の在り方も価値観も変わっていくでしょう。
               </motion.p>
-              
               <motion.p variants={itemVariants}>
                 このサイトは<HighlightText>最新AIで制作</HighlightText>されています。表現手段とAIを組み合わせれば表現できないものはありません。皆さんもAIを使った開発や起業、自由な表現に挑戦してほしいです。
               </motion.p>
-              
               <motion.p variants={itemVariants}>
                 学校が面白くないと感じる人もいるかもしれません。私たちもそうでした。だからこそ、<HighlightText>誰でも楽しめる塾</HighlightText>を目指しています。
               </motion.p>
-              
               <motion.p variants={itemVariants}>
                 <HighlightText>行動すれば世界は変わります</HighlightText>。if(塾)の運営メンバーも高校生から始め、挑戦を形にしています。
               </motion.p>
-              
               <motion.p variants={itemVariants}>
                 まずは日常の何かを変えてみましょう。第一歩として、<HighlightText>if(塾)で好きなことに取り組んでみませんか？</HighlightText>
               </motion.p>
-              
               <motion.p variants={itemVariants}>
                 <HighlightText>if(塾)で、あなたの可能性を最大限に引き出しましょう。</HighlightText>
               </motion.p>

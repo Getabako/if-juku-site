@@ -171,6 +171,44 @@ const CourseTag = styled.span`
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 0 0 10px ${theme.colors.secondary.main};
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    display: none;
+  }
+`;
+
+const MobileAgeTag = styled.div`
+  display: none;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    display: block;
+    background: linear-gradient(135deg, #ff6b00, #ff8c00);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto 1.5rem;
+    max-width: fit-content;
+    box-shadow: 
+      0 0 15px rgba(255, 107, 0, 0.5),
+      0 4px 6px rgba(0, 0, 0, 0.2);
+    animation: pulse-glow 2s ease-in-out infinite;
+    
+    @keyframes pulse-glow {
+      0%, 100% { 
+        box-shadow: 
+          0 0 15px rgba(255, 107, 0, 0.5),
+          0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+      50% { 
+        box-shadow: 
+          0 0 25px rgba(255, 107, 0, 0.7),
+          0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
 `;
 
 const CourseDescription = styled.p`
@@ -255,7 +293,7 @@ const Courses = () => {
     liberal: {
       title: "リベラルコース",
       tag: "小学生～中学生推奨",
-      description: "マインクラフトで学ぶ創造力・基礎ITスキルコース",
+      description: "マインクラフトで創造力・基礎ITスキルを学ぶ",
       frequency: "週1回から参加可能",
       skills: "創造力と基礎的なITスキルを楽しく習得",
       features: [
@@ -267,7 +305,7 @@ const Courses = () => {
     selfrealization: {
       title: "自己実現コース",
       tag: "中学生～高校生推奨",
-      description: "AIと起業を学ぶ自己実現コース",
+      description: "AIと起業を学ぶ",
       frequency: "週2～3回推奨",
       skills: "将来のキャリアに直結する実践的なスキルを習得",
       features: [
@@ -343,6 +381,10 @@ const Courses = () => {
               </CourseTabs>
               <CourseTag>{currentCourse.tag}</CourseTag>
             </CourseHeader>
+            
+            <MobileAgeTag>
+              {currentCourse.tag}
+            </MobileAgeTag>
             
             <CourseDescription>
               {currentCourse.description}

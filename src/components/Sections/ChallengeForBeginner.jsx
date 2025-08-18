@@ -66,7 +66,7 @@ const QuestCard = styled(motion.div)`
   overflow: hidden;
   transition: all ${theme.animations.duration.normal};
   backdrop-filter: blur(10px);
-  height: 280px;
+  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   
@@ -98,20 +98,16 @@ const QuestCard = styled(motion.div)`
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 0.8rem;
-    height: 240px;
   }
 `;
 
 const QuestImage = styled.img`
   width: 100%;
-  height: 150px;
+  flex: 1;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    height: 120px;
-  }
+  min-height: 0;
 `;
 
 const QuestTitle = styled.h3`

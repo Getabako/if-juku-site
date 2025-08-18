@@ -12,18 +12,27 @@ const MaterialsContainer = styled.section`
   height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: ${theme.colors.background.primary};
+`;
+
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SectionTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: ${theme.colors.primary.main};
   text-shadow: ${theme.colors.glow.blue};
   font-family: ${theme.fonts.secondary};
@@ -31,6 +40,7 @@ const SectionTitle = styled(motion.h2)`
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -208,47 +218,49 @@ const Materials = () => {
 
   return (
     <MaterialsContainer id="materials">
-      <SectionTitle
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="twinkling-text"
-      >
-        オンライン教材
-      </SectionTitle>
-      
-      {minecraftPosts.length > 0 ? (
-        <>
-          <ScrollContainer>
-            <ScrollingWrapper>
-              {minecraftPosts.map((post, index) => (
-                <PostCard
-                  key={`${post.id}-${index}`}
-                  onClick={() => handleCardClick(post.id)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {post.featuredImage && (
-                    <PostImage bgImage={getAssetPath(post.featuredImage.replace(/^\//, ''))} />
-                  )}
-                  <PostTitle>{post.title}</PostTitle>
-                  <PostDate>{formatDate(post.date)}</PostDate>
-                </PostCard>
-              ))}
-            </ScrollingWrapper>
-          </ScrollContainer>
-          
-          <ViewAllButton
-            onClick={handleViewAll}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            すべての教材を見る
-          </ViewAllButton>
-        </>
-      ) : (
-        <p style={{ color: 'white', textAlign: 'center' }}>記事を読み込み中...</p>
-      )}
+      <ContentWrapper>
+        <SectionTitle
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="twinkling-text"
+        >
+          オンライン教材
+        </SectionTitle>
+        
+        {minecraftPosts.length > 0 ? (
+          <>
+            <ScrollContainer>
+              <ScrollingWrapper>
+                {minecraftPosts.map((post, index) => (
+                  <PostCard
+                    key={`${post.id}-${index}`}
+                    onClick={() => handleCardClick(post.id)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {post.featuredImage && (
+                      <PostImage bgImage={getAssetPath(post.featuredImage.replace(/^\//, ''))} />
+                    )}
+                    <PostTitle>{post.title}</PostTitle>
+                    <PostDate>{formatDate(post.date)}</PostDate>
+                  </PostCard>
+                ))}
+              </ScrollingWrapper>
+            </ScrollContainer>
+            
+            <ViewAllButton
+              onClick={handleViewAll}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              すべての教材を見る
+            </ViewAllButton>
+          </>
+        ) : (
+          <p style={{ color: 'white', textAlign: 'center' }}>記事を読み込み中...</p>
+        )}
+      </ContentWrapper>
     </MaterialsContainer>
   );
 };

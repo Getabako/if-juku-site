@@ -9,18 +9,27 @@ const YouTubeContainer = styled.section`
   height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: ${theme.colors.background.primary};
+`;
+
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SectionTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: ${theme.colors.primary.main};
   text-shadow: ${theme.colors.glow.blue};
   font-family: ${theme.fonts.secondary};
@@ -28,6 +37,7 @@ const SectionTitle = styled(motion.h2)`
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -282,53 +292,55 @@ const YouTube = () => {
 
   return (
     <YouTubeContainer id="youtube">
-      <SectionTitle
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="twinkling-text"
-      >
-        YouTube
-      </SectionTitle>
-      
-      <ScrollContainer>
-        <ScrollingWrapper>
-          {scrollVideos.map((video, index) => (
-            <VideoCard
-              key={`${video.id}-${index}`}
-              href={`https://www.youtube.com/watch?v=${video.id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <VideoThumbnail>
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.title}
-                  onError={(e) => {
-                    e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-                  }}
-                />
-                <PlayButton />
-              </VideoThumbnail>
-              <VideoInfo>
-                <VideoTitle>{video.title}</VideoTitle>
-              </VideoInfo>
-            </VideoCard>
-          ))}
-        </ScrollingWrapper>
-      </ScrollContainer>
-      
-      <ViewChannelButton
-        href="https://www.youtube.com/@if-juku"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        YouTubeチャンネルを見る
-      </ViewChannelButton>
+      <ContentWrapper>
+        <SectionTitle
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="twinkling-text"
+        >
+          YouTube
+        </SectionTitle>
+        
+        <ScrollContainer>
+          <ScrollingWrapper>
+            {scrollVideos.map((video, index) => (
+              <VideoCard
+                key={`${video.id}-${index}`}
+                href={`https://www.youtube.com/watch?v=${video.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <VideoThumbnail>
+                  <img 
+                    src={video.thumbnail} 
+                    alt={video.title}
+                    onError={(e) => {
+                      e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                    }}
+                  />
+                  <PlayButton />
+                </VideoThumbnail>
+                <VideoInfo>
+                  <VideoTitle>{video.title}</VideoTitle>
+                </VideoInfo>
+              </VideoCard>
+            ))}
+          </ScrollingWrapper>
+        </ScrollContainer>
+        
+        <ViewChannelButton
+          href="https://www.youtube.com/@if-juku"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          YouTubeチャンネルを見る
+        </ViewChannelButton>
+      </ContentWrapper>
     </YouTubeContainer>
   );
 };

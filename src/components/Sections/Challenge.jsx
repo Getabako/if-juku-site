@@ -188,7 +188,7 @@ const Challenge = () => {
 
   // デバイスに応じて適切な画像を選択
   const challengeImageSrc = isMobile 
-    ? getAssetPath('2025/08/if-challenge-sp.png')
+    ? getAssetPath('2025/08/if-challenge-pc.png')
     : getAssetPath('2025/08/if-challenge-pc.png');
 
   return (

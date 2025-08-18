@@ -79,30 +79,6 @@ const SubTitle = styled(motion.h3)`
   }
 `;
 
-const DevelopmentBadge = styled(motion.div)`
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  box-shadow: 
-    0 0 20px rgba(239, 68, 68, 0.5),
-    inset 0 0 10px rgba(255, 255, 255, 0.2);
-  animation: pulse-badge 2s ease-in-out infinite;
-  
-  @keyframes pulse-badge {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.9rem;
-    padding: 0.4rem 1.2rem;
-  }
-`;
-
 const GameDescription = styled(motion.div)`
   background: rgba(20, 20, 20, 0.95);
   border: 2px solid rgba(134, 239, 172, 0.8);
@@ -323,16 +299,15 @@ const Kitazuna = () => {
           </SectionTitle>
           
           <SubTitle variants={itemVariants}>
-            -未来杉の守護者-
+            秋田の伝統文化を学ぶRPGゲーム制作ツール
           </SubTitle>
-          
-          <DevelopmentBadge variants={itemVariants}>
-            🚧 開発中 🚧
-          </DevelopmentBadge>
           
           <GameDescription variants={itemVariants} className="cyber-frame">
             <DescriptionText>
-              <HighlightText>🎮 目的: 学んだスキルを作品として形にする</HighlightText> - 秋田県全域を舞台にしたRPG（HD2D形式）で、地域の伝統文化をテーマにしたゲーム作成ツールです。
+              <HighlightText>🎮 学んだスキルを作品として形にする</HighlightText>
+            </DescriptionText>
+            <DescriptionText>
+              秋田県全域を舞台にしたRPG（HD2D形式）で、地域の伝統文化をテーマにしたゲーム作成ツールです。
             </DescriptionText>
             <DescriptionText>
               プレイヤーは<HighlightText>杉野健太</HighlightText>として秋田各地を巡り、ナマハゲや稲庭うどん、竿燈祭りなどの伝統文化に触れながら、過度な真面目さが生んだ化身「スギノオウ」を封印する冒険を繰り広げます。
@@ -344,21 +319,21 @@ const Kitazuna = () => {
 
           <FeatureGrid variants={containerVariants}>
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>🌲</FeatureIcon>
-              <FeatureTitle>美しい森の世界</FeatureTitle>
-              <FeatureText>豊かな自然が息づく3Dの世界を探索しよう</FeatureText>
+              <FeatureIcon>🎨</FeatureIcon>
+              <FeatureTitle>HD2Dグラフィック</FeatureTitle>
+              <FeatureText>美しいピクセルアートと3D効果の融合</FeatureText>
             </FeatureCard>
             
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>🤝</FeatureIcon>
-              <FeatureTitle>絆システム</FeatureTitle>
-              <FeatureText>仲間との絆を深めて新たな力を解放</FeatureText>
+              <FeatureIcon>🏛️</FeatureIcon>
+              <FeatureTitle>秋田の伝統文化</FeatureTitle>
+              <FeatureText>地域の歴史と文化をゲームで学ぶ</FeatureText>
             </FeatureCard>
             
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>⚔️</FeatureIcon>
-              <FeatureTitle>戦略バトル</FeatureTitle>
-              <FeatureText>知恵と勇気で強大な敵に立ち向かおう</FeatureText>
+              <FeatureIcon>💰</FeatureIcon>
+              <FeatureTitle>収益化体験</FeatureTitle>
+              <FeatureText>作ったゲームで実際の収益化を体験</FeatureText>
             </FeatureCard>
           </FeatureGrid>
           

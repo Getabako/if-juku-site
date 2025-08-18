@@ -86,6 +86,10 @@ const CharacterArea = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    margin-top: -2rem;
+  }
 `;
 
 const CharacterContainer = styled.div`
@@ -128,7 +132,7 @@ const QuestionButtonsContainer = styled.div`
 const QuestionButtonsLeft = styled.div`
   @media (min-width: ${theme.breakpoints.mobile}) {
     position: absolute;
-    left: 2rem;
+    left: 8rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -146,7 +150,7 @@ const QuestionButtonsLeft = styled.div`
 const QuestionButtonsRight = styled.div`
   @media (min-width: ${theme.breakpoints.mobile}) {
     position: absolute;
-    right: 2rem;
+    right: 8rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -453,13 +457,7 @@ const FAQ = () => {
         </MessageWindow>
       )}
       
-      {/* デバッグ用の情報表示 */}
-      <div style={{position: 'fixed', top: '10px', left: '10px', background: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px', fontSize: '12px', zIndex: 20000}}>
-        <div>currentMessage: {currentMessage ? 'あり' : 'なし'}</div>
-        <div>displayedText: {displayedText || 'なし'}</div>
-        <div>isTyping: {isTyping ? 'はい' : 'いいえ'}</div>
-        <div>isTalking: {isTalking ? 'はい' : 'いいえ'}</div>
-      </div>
+
     </FAQContainer>
   );
 };

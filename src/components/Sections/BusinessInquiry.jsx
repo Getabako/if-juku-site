@@ -174,14 +174,16 @@ const CTAButton = styled(motion.button)`
 `;
 
 const FeatureList = styled(motion.div)`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
-  flex-wrap: wrap;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    flex-direction: column;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-bottom: 2rem;
   }
@@ -191,24 +193,23 @@ const FeatureItem = styled(motion.div)`
   background: rgba(20, 20, 20, 0.85);
   border: 1px solid rgba(0, 255, 255, 0.6);
   border-radius: 12px;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   text-align: center;
   transition: all ${theme.animations.duration.normal};
-  min-width: 180px;
-  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
   &:hover {
     transform: translateY(-5px);
     background: rgba(25, 25, 25, 0.9);
-    border-color: rgba(0, 255, 255, 0.9);
-    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
     border-color: ${theme.colors.secondary.main};
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 1rem;
-    min-width: auto;
-    flex: 1;
   }
 `;
 
@@ -304,6 +305,11 @@ const BusinessInquiry = () => {
             <FeatureItem variants={itemVariants}>
               <FeatureIcon>📊</FeatureIcon>
               <FeatureText>ICT戦略立案</FeatureText>
+            </FeatureItem>
+            
+            <FeatureItem variants={itemVariants}>
+              <FeatureIcon>📢</FeatureIcon>
+              <FeatureText>マーケティング支援</FeatureText>
             </FeatureItem>
           </FeatureList>
           

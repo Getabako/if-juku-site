@@ -207,52 +207,6 @@ const FeatureContent = styled.div`
   }
 `;
 
-const FeatureBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, 
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    );
-  }
-`;
-
-const FeatureContent = styled.div`
-  position: relative;
-  z-index: 1;
-  padding: 1.5rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1rem;
-  }
-`;
-
 const FeatureTitle = styled.div`
   color: #86efac;
   font-size: 1.3rem;

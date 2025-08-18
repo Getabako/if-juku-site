@@ -310,21 +310,21 @@ const BusinessInquiry = () => {
           <FeatureList variants={containerVariants}>
             <FeatureItem variants={itemVariants}>
               <FeatureIcon>
-                <img src={getAssetPath('2025/02/ai-support.png')} alt="AI導入サポート" />
+                <img src={getAssetPath('2025/02/ai-robot.png')} alt="AI導入サポート" />
               </FeatureIcon>
               <FeatureText>AI導入サポート</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>
               <FeatureIcon>
-                <img src={getAssetPath('2025/02/ai-support.png')} alt="システム開発" />
+                <img src={getAssetPath('2025/02/system-dev.png')} alt="システム開発" />
               </FeatureIcon>
               <FeatureText>システム開発</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>
               <FeatureIcon>
-                <img src={getAssetPath('2025/02/ai-support.png')} alt="マーケティング支援" />
+                <img src={getAssetPath('2025/02/marketing.png')} alt="マーケティング支援" />
               </FeatureIcon>
               <FeatureText>マーケティング支援</FeatureText>
             </FeatureItem>

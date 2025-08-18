@@ -294,7 +294,7 @@ const Courses = () => {
       title: "リベラルコース",
       tag: "小学生～中学生推奨",
       description: "マインクラフトで創造力・基礎ITスキルを学ぶ",
-      frequency: "週1回から参加可能",
+      frequency: "週1回から参加可能（小学生～中学生推奨）",
       skills: "創造力と基礎的なITスキルを楽しく習得",
       features: [
         "マインクラフトをメタバース化した空間で自由に探索・建築",
@@ -306,7 +306,7 @@ const Courses = () => {
       title: "自己実現コース",
       tag: "中学生～高校生推奨",
       description: "AIと起業を学ぶ",
-      frequency: "週2～3回推奨",
+      frequency: "週2～3回推奨（中学生～高校生推奨）",
       skills: "将来のキャリアに直結する実践的なスキルを習得",
       features: [
         "AIを活用したプログラミングやビジネスモデルの構築",
@@ -379,12 +379,7 @@ const Courses = () => {
                   自己実現コース
                 </CourseTabButton>
               </CourseTabs>
-              <CourseTag>{currentCourse.tag}</CourseTag>
             </CourseHeader>
-            
-            <MobileAgeTag>
-              {currentCourse.tag}
-            </MobileAgeTag>
             
             <CourseDescription>
               {currentCourse.description}

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import { getAssetPath } from '../../utils/paths';
 
 const KitazunaContainer = styled.section`
   position: relative;
@@ -161,11 +162,23 @@ const FeatureCard = styled(motion.div)`
 `;
 
 const FeatureIcon = styled.div`
-  font-size: 2.5rem;
+  width: 80px;
+  height: 80px;
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(134, 239, 172, 0.5));
+  }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    width: 60px;
+    height: 60px;
     margin-bottom: 0.5rem;
   }
 `;
@@ -316,21 +329,27 @@ const Kitazuna = () => {
 
           <FeatureGrid variants={containerVariants}>
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>🎨</FeatureIcon>
-              <FeatureTitle>HD2Dグラフィック</FeatureTitle>
-              <FeatureText>美しいピクセルアートと3D効果の融合</FeatureText>
+              <FeatureIcon>
+                <img src={getAssetPath('2025/02/kunio-design.png')} alt="キャラクターデザイン" />
+              </FeatureIcon>
+              <FeatureTitle>キャラクターデザインは緒方孝治氏</FeatureTitle>
+              <FeatureText>熱血硬派くにおくんシリーズのデザイナー</FeatureText>
             </FeatureCard>
             
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>🏛️</FeatureIcon>
-              <FeatureTitle>秋田の伝統文化</FeatureTitle>
-              <FeatureText>地域の歴史と文化をゲームで学ぶ</FeatureText>
+              <FeatureIcon>
+                <img src={getAssetPath('2025/02/creator-rpg.png')} alt="クリエイター参加型RPG" />
+              </FeatureIcon>
+              <FeatureTitle>クリエイター参加型秋田RPG</FeatureTitle>
+              <FeatureText>実際に開発にも参加できる！</FeatureText>
             </FeatureCard>
             
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>💰</FeatureIcon>
-              <FeatureTitle>収益化体験</FeatureTitle>
-              <FeatureText>作ったゲームで実際の収益化を体験</FeatureText>
+              <FeatureIcon>
+                <img src={getAssetPath('2025/02/game-shop.png')} alt="ゲーム内ショップ" />
+              </FeatureIcon>
+              <FeatureTitle>ゲーム内ショップで収益化体験</FeatureTitle>
+              <FeatureText>商品を開発して実際の収益化を体験</FeatureText>
             </FeatureCard>
           </FeatureGrid>
           

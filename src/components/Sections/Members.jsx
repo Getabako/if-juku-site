@@ -88,71 +88,88 @@ const MemberCard = styled(motion.div)`
   background: rgba(20, 20, 20, 0.95);
   border: 2px solid rgba(0, 255, 255, 0.6);
   border-radius: 12px;
-  padding: 2rem;
   backdrop-filter: blur(10px);
   box-shadow: 
     0 0 25px rgba(0, 255, 255, 0.2),
     inset 0 0 15px rgba(0, 255, 255, 0.05);
   margin-bottom: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  height: 200px;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    flex-direction: column;
+    height: auto;
+  }
+`;
+
+const MemberHeader = styled.div`
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    flex-direction: column;
+  }
+`;
+
+const MemberImageContainer = styled.div`
+  position: relative;
+  width: 200px;
+  height: 100%;
+  flex-shrink: 0;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    width: 100%;
+    height: 250px;
+  }
+`;
+
+const MemberImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const MemberImageOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 1rem;
+  color: white;
+  
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+    color: ${theme.colors.primary.main};
+    text-shadow: ${theme.colors.glow.blue};
+  }
+  
+  p {
+    font-size: 0.9rem;
+    color: ${theme.colors.secondary.main};
+    text-shadow: 0 0 5px ${theme.colors.secondary.main};
+  }
+`;
+
+const MemberInfo = styled.div`
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     padding: 1.5rem;
   }
 `;
 
-const MemberHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-`;
-
-const MemberImage = styled.img`
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid ${theme.colors.primary.main};
-  box-shadow: 0 0 20px ${theme.colors.primary.main};
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 100px;
-    height: 100px;
-  }
-`;
-
-const MemberInfo = styled.div`
-  flex: 1;
-`;
-
-const MemberName = styled.h3`
-  font-size: 1.8rem;
-  color: ${theme.colors.primary.main};
-  margin-bottom: 0.5rem;
-  font-family: ${theme.fonts.secondary};
-  text-shadow: ${theme.colors.glow.blue};
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.5rem;
-  }
-`;
-
-const MemberRole = styled.p`
-  color: ${theme.colors.secondary.main};
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px ${theme.colors.secondary.main};
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1rem;
-  }
-`;
+// MemberName and MemberRole are now in the overlay
 
 const MemberDescription = styled.p`
   color: rgba(255, 255, 255, 0.9);
@@ -343,19 +360,22 @@ const Members = () => {
               className="cyber-frame"
             >
               <MemberHeader>
-                <MemberImage
-                  src={isMobile ? currentMember.mobileImage : currentMember.pcImage}
-                  alt={currentMember.name}
-                />
+                <MemberImageContainer>
+                  <MemberImage
+                    src={isMobile ? currentMember.mobileImage : currentMember.pcImage}
+                    alt={currentMember.name}
+                  />
+                  <MemberImageOverlay>
+                    <h3>{currentMember.name}</h3>
+                    <p>{currentMember.role}</p>
+                  </MemberImageOverlay>
+                </MemberImageContainer>
                 <MemberInfo>
-                  <MemberName>{currentMember.name}</MemberName>
-                  <MemberRole>{currentMember.role}</MemberRole>
+                  <MemberDescription>
+                    {currentMember.description}
+                  </MemberDescription>
                 </MemberInfo>
               </MemberHeader>
-              
-              <MemberDescription>
-                {currentMember.description}
-              </MemberDescription>
             </MemberCard>
           </AnimatePresence>
           

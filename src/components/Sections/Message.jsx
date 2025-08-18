@@ -151,6 +151,7 @@ const MessageCard = styled(motion.div)`
   background-image: url(${getAssetPath('2025/02/vintagepaper.jpeg')});
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
   padding: 3rem;
@@ -373,19 +374,13 @@ const Message = () => {
           <MessageCard variants={itemVariants} className="cyber-frame">
             <MessageContent>
               <motion.p variants={itemVariants}>
-                現代は目まぐるしく変化する時代です。<HighlightText>AIの活用</HighlightText>は今後さらに重要になり、教育の在り方も価値観も変わっていくでしょう。
+                現代は目まぐるしく変化する時代です。<HighlightText>AIの活用</HighlightText>は今後さらに重要になり、教育の在り方も変わっていくでしょう。
               </motion.p>
               <motion.p variants={itemVariants}>
-                このサイトは<HighlightText>最新AIで制作</HighlightText>されています。表現手段とAIを組み合わせれば表現できないものはありません。皆さんもAIを使った開発や起業、自由な表現に挑戦してほしいです。
+                このサイトは<HighlightText>最新AIで制作</HighlightText>されています。AIを使えば表現できないものはありません。
               </motion.p>
               <motion.p variants={itemVariants}>
-                学校が面白くないと感じる人もいるかもしれません。私たちもそうでした。だからこそ、<HighlightText>誰でも楽しめる塾</HighlightText>を目指しています。
-              </motion.p>
-              <motion.p variants={itemVariants}>
-                <HighlightText>行動すれば世界は変わります</HighlightText>。if(塾)の運営メンバーも高校生から始め、挑戦を形にしています。
-              </motion.p>
-              <motion.p variants={itemVariants}>
-                まずは日常の何かを変えてみましょう。第一歩として、<HighlightText>if(塾)で好きなことに取り組んでみませんか？</HighlightText>
+                <HighlightText>行動すれば世界は変わります</HighlightText>。第一歩として、<HighlightText>if(塾)で好きなことに取り組んでみませんか？</HighlightText>
               </motion.p>
               <motion.p variants={itemVariants}>
                 <HighlightText>if(塾)で、あなたの可能性を最大限に引き出しましょう。</HighlightText>

@@ -287,7 +287,7 @@ const BusinessInquiry = () => {
               <HighlightText>最速で最大の効果を出すAI導入サポート、ICT総合開発サービス</HighlightText>
             </MessageText>
             <MessageText>
-              企業様のデジタル変革を全力でサポートいたします。AI技術の導入から、システム開発、ICT戦略まで、経験豊富なチームが最適なソリューションを提供します。
+              企業様のデジタル変革を全力でサポートいたします。AI技術の導入から、システム開発まで、経験豊富なチームが最適なソリューションを提供します。
             </MessageText>
           </MessageContainer>
 
@@ -300,11 +300,6 @@ const BusinessInquiry = () => {
             <FeatureItem variants={itemVariants}>
               <FeatureIcon>💻</FeatureIcon>
               <FeatureText>システム開発</FeatureText>
-            </FeatureItem>
-            
-            <FeatureItem variants={itemVariants}>
-              <FeatureIcon>📊</FeatureIcon>
-              <FeatureText>ICT戦略立案</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>

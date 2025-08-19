@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Minecraftで/titleコマンドを出してみよう！
+
+Minecraftで実況者がやっているミニゲームなどで開始時などに、「〇〇ゲームスタート！」とよく見る方が多いと思いますが、ここではその文字の出し方を説明したいと思います！
+
+※イメージ
+
+ステップ①..." />
+    <meta property="og:title" content="Minecraft タイトルコマンド出し方マニュアル" />
+    <meta property="og:description" content="Minecraftで/titleコマンドを出してみよう！
+
+Minecraftで実況者がやっているミニゲームなどで開始時などに、「〇〇ゲームスタート！」とよく見る方が多いと思いますが、ここではその文字の出し方を説明したいと思います！
+
+※イメージ
+
+ステップ①..." />
+    <meta property="og:image" content="/if-juku-site/2023/03/Minecraft_-1.19.2-シングルプレイ-2023_03_13-15_08_44-1024x538.png" />
+    <title>Minecraft タイトルコマンド出し方マニュアル - if(塾)</title>
+    <link href="/if-juku-site/static/css/main.20399cdb.css" rel="stylesheet">
+    <style>
+      body { 
+        margin: 0; 
+        background: #0a0e27;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      }
+      .static-post-container {
+        min-height: 100vh;
+        padding: 2rem;
+        overflow-y: auto;
+        height: auto;
+      }
+      .static-post-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+        padding-bottom: 4rem;
+      }
+      .static-post-back {
+        display: inline-block;
+        color: #8a2387;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        transition: color 0.3s;
+      }
+      .static-post-back:hover {
+        color: #e94057;
+      }
+      .static-post-article {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        overflow: visible;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-bottom: 2rem;
+      }
+      .static-post-header {
+        padding: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .static-post-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+      }
+      .static-post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
+      .static-post-categories {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .static-post-category {
+        background: linear-gradient(135deg, #8a2387, #e94057);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.85rem;
+      }
+      .static-post-content {
+        padding: 3rem;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .static-post-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+      .static-post-content h2 {
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid rgba(138, 35, 135, 0.5);
+      }
+      .static-post-content h3 {
+        color: white;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .static-post-content p {
+        margin: 1rem 0;
+      }
+      .static-post-content a {
+        color: #8a2387;
+        transition: color 0.3s;
+      }
+      .static-post-content a:hover {
+        color: #e94057;
+      }
+      .static-post-content pre {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+      .static-post-content code {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+      }
+      @media (max-width: 768px) {
+        .static-post-title {
+          font-size: 1.8rem;
+        }
+        .static-post-header {
+          padding: 2rem 1.5rem;
+        }
+        .static-post-content {
+          padding: 2rem 1.5rem;
+        }
+      }
+    </style>
+    <script type="text/javascript">
+      // 静的コンテンツの表示制御
+      (function() {
+        // 初期状態で静的コンテンツを非表示
+        var style = document.createElement('style');
+        style.textContent = '#static-content { display: none !important; }';
+        document.head.appendChild(style);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          var staticContent = document.getElementById('static-content');
+          var rootElement = document.getElementById('root');
+          
+          if (staticContent && rootElement) {
+            var checkCount = 0;
+            var maxChecks = 30; // 3秒間チェック
+            
+            var checkReactLoaded = setInterval(function() {
+              checkCount++;
+              
+              // Reactアプリがロードされたかチェック
+              if (rootElement.children.length > 0 && rootElement.querySelector('.App')) {
+                // Reactアプリがロードされた
+                clearInterval(checkReactLoaded);
+              } else if (checkCount >= maxChecks) {
+                // タイムアウト - 静的コンテンツを表示
+                style.textContent = '';
+                staticContent.style.display = 'block';
+                clearInterval(checkReactLoaded);
+              }
+            }, 100);
+          }
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- 静的コンテンツ（JavaScriptが無効な場合のフォールバック） -->
+    <div id="static-content" class="static-post-container">
+      <div class="static-post-wrapper">
+        <a href="/if-juku-site/materials" class="static-post-back">← オンライン教材一覧に戻る</a>
+        <article class="static-post-article">
+          <header class="static-post-header">
+            <h1 class="static-post-title">Minecraft タイトルコマンド出し方マニュアル</h1>
+            <div class="static-post-meta">
+              <span>📅 2022年11月8日</span>
+              <span>✍️ getabako</span>
+            </div>
+            
+            <div class="static-post-categories">
+              <span class="static-post-category">Minecraft</span><span class="static-post-category">Minecraft Java</span>
+            </div>
+            
+          </header>
+          <div class="static-post-content">
+            <img src="/if-juku-site/2023/03/Minecraft_-1.19.2-シングルプレイ-2023_03_13-15_08_44-1024x538.png" alt="Minecraft タイトルコマンド出し方マニュアル" />
+            Minecraftで/titleコマンドを出してみよう！
+
+Minecraftで実況者がやっているミニゲームなどで開始時などに、「〇〇ゲームスタート！」とよく見る方が多いと思いますが、ここではその文字の出し方を説明したいと思います！
+
+※イメージ
+
+ステップ① タイトルを出す時間を決める！※Java 1.16~の場合
+
+まず/titleを出す時間を決めます。コマンドの構成は 
+
+/title 誰 times 表示時間 表示 消え時間
+
+【/title 誰 times 表示時間 表示 消え時間】 なっています例えば 文字を5秒間、全員に表示させたい場合【/title @a times 20 100 20】となりますマイクラ内での1秒は20なのでこの場合、【入り時間1秒 表示時間5秒 消え時間1秒】 となります。 
+
+ステップ② 文字を表示させよう！ ※Java 1.16~の場合
+
+時間を決めた所で、次は実際に文字を作りましょう！コマンドの構成は 【/title 誰 title {"text":"〇〇〇"}】と なっています例えばタイトルでABCDEと、全員に表示させたい場合【/title @a title {"text":"ABCDE"}】となります。
+
+ステップ③ 実際にMinecraftで出してみよう！ ※Java 1.16~の場合
+
+まずコマンドブロックを出します！出し方は【/give @p minecraft:command_block】です。コマンドが作れた所で、次は実際にMinecraftで文字を出しましょう！コマンドのブロックの構成と配置は【①時間コマンド.②文字コマンド】の順番で配置します。一つ目のコマンドブロックは、コマンドブロックをインパルスにし、二つ目からはチェーンにします。
+
+応用編① サブタイトルを出して見よう！
+
+応用編でサブタイトルを出してみよう！コマンドの構成は 【/title 誰 subtitle {"text":"〇〇〇"}】と なっています例えばサブタイトルでABCDEと、全員に表示させたい場合【/title @a title {"text":"ABCDE"}】となります。
+
+応用編② 日本語を出してみよう！
+
+タイトルを日本語で表示させよう！日本語はhttps://minecraft.tools/en/title.phpというツールを使って作るのがおすすめです！コマンドの構成は 【/title 誰 (subtitle or title) {"text":"〇〇〇"}】です。タイトルで「普通ってなんですか？」と表示させたい場合→【/title @a title {"text":"\u666e\u901a\u3063\u3066\u306a\u3093\u3067\u3059\u304b\uff1f"}】です。サブタイトルで「今、生きてて楽しいですか？」と表示させたい場合【/title @a subtitle {"text":"\u4eca\u3001\u751f\u304d\u3066\u3066\u697d\u3057\u3044\u3067\u3059\u304b\uff1f"}】です。
+          </div>
+        </article>
+      </div>
+    </div>
+    
+    <div id="modal-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 10000;"></div>
+    <script defer="defer" src="/if-juku-site/static/js/main.ed265cc8.js"></script>
+  </body>
+</html>

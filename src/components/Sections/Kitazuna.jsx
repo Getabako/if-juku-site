@@ -160,7 +160,7 @@ const FeatureCard = styled(motion.div)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    min-height: 150px;
+    min-height: 130px;
   }
 `;
 
@@ -293,7 +293,7 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
     font-size: 0.9rem;
     border-radius: 20px;
     width: auto;
@@ -394,9 +394,7 @@ const Kitazuna = () => {
             Kitazuna
           </SectionTitle>
           
-          <SubTitle variants={itemVariants}>
-            🎮 学んだスキルを作品として形にする
-          </SubTitle>
+
           
 
 

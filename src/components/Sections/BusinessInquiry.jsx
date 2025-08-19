@@ -173,15 +173,17 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1rem 2rem;
-    font-size: 0.9rem;
-    border-radius: 20px;
-    width: auto;
-    min-width: 200px;
-    white-space: nowrap;
+    padding: 0;
+    font-size: 1rem;
+    border-radius: 12px;
+    width: 100%;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(0, 255, 255, 0.6);
+    text-transform: none;
+    letter-spacing: normal;
   }
 `;
 
@@ -217,7 +219,7 @@ const FeatureItem = styled(motion.div)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    min-height: 150px;
+    min-height: 130px;
     aspect-ratio: 1 / 1;
   }
 `;
@@ -389,11 +391,7 @@ const BusinessInquiry = () => {
             if(塾)への仕事のご依頼はこちら
           </SectionTitle>
           
-          <MessageContainer variants={itemVariants} className="cyber-frame">
-            <MessageText>
-              <HighlightText>最速で最大の効果を出すAI導入サポート、ICT総合開発サービス</HighlightText>
-            </MessageText>
-          </MessageContainer>
+
 
           <FeatureList variants={containerVariants}>
             {services.map(service => (
@@ -425,9 +423,6 @@ const BusinessInquiry = () => {
                 </FeatureContent>
               </FeatureItem>
             ))}
-          </FeatureList>
-          
-          <ButtonContainer>
             <CTAButton
               onClick={handleButtonClick}
               variants={itemVariants}
@@ -436,7 +431,7 @@ const BusinessInquiry = () => {
             >
               サービス詳細を見る
             </CTAButton>
-          </ButtonContainer>
+          </FeatureList>
         </motion.div>
       </ContentWrapper>
     </BusinessContainer>

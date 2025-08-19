@@ -62,8 +62,9 @@ const SectionTitle = styled(motion.h2)`
   animation: twinkle 2s infinite;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 0.8rem;
+    padding: 0 1rem;
   }
 `;
 
@@ -75,8 +76,10 @@ const SubTitle = styled(motion.h3)`
   text-shadow: 0 0 8px rgba(134, 239, 172, 0.6);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
+    padding: 0 1rem;
+    line-height: 1.4;
   }
 `;
 
@@ -290,11 +293,12 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1.2rem 1.5rem;
-    font-size: 1rem;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
     border-radius: 20px;
-    width: 48%;
-    aspect-ratio: 1.2 / 1;
+    width: auto;
+    min-width: 200px;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;

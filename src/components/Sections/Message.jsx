@@ -142,9 +142,10 @@ const SectionTitle = styled(motion.h2)`
   white-space: nowrap;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 2rem;
     white-space: nowrap;
+    letter-spacing: -0.02em;
   }
 `;
 
@@ -171,6 +172,20 @@ const MessageCard = styled(motion.div)`
     background-repeat: no-repeat;
     border-radius: 12px;
     z-index: 0;
+    opacity: 0;
+    transform: scale(1.1);
+    animation: backgroundFadeIn 1.2s ease-out 0.5s forwards;
+  }
+  
+  @keyframes backgroundFadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
@@ -251,9 +266,10 @@ const SignatureSection = styled(motion.div)`
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: row;
-    justify-content: space-around;
-    gap: 1.5rem;
+    justify-content: space-evenly;
+    gap: 2rem;
     text-align: center;
+    flex-wrap: nowrap;
   }
 `;
 

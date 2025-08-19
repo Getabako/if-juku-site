@@ -62,8 +62,13 @@ const SectionTitle = styled(motion.h2)`
   animation: twinkle 2s infinite;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin-bottom: 1.5rem;
+    line-height: 1.3;
+    padding: 0 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
@@ -168,11 +173,12 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1.2rem 1.5rem;
-    font-size: 1rem;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
     border-radius: 20px;
-    width: 48%;
-    aspect-ratio: 1.2 / 1;
+    width: auto;
+    min-width: 200px;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;

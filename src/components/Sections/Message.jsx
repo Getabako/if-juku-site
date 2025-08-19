@@ -139,10 +139,12 @@ const SectionTitle = styled(motion.h2)`
   text-shadow: ${theme.colors.glow.blue};
   font-family: ${theme.fonts.secondary};
   animation: twinkle 2s infinite;
+  white-space: nowrap;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
+    white-space: nowrap;
   }
 `;
 
@@ -248,7 +250,8 @@ const SignatureSection = styled(motion.div)`
   gap: 3rem;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     gap: 1.5rem;
     text-align: center;
   }

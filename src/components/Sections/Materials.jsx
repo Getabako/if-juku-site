@@ -86,7 +86,7 @@ const ScrollContainer = styled.div`
 
 const ScrollingWrapper = styled.div`
   display: flex;
-  animation: ${scrollRight} 30s linear infinite;
+  animation: ${scrollRight} 10s linear infinite;
   
   &:hover {
     animation-play-state: paused;

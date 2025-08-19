@@ -326,19 +326,19 @@ const Kitazuna = () => {
       id: 'designer',
       title: '緒方孝治氏デザイン',
       image: '2025/02/kunio-design.png',
-      description: '熱血硬派くにおくんシリーズのキャラクターデザイナーが手がける本格的なゲームデザイン。'
+      description: '熱血硬派くにおくんシリーズのキャラクターデザイナーが手がける本格的なゲームデザイン。秋田県全域を舞台にしたRPG（HD2D形式）の美しいビジュアルを実現。'
     },
     {
       id: 'creator',
       title: 'クリエイターとして参加',
       image: '2025/02/kitazuna-creator.png',
-      description: 'プレイヤーだけでなく、ゲームクリエイターとして参加可能。自分の作品を世界に発信しよう。'
+      description: 'プレイヤーは杉野健太として秋田各地を巡り、ナマハゲや稲庭うどん、竿燈祭りなどの伝統文化に触れながら、過度な真面目さが生んだ化身「スギノオウ」を封印する冒険を繰り広げます。'
     },
     {
       id: 'monetize',
       title: 'ゲーム内ショップでマネタイズ',
       image: '2025/02/kitazuna-monetize.png',
-      description: 'ゲーム内のショップシステムで、作成したアイテムやコンテンツを販売し、実際の収益化が可能。'
+      description: '地域IP活用のゲーム開発を通じて、伝統と現代の融合を学び、実際の収益化体験まで可能な教育プラットフォーム。地域の伝統文化をテーマにしたゲーム作成ツールです。'
     }
   ];
   
@@ -394,17 +394,7 @@ const Kitazuna = () => {
             🎮 学んだスキルを作品として形にする
           </SubTitle>
           
-          <GameDescription variants={itemVariants} className="cyber-frame">
-            <DescriptionText>
-              秋田県全域を舞台にしたRPG（HD2D形式）で、地域の伝統文化をテーマにしたゲーム作成ツールです。
-            </DescriptionText>
-            <DescriptionText>
-              プレイヤーは<HighlightText>杉野健太</HighlightText>として秋田各地を巡り、ナマハゲや稲庭うどん、竿燈祭りなどの伝統文化に触れながら、過度な真面目さが生んだ化身「スギノオウ」を封印する冒険を繰り広げます。
-            </DescriptionText>
-            <DescriptionText>
-              <HighlightText>地域IP活用</HighlightText>のゲーム開発を通じて、伝統と現代の融合を学び、実際の<HighlightText>収益化体験</HighlightText>まで可能な教育プラットフォームです。
-            </DescriptionText>
-          </GameDescription>
+
 
           <FeatureGrid variants={containerVariants}>
             {features.map(feature => (

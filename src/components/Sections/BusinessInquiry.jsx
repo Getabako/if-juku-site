@@ -212,6 +212,7 @@ const FeatureItem = styled(motion.div)`
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     min-height: 150px;
+    aspect-ratio: 1 / 1;
   }
 `;
 
@@ -385,9 +386,6 @@ const BusinessInquiry = () => {
           <MessageContainer variants={itemVariants} className="cyber-frame">
             <MessageText>
               <HighlightText>最速で最大の効果を出すAI導入サポート、ICT総合開発サービス</HighlightText>
-            </MessageText>
-            <MessageText>
-              企業様のデジタル変革を全力でサポートいたします。AI技術の導入から、システム開発まで、経験豊富なチームが最適なソリューションを提供します。
             </MessageText>
           </MessageContainer>
 

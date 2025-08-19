@@ -293,7 +293,7 @@ const Courses = () => {
     liberal: {
       title: "リベラルコース",
       tag: "小学生～中学生推奨",
-      description: "マインクラフトで創造力・基礎ITスキルを学ぶ",
+      description: "個性と創造力を伸ばす自由な学びの場",
       frequency: "週1回から参加可能（小学生～中学生推奨）",
       skills: "創造力と基礎的なITスキルを楽しく習得",
       features: [
@@ -305,7 +305,7 @@ const Courses = () => {
     selfrealization: {
       title: "自己実現コース",
       tag: "中学生～高校生推奨",
-      description: "AIと起業を学ぶ",
+      description: "実践的なスキルで将来への道を切り開く",
       frequency: "週2～3回推奨（中学生～高校生推奨）",
       skills: "将来のキャリアに直結する実践的なスキルを習得",
       features: [

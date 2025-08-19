@@ -208,11 +208,10 @@ const Challenge = () => {
             <ChallengeImage
               variants={itemVariants}
               src={challengeImageSrc}
-              alt="if(チャレンジ) - 能動的に学ぶ力を身につける"
+              alt="if(チャレンジ) - 実践的なスキルを身につける"
             />
             
             <MessageContainer variants={itemVariants}>
-            <MessageTitle>能動的に学ぶ力を身につける</MessageTitle>
             <MessageText>
               企業からの案件を割り振って、実際に報酬を得ながら実践的なスキルを習得します。
               メンターのサポートのもと、リアルなビジネス環境で成長していきます。

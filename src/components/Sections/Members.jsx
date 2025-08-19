@@ -264,7 +264,8 @@ const STAFF_MEMBERS = [
       role: "塾長",
       pcImage: getAssetPath('2025/08/staff1.png'), // Updated path
       mobileImage: getAssetPath('2025/08/staff1.png'),
-      description: "高校1年でIT会社を起業！Web開発やPCコンサルタントとして活躍後、if(塾)を開業。塾長としてみんなをまとめ、授業もメインで回す頼れるリーダーだよ！AI開発や講演も行う、AI活用の最前線に立つ若きイノベーター！中学時代は支援級で過ごした経験も力に、現役で国立大学合格！"
+      description: "高校1年でIT会社を起業！Web開発やPCコンサルタントとして活躍後、if(塾)を開業。塾長としてみんなをまとめ、授業もメインで回す頼れるリーダーだよ！AI開発や講演も行う、AI活用の最前線に立つ若きイノベーター！中学時代は支援級で過ごした経験も力に、現役で国立大学合格！",
+      bookLink: "https://amzn.asia/d/0IwM2eL"
     },
     {
       name: "加賀屋結眞",
@@ -373,6 +374,24 @@ const Members = () => {
                 <MemberInfo>
                   <MemberDescription>
                     {currentMember.description}
+                    {currentMember.bookLink && (
+                      <>
+                        <br /><br />
+                        自身の体験をまとめた書籍は
+                        <a 
+                          href={currentMember.bookLink}
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            color: theme.colors.primary.main,
+                            textDecoration: 'underline',
+                            marginLeft: '0.3rem'
+                          }}
+                        >
+                          こちら
+                        </a>
+                      </>
+                    )}
                   </MemberDescription>
                 </MemberInfo>
               </MemberHeader>

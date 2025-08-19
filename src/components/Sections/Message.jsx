@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
@@ -179,16 +179,17 @@ const MessageCard = styled(motion.div)`
 const MessageContent = styled.div`
   position: relative;
   z-index: 1;
-  text-align: left;
+  text-align: center;
   color: #2c2c2c;
-  line-height: 1.8;
-  font-size: 1.2rem;
+  line-height: 2;
+  font-size: 1.3rem;
   margin-bottom: 3rem;
+  font-family: 'Klee One', 'Noto Sans JP', cursive, sans-serif;
+  font-weight: 600;
   
   p {
-    margin-bottom: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
     
     &:last-child {
       margin-bottom: 0;
@@ -197,7 +198,7 @@ const MessageContent = styled.div`
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     font-size: 1.1rem;
-    line-height: 1.8;
+    line-height: 1.9;
     margin-bottom: 2rem;
     
     p {
@@ -317,6 +318,18 @@ const FloatingParticles = styled.div`
 `;
 
 const Message = () => {
+  useEffect(() => {
+    // Load Google Fonts for handwritten Japanese font
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: {
@@ -336,6 +349,22 @@ const Message = () => {
       y: 0,
       transition: {
         duration: 0.6
+      }
+    }
+  };
+
+  const spreadVariants = {
+    hidden: { 
+      opacity: 0, 
+      scaleX: 0,
+      originX: 0.5 
+    },
+    visible: {
+      opacity: 1,
+      scaleX: 1,
+      transition: {
+        duration: 1.2,
+        ease: "easeOut"
       }
     }
   };
@@ -362,19 +391,23 @@ const Message = () => {
           
           <MessageCard 
             variants={itemVariants} 
-            className="cyber-frame">
+            className="cyber-frame"
+            style={{
+              backgroundImage: `url('${getAssetPath('2025/02/message-background.jpeg')}')`,
+            }}>
             <MessageContent>
-              <motion.p variants={itemVariants}>
-                現代は目まぐるしく変化する時代です。<HighlightText>AIの活用</HighlightText>は今後さらに重要になり、教育の在り方も変わっていくでしょう。
-              </motion.p>
-              <motion.p variants={itemVariants}>
-                このサイトは<HighlightText>最新AIで制作</HighlightText>されています。AIを使えば表現できないものはありません。
-              </motion.p>
-              <motion.p variants={itemVariants}>
-                <HighlightText>行動すれば世界は変わります</HighlightText>。第一歩として、<HighlightText>if(塾)で好きなことに取り組んでみませんか？</HighlightText>
-              </motion.p>
-              <motion.p variants={itemVariants}>
-                <HighlightText>if(塾)で、あなたの可能性を最大限に引き出しましょう。</HighlightText>
+              <motion.p 
+                variants={spreadVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                今、生きにくさや不全感があっても大丈夫。<br />
+                僕たちと<HighlightText>AI</HighlightText>と<HighlightText>IT</HighlightText>を学べば、<br />
+                やりたいことは形にできる。<br />
+                <HighlightText>if(塾)</HighlightText>で一歩目を。<br />
+                焦らずにゆっくりと、僕たちが伴走し、<br />
+                思いを実現します。
               </motion.p>
             </MessageContent>
             

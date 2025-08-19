@@ -394,10 +394,6 @@ const Kitazuna = () => {
             Kitazuna
           </SectionTitle>
           
-
-          
-
-
           <FeatureGrid variants={containerVariants}>
             {features.map(feature => (
               <FeatureCard 

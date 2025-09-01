@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Router basename="/if-juku-site">
+      <Router basename={process.env.PUBLIC_URL || '/'}>
         <div className="App">
           <Routes>
             <Route path="/" element={<HomePage />} />

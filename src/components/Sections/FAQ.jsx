@@ -56,7 +56,7 @@ const SectionTitle = styled(motion.h2)`
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
   color: ${theme.colors.primary.main};
   text-shadow: ${theme.colors.glow.blue};
   font-family: ${theme.fonts.secondary};
@@ -217,13 +217,13 @@ const MessageWindow = styled.div`
   width: 90%;
   max-width: 850px;
   min-height: 160px;
-  background: rgba(26, 26, 46, 0.95);
-  border: 3px solid rgba(0, 255, 255, 0.5);
+  background: rgba(20, 30, 40, 0.95);
+  border: 3px solid rgba(100, 200, 255, 0.4);
   border-radius: 18px;
   padding: 2rem;
   z-index: 10;
   pointer-events: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(100, 200, 255, 0.2);
   backdrop-filter: blur(15px);
   
   @media (max-width: ${theme.breakpoints.mobile}) {

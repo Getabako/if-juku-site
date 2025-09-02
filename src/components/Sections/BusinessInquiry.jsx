@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 import ifbusinessVideo from '../../2025/07/ifbusiness.mp4';
+import business0Image from '../../2025/08/business0.png';
+import business1Image from '../../2025/08/business1.png';
+import business2Image from '../../2025/08/business2.png';
 
 const BusinessContainer = styled.section`
   position: relative;
@@ -213,11 +216,18 @@ const FeatureItem = styled(motion.div)`
 `;
 
 const FeatureIcon = styled.div`
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    width: 60px;
+    height: 60px;
     margin-bottom: 0.5rem;
   }
 `;
@@ -292,17 +302,17 @@ const BusinessInquiry = () => {
 
           <FeatureList variants={containerVariants}>
             <FeatureItem variants={itemVariants}>
-              <FeatureIcon>🤖</FeatureIcon>
+              <FeatureIcon style={{ backgroundImage: `url(${business0Image})` }} />
               <FeatureText>AI導入サポート</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>
-              <FeatureIcon>💻</FeatureIcon>
+              <FeatureIcon style={{ backgroundImage: `url(${business1Image})` }} />
               <FeatureText>システム開発</FeatureText>
             </FeatureItem>
             
             <FeatureItem variants={itemVariants}>
-              <FeatureIcon>📊</FeatureIcon>
+              <FeatureIcon style={{ backgroundImage: `url(${business2Image})` }} />
               <FeatureText>ICT戦略立案</FeatureText>
             </FeatureItem>
           </FeatureList>

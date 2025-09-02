@@ -260,11 +260,11 @@ const Courses = () => {
 
   const courses = {
     liberal: {
-      title: "リベラルコース",
+      title: "ウィンドウ内のリベラルコース",
       tag: "",
       description: "マインクラフトで学ぶ創造力・基礎ITスキルコース",
       frequency: "週1回から参加可能",
-      target: "小学生～中学生にオススメ",
+      target: "",
       features: [
         "マインクラフトをメタバース化した空間で自由に探索・建築",
         "AI先生やゲームコンテンツを活用した遊び感覚の学習",
@@ -276,7 +276,7 @@ const Courses = () => {
       tag: "",
       description: "AIと起業を学ぶ自己実現コース",
       frequency: "週2～3回推奨",
-      target: "中学生～高校生にオススメ",
+      target: "",
       features: [
         "AIを活用したプログラミングやビジネスモデルの構築",
         "起業家精神を育成し、自分の興味や特性を活かしたプロジェクト企画・実行",
@@ -361,10 +361,12 @@ const Courses = () => {
                 <InfoLabel>頻度</InfoLabel>
                 <InfoValue>{currentCourse.frequency}</InfoValue>
               </InfoItem>
-              <InfoItem>
-                <InfoLabel>対象</InfoLabel>
-                <InfoValue>{currentCourse.target}</InfoValue>
-              </InfoItem>
+              {currentCourse.target && (
+                <InfoItem>
+                  <InfoLabel>対象</InfoLabel>
+                  <InfoValue>{currentCourse.target}</InfoValue>
+                </InfoItem>
+              )}
             </CourseInfo>
             
             <FeatureList>

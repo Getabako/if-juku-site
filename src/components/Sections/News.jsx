@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 
@@ -7,19 +7,23 @@ const NewsContainer = styled.section`
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: ${theme.colors.background.primary};
-  padding: 2rem;
 `;
 
 const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const SectionTitle = styled(motion.h2)`
@@ -38,25 +42,51 @@ const SectionTitle = styled(motion.h2)`
   }
 `;
 
-const NewsList = styled.div`
+const ScrollContainer = styled.div`
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+`;
+
+const scrollAnimationRTL = keyframes`
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+`;
+
+const ScrollingWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 2rem;
+  animation: ${scrollAnimationRTL} 30s linear infinite;
+  
+  &:hover {
+    animation-play-state: paused;
+  }
 `;
 
 const NewsCard = styled(motion.article)`
-  background: rgba(26, 26, 26, 0.9);
-  border: 2px solid ${theme.colors.primary.main};
+  flex: 0 0 350px;
+  background: rgba(26, 26, 26, 0.95);
+  border: 2px solid ${theme.colors.secondary.main};
   border-radius: 12px;
   padding: 2rem;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
   transition: transform ${theme.animations.duration.normal};
+  cursor: pointer;
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 40px rgba(0, 255, 255, 0.4);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 40px rgba(0, 255, 0, 0.4);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    flex: 0 0 280px;
+    padding: 1.5rem;
   }
 `;
 
@@ -74,105 +104,138 @@ const NewsHeader = styled.div`
 `;
 
 const NewsTitle = styled.h3`
-  font-size: 1.3rem;
-  color: ${theme.colors.primary.main};
+  font-size: 1.4rem;
+  color: ${theme.colors.secondary.main};
+  margin-bottom: 1rem;
   font-family: ${theme.fonts.secondary};
-  text-shadow: ${theme.colors.glow.blue};
-  flex: 1;
+  text-shadow: 0 0 10px ${theme.colors.secondary.main};
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const NewsDate = styled.div`
   color: ${theme.colors.text.secondary};
   font-size: 0.9rem;
-  white-space: nowrap;
-`;
-
-const NewsCategory = styled.span`
-  background: linear-gradient(45deg, ${theme.colors.secondary.main}, ${theme.colors.secondary.dark});
-  color: ${theme.colors.background.primary};
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  white-space: nowrap;
-`;
-
-const NewsContent = styled.p`
-  color: ${theme.colors.text.primary};
-  line-height: 1.6;
   margin-bottom: 1rem;
 `;
 
-const LoadMoreButton = styled(motion.button)`
-  background: linear-gradient(45deg, ${theme.colors.primary.main}, ${theme.colors.primary.dark});
-  border: 2px solid ${theme.colors.primary.main};
+const NewsExcerpt = styled.p`
   color: ${theme.colors.text.primary};
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
+const NewsCategory = styled.span`
+  display: inline-block;
+  background: ${theme.colors.secondary.main};
+  color: ${theme.colors.background.primary};
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+`;
+
+const ReadMoreButton = styled.span`
+  color: ${theme.colors.primary.main};
+  font-weight: bold;
+  display: inline-block;
+  transition: all ${theme.animations.duration.normal};
+  
+  &:hover {
+    text-shadow: 0 0 10px ${theme.colors.primary.main};
+  }
+`;
+
+const ViewAllButton = styled(motion.button)`
+  background: linear-gradient(45deg, ${theme.colors.secondary.main}, ${theme.colors.secondary.dark});
+  border: 2px solid ${theme.colors.secondary.main};
+  color: ${theme.colors.background.primary};
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  margin: 2rem auto;
+  margin-top: 2rem;
   transition: all ${theme.animations.duration.normal};
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 30px ${theme.colors.primary.main};
+    box-shadow: 0 0 30px ${theme.colors.secondary.main};
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 `;
 
 const News = () => {
-  const [newsItems, setNewsItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [newsPosts, setNewsPosts] = useState([]);
 
   // サンプルニュースデータ
   const sampleNews = [
     {
       id: 1,
-      title: "2025年9月期の新規生徒募集開始のお知らせ",
+      title: "2025年夏期講習の受付を開始しました",
       date: "2025-08-20",
-      category: "重要",
-      content: "2025年9月期の新規生徒募集を開始いたします。無料体験授業も随時実施しておりますので、お気軽にお問い合わせください。"
+      excerpt: "夏休み期間中の特別プログラムの受付を開始しました。AIプログラミングとゲーム開発の集中講座です。",
+      category: "お知らせ"
     },
     {
       id: 2,
-      title: "夏休み特別講座「AIプログラミング入門」開催",
-      date: "2025-08-15",
-      category: "イベント",
-      content: "夏休み期間中に特別講座を開催いたします。初心者でも参加できるAIプログラミングの入門講座です。"
+      title: "生徒作品がプログラミングコンテストで入賞",
+      date: "2025-08-18",
+      excerpt: "当塾の生徒が開発したAIチャットボットが、全国プログラミングコンテストで優秀賞を受賞しました。",
+      category: "実績"
     },
     {
       id: 3,
-      title: "if(塾)公式YouTubeチャンネル開設",
-      date: "2025-08-10",
-      category: "お知らせ",
-      content: "if(塾)の公式YouTubeチャンネルを開設いたしました。授業の様子や学習のコツを定期的に配信予定です。"
+      title: "新コース「起業家育成プログラム」開講",
+      date: "2025-08-15",
+      excerpt: "中高生向けの起業家育成プログラムを9月より開講します。実際のビジネス立ち上げを体験できます。",
+      category: "新コース"
     },
     {
       id: 4,
-      title: "オンライン教材サイトリニューアル完了",
+      title: "オンライン授業システムをアップデート",
+      date: "2025-08-10",
+      excerpt: "より快適な学習環境を提供するため、オンライン授業システムを大幅にアップデートしました。",
+      category: "システム"
+    },
+    {
+      id: 5,
+      title: "保護者向け説明会を開催します",
       date: "2025-08-05",
-      category: "システム",
-      content: "より使いやすく、学習効果を高めるためにオンライン教材サイトをリニューアルいたしました。"
+      excerpt: "8月25日に保護者向けの説明会を開催します。カリキュラムや学習方針について詳しくご説明します。",
+      category: "イベント"
+    },
+    {
+      id: 6,
+      title: "夏の無料体験授業実施中",
+      date: "2025-08-01",
+      excerpt: "8月中は無料体験授業を実施しています。プログラミングの楽しさを体験してみませんか？",
+      category: "キャンペーン"
     }
   ];
 
   useEffect(() => {
-    setNewsItems(sampleNews);
+    // 無限スクロールのために配列を複製（右から左へのスクロール用に順序調整）
+    setNewsPosts([...sampleNews, ...sampleNews]);
   }, []);
 
-  const loadMoreNews = () => {
-    setLoading(true);
-    setTimeout(() => {
-      const moreNews = sampleNews.map((news, index) => ({
-        ...news,
-        id: news.id + newsItems.length,
-        title: news.title + " (追加情報)",
-        date: "2025-07-30"
-      }));
-      setNewsItems(prev => [...prev, ...moreNews]);
-      setLoading(false);
-    }, 1000);
+  const handleViewAll = () => {
+    window.location.href = '/blog/news';
+  };
+
+  const handleCardClick = (postId) => {
+    window.location.href = `/post/${postId}`;
   };
 
   return (
@@ -187,35 +250,32 @@ const News = () => {
           お知らせ
         </SectionTitle>
         
-        <NewsList>
-          {newsItems.map((news, index) => (
-            <NewsCard
-              key={news.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="cyber-frame"
-            >
-              <NewsHeader>
-                <NewsTitle>{news.title}</NewsTitle>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <NewsCategory>{news.category}</NewsCategory>
-                  <NewsDate>{news.date}</NewsDate>
-                </div>
-              </NewsHeader>
-              <NewsContent>{news.content}</NewsContent>
-            </NewsCard>
-          ))}
-        </NewsList>
+        <ScrollContainer>
+          <ScrollingWrapper>
+            {newsPosts.map((post, index) => (
+              <NewsCard
+                key={`${post.id}-${index}`}
+                onClick={() => handleCardClick(post.id)}
+                whileHover={{ y: -5 }}
+                className="cyber-frame"
+              >
+                <NewsCategory>{post.category}</NewsCategory>
+                <NewsTitle>{post.title}</NewsTitle>
+                <NewsDate>{post.date}</NewsDate>
+                <NewsExcerpt>{post.excerpt}</NewsExcerpt>
+                <ReadMoreButton>詳しく見る →</ReadMoreButton>
+              </NewsCard>
+            ))}
+          </ScrollingWrapper>
+        </ScrollContainer>
         
-        <LoadMoreButton
-          onClick={loadMoreNews}
-          disabled={loading}
+        <ViewAllButton
+          onClick={handleViewAll}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          {loading ? "読み込み中..." : "もっと読む"}
-        </LoadMoreButton>
+          すべてのお知らせを見る
+        </ViewAllButton>
       </ContentWrapper>
     </NewsContainer>
   );

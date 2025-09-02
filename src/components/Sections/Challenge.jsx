@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
-import logo from '../../2025/04/logo.png';
+import challengeImage from '../../2025/08/能動的に学ぶ.png';
 
 const ChallengeContainer = styled.section`
   position: relative;
@@ -202,7 +202,7 @@ const Challenge = () => {
           <TwoColumnLayout>
             <ChallengeImage
               variants={itemVariants}
-              src={logo}
+              src={challengeImage}
               alt="if(チャレンジ) - 能動的に学ぶ力を身につける"
             />
             

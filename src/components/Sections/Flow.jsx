@@ -151,15 +151,11 @@ const FlowImage = styled.img`
 
 const FlowDescription = styled(motion.div)`
   position: absolute;
-  bottom: 2rem;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    bottom: 1rem;
-  }
 `;
 
 

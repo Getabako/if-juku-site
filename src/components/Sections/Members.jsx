@@ -92,44 +92,40 @@ const MemberCard = styled(motion.div)`
   background: rgba(20, 20, 20, 0.95);
   border: 2px solid rgba(0, 255, 255, 0.6);
   border-radius: 12px;
-  padding: 2rem;
+  overflow: hidden;
   backdrop-filter: blur(10px);
   box-shadow: 
     0 0 25px rgba(0, 255, 255, 0.2),
     inset 0 0 15px rgba(0, 255, 255, 0.05);
   margin-bottom: 2rem;
+  display: flex;
+  min-height: 400px;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1.5rem;
+    flex-direction: column;
+    min-height: auto;
   }
 `;
 
 const MemberHeader = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
+  position: relative;
+  flex: 0 0 300px;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    align-items: center;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 250px;
   }
 `;
 
 const MemberImage = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 3px solid ${theme.colors.primary.main};
-  box-shadow: 0 0 20px ${theme.colors.primary.main};
-  flex-shrink: 0;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -137,35 +133,54 @@ const MemberInfo = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+  padding: 2rem;
+  position: relative;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    align-items: center;
-    text-align: center;
+    padding: 1.5rem;
   }
 `;
 
 const MemberName = styled.h3`
-  font-size: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.8rem;
   color: ${theme.colors.primary.main};
-  margin-bottom: 0.8rem;
   font-family: ${theme.fonts.secondary};
   text-shadow: ${theme.colors.glow.blue};
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    position: static;
+    background: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
   }
 `;
 
 const MemberRole = styled.p`
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   color: ${theme.colors.secondary.main};
   font-size: 1.2rem;
   font-weight: bold;
   text-shadow: 0 0 10px ${theme.colors.secondary.main};
-  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    position: static;
+    background: none;
+    padding: 0;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -362,15 +377,25 @@ const Members = () => {
                   src={isMobile ? currentMember.mobileImage : currentMember.pcImage}
                   alt={currentMember.name}
                 />
-                <MemberInfo>
-                  <MemberName>{currentMember.name}</MemberName>
-                  <MemberRole>{currentMember.role}</MemberRole>
-                </MemberInfo>
+                {!isMobile && (
+                  <>
+                    <MemberRole>{currentMember.role}</MemberRole>
+                    <MemberName>{currentMember.name}</MemberName>
+                  </>
+                )}
               </MemberHeader>
               
-              <MemberDescription>
-                {currentMember.description}
-              </MemberDescription>
+              <MemberInfo>
+                {isMobile && (
+                  <>
+                    <MemberRole>{currentMember.role}</MemberRole>
+                    <MemberName>{currentMember.name}</MemberName>
+                  </>
+                )}
+                <MemberDescription>
+                  {currentMember.description}
+                </MemberDescription>
+              </MemberInfo>
             </MemberCard>
           </AnimatePresence>
           

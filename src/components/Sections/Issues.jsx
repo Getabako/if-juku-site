@@ -111,7 +111,7 @@ const IssueCard = styled(motion.div)`
   position: absolute;
   width: 90%;
   max-width: 600px;
-  background: rgba(26, 26, 26, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
   padding: 2rem;

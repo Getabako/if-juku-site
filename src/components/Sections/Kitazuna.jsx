@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
 import kitazunaVideo from '../../2025/07/kitazuna.mp4';
+import kitazuna0Image from '../../2025/08/kitazuna0.png';
+import kitazuna1Image from '../../2025/08/kitazuna1.png';
+import kitazuna2Image from '../../2025/08/kitazuna2.png';
 
 const KitazunaContainer = styled.section`
   position: relative;
@@ -163,11 +166,18 @@ const FeatureCard = styled(motion.div)`
 `;
 
 const FeatureIcon = styled.div`
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(134, 239, 172, 0.2);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 2rem;
+    width: 60px;
+    height: 60px;
     margin-bottom: 0.5rem;
   }
 `;
@@ -318,19 +328,19 @@ const Kitazuna = () => {
 
           <FeatureGrid variants={containerVariants}>
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>🌲</FeatureIcon>
+              <FeatureIcon style={{ backgroundImage: `url(${kitazuna0Image})` }} />
               <FeatureTitle>美しい森の世界</FeatureTitle>
               <FeatureText>豊かな自然が息づく3Dの世界を探索しよう</FeatureText>
             </FeatureCard>
             
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>🤝</FeatureIcon>
+              <FeatureIcon style={{ backgroundImage: `url(${kitazuna1Image})` }} />
               <FeatureTitle>絆システム</FeatureTitle>
               <FeatureText>仲間との絆を深めて新たな力を解放</FeatureText>
             </FeatureCard>
             
             <FeatureCard variants={itemVariants}>
-              <FeatureIcon>⚔️</FeatureIcon>
+              <FeatureIcon style={{ backgroundImage: `url(${kitazuna2Image})` }} />
               <FeatureTitle>戦略バトル</FeatureTitle>
               <FeatureText>知恵と勇気で強大な敵に立ち向かおう</FeatureText>
             </FeatureCard>

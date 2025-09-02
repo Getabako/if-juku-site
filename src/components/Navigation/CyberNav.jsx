@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
+import logo from '../../2025/04/logo.png';
 
 const NavContainer = styled.nav`
   position: fixed;
@@ -242,7 +243,7 @@ const CyberNav = ({ swiperRef, sections }) => {
     <NavContainer>
       <NavWrapper>
         <Logo 
-          src={`${process.env.PUBLIC_URL}/2025/04/logo.png`}
+          src={logo}
           alt="if(塾)"
           onClick={() => handleScrollTo('#main-visual')}
         />

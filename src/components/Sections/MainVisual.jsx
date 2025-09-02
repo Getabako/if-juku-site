@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
+import ifmvPcVideo from '../../2025/04/ifmv2.mp4';
+import ifmvSpVideo from '../../2025/04/ifmvsp-1.mp4';
+import logoImage from '../../2025/04/logo.png';
 
 const MainVisualContainer = styled.section`
   position: relative;
@@ -223,10 +226,10 @@ const MainVisual = () => {
 
   useEffect(() => {
     const video = videoRef.current;
-    const videoPath = isMobile ? `${process.env.PUBLIC_URL}/2025/04/ifmvsp-1.mp4` : `${process.env.PUBLIC_URL}/2025/04/ifmv2.mp4`;
+    const videoPath = isMobile ? ifmvSpVideo : ifmvPcVideo;
     console.log('Video element:', video);
     console.log('Video src:', videoPath);
-    console.log('PUBLIC_URL:', process.env.PUBLIC_URL);
+    console.log('Video path:', videoPath);
     
     if (video) {
       // 動画の読み込み状況をチェック
@@ -250,7 +253,7 @@ const MainVisual = () => {
     <MainVisualContainer id="main-visual">
       <VideoBackground
         ref={videoRef}
-        src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/ifmvsp-1.mp4` : `${process.env.PUBLIC_URL}/2025/04/ifmv2.mp4`}
+        src={isMobile ? ifmvSpVideo : ifmvPcVideo}
         autoPlay
         loop
         muted
@@ -260,13 +263,13 @@ const MainVisual = () => {
         onLoadedData={handleVideoLoad}
         onCanPlay={handleVideoCanPlay}
       >
-        <source src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/ifmvsp-1.mp4` : `${process.env.PUBLIC_URL}/2025/04/ifmv2.mp4`} type="video/mp4" />
+        <source src={isMobile ? ifmvSpVideo : ifmvPcVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </VideoBackground>
       <VideoOverlay />
       <ContentWrapper>
         <MainLogo 
-          src={`${process.env.PUBLIC_URL}/2025/04/logo.png`}
+          src={logoImage}
           alt="if(塾)"
         />
         <SubTitle>
@@ -282,7 +285,7 @@ const MainVisual = () => {
             <div>Video Loaded: {videoLoaded ? 'Yes' : 'No'}</div>
             <div>Video Error: {videoError ? 'Yes' : 'No'}</div>
             <div>Device: {isMobile ? 'Mobile' : 'PC'}</div>
-            <div>Video Path: {isMobile ? `${process.env.PUBLIC_URL}/2025/04/ifmvsp-1.mp4` : `${process.env.PUBLIC_URL}/2025/04/ifmv2.mp4`}</div>
+            <div>Video Path: {isMobile ? ifmvSpVideo : ifmvPcVideo}</div>
           </div>
         )}
       </ContentWrapper>

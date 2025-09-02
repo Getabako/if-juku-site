@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
+import aboutPcImage from '../../2025/04/if塾横スクロールPC.png';
+import aboutSpImage from '../../2025/04/if塾概要sp-1.png';
 
 const AboutContainer = styled.section`
   position: relative;
@@ -150,7 +152,7 @@ const About = () => {
           
           <AboutImage
             variants={itemVariants}
-            src={isMobile ? `${process.env.PUBLIC_URL}/2025/04/if塾概要sp-1.png` : `${process.env.PUBLIC_URL}/2025/04/if塾横スクロールPC.png`}
+            src={isMobile ? aboutSpImage : aboutPcImage}
             alt="if(塾)について"
           />
         </motion.div>

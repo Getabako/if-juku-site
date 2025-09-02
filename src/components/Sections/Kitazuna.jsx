@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import kitazunaVideo from '../../2025/07/kitazuna.mp4';
 
 const KitazunaContainer = styled.section`
   position: relative;
@@ -306,7 +307,7 @@ const Kitazuna = () => {
         loop 
         muted 
         playsInline
-        src={`${process.env.PUBLIC_URL}/2025/07/kitazuna.mp4`}
+        src={kitazunaVideo}
       />
       <VideoOverlay />
       

@@ -4,6 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
 
+// 画像のインポート
+import ifcomicpc5 from '../../2025/03/ifcomicpc5.png';
+import ifcomicpc6 from '../../2025/03/ifcomicpc6.png';
+import ifcomicpc7 from '../../2025/04/ifcomicpc7.png';
+import ifcomicpc8 from '../../2025/03/ifcomicpc8.png';
+import ifcomicpc9 from '../../2025/03/ifcomicpc9.png';
+import ifcomicpc10 from '../../2025/03/ifcomicpc10.png';
+import ifcomicpc11 from '../../2025/03/ifcomicpc11.png';
+import ifcomicpc12 from '../../2025/03/ifcomicpc12.png';
+import ifcomicpc13 from '../../2025/03/ifcomicpc13.png';
+import ifcomicpc14 from '../../2025/03/ifcomicpc14.png';
+
 const PowerUpContainer = styled.section`
   position: relative;
   width: 100%;
@@ -213,29 +225,29 @@ const PowerUp = () => {
 
   // PC版とモバイル版の画像データ
   const pcImages = [
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc5.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc6.png`,
-    `${process.env.PUBLIC_URL}/2025/04/ifcomicpc7.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc8.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc9.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc10.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc11.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc12.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc13.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc14.png`
+    ifcomicpc5,
+    ifcomicpc6,
+    ifcomicpc7,
+    ifcomicpc8,
+    ifcomicpc9,
+    ifcomicpc10,
+    ifcomicpc11,
+    ifcomicpc12,
+    ifcomicpc13,
+    ifcomicpc14
   ];
 
   const mobileImages = [
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc5.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc6.png`,
-    `${process.env.PUBLIC_URL}/2025/04/ifcomicpc7.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc8.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc9.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc10.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc11.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc12.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc13.png`,
-    `${process.env.PUBLIC_URL}/2025/03/ifcomicpc14.png`
+    ifcomicpc5,
+    ifcomicpc6,
+    ifcomicpc7,
+    ifcomicpc8,
+    ifcomicpc9,
+    ifcomicpc10,
+    ifcomicpc11,
+    ifcomicpc12,
+    ifcomicpc13,
+    ifcomicpc14
   ];
 
   const images = isMobile ? mobileImages : pcImages;

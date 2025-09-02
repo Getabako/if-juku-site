@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import liberalImage from '../../2025/08/liberal.png';
+import idealImage from '../../2025/08/ideal.png';
 
 const CoursesContainer = styled.section`
   position: relative;
@@ -106,8 +108,8 @@ const TabButton = styled.button`
 
 const CourseCard = styled(motion.div)`
   background-image: ${props => props.$activeTab === 'liberal' ? 
-    `url('${process.env.PUBLIC_URL}/2025/08/liberal.png')` :
-    `url('${process.env.PUBLIC_URL}/2025/08/ideal.png')`};
+    `url('${liberalImage}')` :
+    `url('${idealImage}')`};
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

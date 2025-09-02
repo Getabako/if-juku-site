@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import ideal1Image from '../../2025/03/ideal1.png';
+import ideal2Image from '../../2025/03/ideal2.png';
+import ideal3Image from '../../2025/03/ideal3.png';
 
 const IssuesContainer = styled.section`
   position: relative;
@@ -230,17 +233,17 @@ const Issues = () => {
   const issues = [
     {
       title: "増え続ける不登校",
-      image: `${process.env.PUBLIC_URL}/2025/03/ideal2.png`,
+      image: ideal2Image,
       content: "日本の不登校数は年々増加し、現在は過去最高を記録しています。if(塾)は学校でも家でもない第三の居場所を目指し、不登校になりがちな子どもたちが自分らしく安心して学べる環境を提供します。遊びを通じて心が解けるようになり、意欲や学習習慣を再構築していきます。"
     },
     {
       title: "地方と都市部のデジタルディバイド",
-      image: `${process.env.PUBLIC_URL}/2025/03/ideal3.png`,
+      image: ideal3Image,
       content: "日本はICT後進国で、特に教育分野では諸外国に大きな遅れをとっています。if(塾)は最新AIを開発し、いつでも最大効率で学習できる環境を整えます。人間先生・AI先生どちらにも気軽に質問でき、地方からICT教育を革命的に進めるプロジェクトを推進します。"
     },
     {
       title: "広がる経済格差",
-      image: `${process.env.PUBLIC_URL}/2025/03/ideal1.png`,
+      image: ideal1Image,
       content: "地方と都市部の経済格差は深刻で、大学進学や就職の選択肢が狭まりがちです。if(塾)は「自ら稼ぐ力」を育成することで、家庭環境や地域に左右されずに将来の夢を切り拓けるよう支援します。地域の仕事にチャレンジしながら報酬を得て、高校生自身が社会で活躍できる道を広げていきます。"
     }
   ];

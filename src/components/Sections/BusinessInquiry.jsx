@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import ifbusinessVideo from '../../2025/07/ifbusiness.mp4';
 
 const BusinessContainer = styled.section`
   position: relative;
@@ -264,7 +265,7 @@ const BusinessInquiry = () => {
         loop 
         muted 
         playsInline
-        src={`${process.env.PUBLIC_URL}/2025/07/ifbusiness.mp4`}
+        src={ifbusinessVideo}
       />
       <VideoOverlay />
       

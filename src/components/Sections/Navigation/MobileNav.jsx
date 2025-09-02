@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../styles/theme';
+import logoImage from '../../../2025/04/logo.png';
 
 const MobileNavContainer = styled.nav`
   position: fixed;
@@ -244,7 +245,7 @@ const MobileNav = ({ swiperRef, sections }) => {
     <MobileNavContainer>
       <MobileHeader>
         <MobileLogo 
-          src={`${process.env.PUBLIC_URL}/2025/04/logo.png`}
+          src={logoImage}
           alt="if(塾)"
           onClick={() => handleScrollTo('#main-visual')}
         />

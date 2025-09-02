@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import service1Icon from '../../2025/02/1.png';
+import service2Icon from '../../2025/02/2.png';
+import service3Icon from '../../2025/02/3.png';
+import service4Icon from '../../2025/02/4.png';
+import service5Icon from '../../2025/02/5.png';
+import service6Icon from '../../2025/02/6.png';
 
 const ServicesContainer = styled.section`
   position: relative;
@@ -246,42 +252,42 @@ const Services = () => {
     {
       id: 1,
       title: "オンライン授業",
-      icon: `${process.env.PUBLIC_URL}/2025/02/1.png`,
+      icon: service1Icon,
       shortDesc: "全国どこからでも参加可能",
       fullDesc: "Discordを使用したリアルタイムオンライン授業。全国どこからでも参加でき、録画も視聴可能です。質問もチャットやボイスで気軽にできます。"
     },
     {
       id: 2,
       title: "オフラインイベント",
-      icon: `${process.env.PUBLIC_URL}/2025/02/2.png`,
+      icon: service2Icon,
       shortDesc: "秋田県内で定期開催",
       fullDesc: "月に1回程度、秋田県内でオフラインイベントを開催。実際に会って交流したり、特別なワークショップを実施します。"
     },
     {
       id: 3,
       title: "教育相談",
-      icon: `${process.env.PUBLIC_URL}/2025/02/3.png`,
+      icon: service3Icon,
       shortDesc: "保護者向けサポート",
       fullDesc: "お子様の学習状況や進路について、専門スタッフが個別相談に応じます。教育方針や家庭でのサポート方法もアドバイスします。"
     },
     {
       id: 4,
       title: "案件割振",
-      icon: `${process.env.PUBLIC_URL}/2025/02/4.png`,
+      icon: service4Icon,
       shortDesc: "実践的な仕事体験",
       fullDesc: "実際の案件をレベルに応じて割り振り、報酬を得ながら実践的なスキルを身につけます。メンターがサポートするので安心です。"
     },
     {
       id: 5,
       title: "独立サポート",
-      icon: `${process.env.PUBLIC_URL}/2025/02/5.png`,
+      icon: service5Icon,
       shortDesc: "起業・独立を支援",
       fullDesc: "将来の起業や独立を目指す生徒に対して、ビジネスプランの作成から資金調達まで総合的にサポートします。"
     },
     {
       id: 6,
       title: "AI先生",
-      icon: `${process.env.PUBLIC_URL}/2025/02/6.png`,
+      icon: service6Icon,
       shortDesc: "24時間質問可能",
       fullDesc: "最新のAI技術を活用した学習サポート。24時間いつでも質問でき、個人のレベルに合わせた最適な学習を提供します。"
     }

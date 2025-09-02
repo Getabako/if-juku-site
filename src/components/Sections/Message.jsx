@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
+import paperImage from '../../2025/08/paper.png';
 
 const MessageContainer = styled.section`
   position: relative;
@@ -11,109 +12,48 @@ const MessageContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${theme.colors.background.primary};
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(160, 82, 45, 0.2) 0%, transparent 50%);
 `;
 
-const FireworksBackground = styled.div`
+const VintageBackground = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  opacity: 0.3;
+  opacity: 0.1;
   
   &::before,
   &::after {
-    content: '';
+    content: '✨';
     position: absolute;
-    width: 3px;
-    height: 3px;
-    background: ${theme.colors.primary.main};
-    box-shadow:
-      0 0 10px ${theme.colors.primary.main};
-    animation: firework 6s ease-out infinite;
+    font-size: 1.5rem;
+    color: #DAA520;
+    animation: vintage-float 8s ease-in-out infinite;
   }
   
   &::before {
-    left: 25%;
+    left: 15%;
+    top: 20%;
     animation-delay: 0s;
   }
   
   &::after {
-    right: 25%;
-    animation-delay: 3s;
+    right: 15%;
+    bottom: 20%;
+    animation-delay: 4s;
   }
   
-  @keyframes firework {
-    0% {
-      bottom: 10%;
-      opacity: 0;
-      transform: scale(0);
-    }
-    15% {
-      bottom: 60%;
-      opacity: 0.8;
-      transform: scale(1);
-    }
-    100% {
-      bottom: 90%;
-      opacity: 0;
-      transform: scale(15);
-      filter: blur(10px);
-    }
-  }
-`;
-
-const FireworkSpark = styled.div`
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.2;
-  
-  &:nth-child(1) {
-    left: 30%;
-    animation: spark 5s ease-out infinite 1s;
-  }
-  
-  &:nth-child(2) {
-    left: 50%;
-    animation: spark 5s ease-out infinite 2.5s;
-  }
-  
-  &:nth-child(3) {
-    left: 70%;
-    animation: spark 5s ease-out infinite 4s;
-  }
-  
-  &::before {
-    content: '✨';
-    position: absolute;
-    font-size: 1.5rem;
-    opacity: 0;
-    animation: sparkle 5s ease-out infinite;
-  }
-  
-  @keyframes spark {
-    0% {
-      bottom: 30%;
-      opacity: 0;
-    }
-    50% {
-      bottom: 70%;
-      opacity: 0.5;
-    }
-    100% {
-      bottom: 90%;
-      opacity: 0;
-    }
-  }
-  
-  @keyframes sparkle {
+  @keyframes vintage-float {
     0%, 100% {
-      transform: scale(0) rotate(0deg);
-      opacity: 0;
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.1;
     }
     50% {
-      transform: scale(1) rotate(180deg);
+      transform: translateY(-10px) rotate(180deg);
       opacity: 0.3;
     }
   }
@@ -132,13 +72,13 @@ const ContentWrapper = styled.div`
 
 const SectionTitle = styled(motion.h2)`
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: 400;
   text-align: center;
   margin-bottom: 3rem;
-  color: ${theme.colors.primary.main};
-  text-shadow: ${theme.colors.glow.blue};
-  font-family: ${theme.fonts.secondary};
-  animation: twinkle 2s infinite;
+  color: #8B4513;
+  font-family: 'Klee One', cursive, ${theme.fonts.secondary};
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transform: rotate(-1deg);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     font-size: 2rem;
@@ -147,40 +87,31 @@ const SectionTitle = styled(motion.h2)`
 `;
 
 const MessageCard = styled(motion.div)`
-  background: rgba(26, 26, 26, 0.9);
-  border: 2px solid ${theme.colors.primary.main};
-  border-radius: 12px;
-  padding: 3rem;
+  background-image: url('${paperImage}');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0;
+  padding: 4rem;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
+  max-width: 800px;
+  width: 100%;
   box-shadow: 
-    0 0 30px rgba(0, 255, 255, 0.3),
-    inset 0 0 20px rgba(0, 255, 255, 0.1);
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 100px rgba(139, 69, 19, 0.1);
+  transform: rotate(0.5deg);
   
   &::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-      ${theme.colors.primary.main}, 
-      ${theme.colors.primary.dark},
-      ${theme.colors.secondary.main},
-      ${theme.colors.primary.main}
-    );
-    background-size: 400% 400%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 248, 220, 0.85);
     z-index: -1;
-    animation: gradient-border 10s ease infinite;
-    border-radius: inherit;
-  }
-  
-  @keyframes gradient-border {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
@@ -190,21 +121,24 @@ const MessageCard = styled(motion.div)`
 
 const MessageContent = styled.div`
   text-align: left;
-  color: ${theme.colors.text.primary};
-  line-height: 2;
-  font-size: 1.2rem;
+  color: #2F1B14;
+  line-height: 1.9;
+  font-size: 1.15rem;
   margin-bottom: 3rem;
+  font-family: 'Klee One', cursive, serif;
+  position: relative;
+  z-index: 1;
   
   p {
-    margin-bottom: 1.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-shadow: 
-      -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000,
-      0 0 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-shadow: none;
+    transform: rotate(-0.2deg);
+    
+    &:nth-child(even) {
+      transform: rotate(0.15deg);
+    }
     
     &:last-child {
       margin-bottom: 0;
@@ -223,54 +157,38 @@ const MessageContent = styled.div`
 `;
 
 const HighlightText = styled.span`
-  color: ${theme.colors.secondary.main};
-  font-weight: bold;
-  text-shadow: 
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    2px 2px 0 #000,
-    0 0 10px ${theme.colors.secondary.main};
-  background: linear-gradient(90deg, 
-    transparent 0%,
-    rgba(255, 107, 0, 0.15) 50%,
-    transparent 100%
-  );
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  animation: glow-pulse 3s ease-in-out infinite alternate;
+  color: #B8860B;
+  font-weight: 600;
+  text-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  position: relative;
   
-  @keyframes glow-pulse {
-    0% { 
-      text-shadow: 
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        0 0 10px ${theme.colors.secondary.main};
-    }
-    100% { 
-      text-shadow: 
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        0 0 15px ${theme.colors.secondary.main};
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #DAA520;
+    opacity: 0.7;
   }
 `;
 
 const SignatureSection = styled(motion.div)`
-  border-top: 2px solid ${theme.colors.primary.main};
+  border-top: 1px solid #8B4513;
   padding-top: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 3rem;
+  position: relative;
+  z-index: 1;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    flex-direction: column;
+    justify-content: center;
     gap: 1.5rem;
-    text-align: center;
   }
 `;
 
@@ -282,60 +200,22 @@ const SignatureItem = styled.div`
 `;
 
 const SignatureRole = styled.div`
-  color: ${theme.colors.text.secondary};
-  font-size: 0.9rem;
+  color: #654321;
+  font-size: 0.85rem;
   opacity: 0.8;
+  font-family: 'Klee One', cursive, serif;
 `;
 
 const SignatureName = styled.div`
-  color: ${theme.colors.primary.main};
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: ${theme.fonts.secondary};
-  text-shadow: ${theme.colors.glow.blue};
+  color: #8B4513;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Klee One', cursive, serif;
+  text-shadow: none;
+  transform: rotate(-1deg);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.1rem;
-  }
-`;
-
-const FloatingParticles = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: ${theme.colors.primary.main};
-    border-radius: 50%;
-    animation: float-particle 8s linear infinite;
-  }
-  
-  &::before {
-    left: 10%;
-    animation-delay: 0s;
-  }
-  
-  &::after {
-    right: 10%;
-    animation-delay: 4s;
-  }
-  
-  @keyframes float-particle {
-    0% {
-      bottom: -10px;
-      opacity: 1;
-    }
-    100% {
-      bottom: 110%;
-      opacity: 0;
-    }
+    font-size: 1rem;
   }
 `;
 
@@ -365,11 +245,7 @@ const Message = () => {
 
   return (
     <MessageContainer id="message">
-      <FireworksBackground />
-      <FireworkSpark />
-      <FireworkSpark />
-      <FireworkSpark />
-      <FloatingParticles />
+      <VintageBackground />
       
       <ContentWrapper>
         <motion.div

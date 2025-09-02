@@ -106,7 +106,7 @@ const MemberCard = styled(motion.div)`
 
 const MemberHeader = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
   margin-bottom: 1.5rem;
   
@@ -114,47 +114,58 @@ const MemberHeader = styled.div`
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+    align-items: center;
   }
 `;
 
 const MemberImage = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid ${theme.colors.primary.main};
   box-shadow: 0 0 20px ${theme.colors.primary.main};
+  flex-shrink: 0;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
 `;
 
 const MemberInfo = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 const MemberName = styled.h3`
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: ${theme.colors.primary.main};
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   font-family: ${theme.fonts.secondary};
   text-shadow: ${theme.colors.glow.blue};
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 `;
 
 const MemberRole = styled.p`
   color: ${theme.colors.secondary.main};
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-shadow: 0 0 10px ${theme.colors.secondary.main};
+  margin-bottom: 1rem;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 `;
 

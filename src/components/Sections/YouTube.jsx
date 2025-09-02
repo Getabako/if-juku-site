@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { theme } from '../../styles/theme';
@@ -309,7 +309,49 @@ const PlaceholderText = styled.div`
   border-radius: 8px;
 `;
 
+const LoadingIndicator = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: ${theme.colors.primary.main};
+  gap: 1rem;
+  
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid ${theme.colors.primary.main};
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+const EndMessage = styled.div`
+  text-align: center;
+  color: ${theme.colors.text.secondary};
+  font-size: 1rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+`;
+
 const YouTube = () => {
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(1);
+  const observerRef = useRef();
+  
   // if(塾)チャンネルの動画情報
   const channelInfo = {
     name: "if(塾)",
@@ -319,26 +361,109 @@ const YouTube = () => {
     subscribers: "最新の学習動画を配信中"
   };
 
-  const videoPlaceholders = [
+  const videoTemplates = [
     {
-      id: 1,
       title: "if(塾)の学習方法紹介",
       description: "AIを活用した効率的な学習方法をご紹介します。",
-      thumbnail: "🎓"
+      thumbnail: "🎓",
+      views: "1.2k",
+      publishDate: "2025-08-15"
     },
     {
-      id: 2,
       title: "生徒作品発表会",
       description: "if(塾)の生徒が制作した素晴らしい作品をご覧ください。",
-      thumbnail: "🎨"
+      thumbnail: "🎨",
+      views: "856",
+      publishDate: "2025-08-12"
     },
     {
-      id: 3,
       title: "プログラミング入門講座",
       description: "初心者でも分かりやすいプログラミングの基礎を解説。",
-      thumbnail: "💻"
+      thumbnail: "💻",
+      views: "2.1k",
+      publishDate: "2025-08-10"
+    },
+    {
+      title: "AI活用術 - 学習効率UP",
+      description: "AIツールを使って学習効率を向上させる方法",
+      thumbnail: "🤖",
+      views: "934",
+      publishDate: "2025-08-08"
+    },
+    {
+      title: "マインクラフトでプログラミング",
+      description: "ゲームを通じて楽しくプログラミングを学ぼう",
+      thumbnail: "🧱",
+      views: "1.5k",
+      publishDate: "2025-08-05"
+    },
+    {
+      title: "Web開発の基本",
+      description: "HTMLとCSSの基礎から学ぶWeb開発",
+      thumbnail: "🌐",
+      views: "1.8k",
+      publishDate: "2025-08-03"
     }
   ];
+
+  // 動画を読み込む関数
+  const loadMoreVideos = useCallback(async () => {
+    if (loading || !hasMore) return;
+    
+    setLoading(true);
+    
+    // シミュレートされた API 遅延
+    setTimeout(() => {
+      const startIndex = (page - 1) * 3;
+      const newVideos = [];
+      
+      for (let i = 0; i < 3; i++) {
+        const templateIndex = (startIndex + i) % videoTemplates.length;
+        const template = videoTemplates[templateIndex];
+        newVideos.push({
+          id: startIndex + i + 1,
+          ...template,
+          title: `${template.title} #${Math.floor(startIndex / 6) + 1}`,
+        });
+      }
+      
+      setVideos(prev => [...prev, ...newVideos]);
+      setPage(prev => prev + 1);
+      setLoading(false);
+      
+      // 4ページ読み込んだら終了
+      if (page >= 4) {
+        setHasMore(false);
+      }
+    }, 1000);
+  }, [page, loading, hasMore, videoTemplates]);
+
+  // 初回読み込み
+  useEffect(() => {
+    loadMoreVideos();
+  }, []);
+
+  // Intersection Observer セットアップ
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !loading) {
+          loadMoreVideos();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
+      }
+    };
+  }, [loadMoreVideos, hasMore, loading]);
 
   const handleChannelClick = () => {
     window.open('https://www.youtube.com/@if-juku', '_blank');
@@ -397,7 +522,7 @@ const YouTube = () => {
           </ChannelInfo>
 
           <VideoGrid variants={containerVariants}>
-            {videoPlaceholders.map((video) => (
+            {videos.map((video) => (
               <VideoCard
                 key={video.id}
                 variants={itemVariants}
@@ -423,10 +548,33 @@ const YouTube = () => {
                 <VideoInfo>
                   <VideoTitle>{video.title}</VideoTitle>
                   <VideoDescription>{video.description}</VideoDescription>
+                  <VideoMeta>
+                    <ViewCount>{video.views}</ViewCount>
+                    <PublishDate>{video.publishDate}</PublishDate>
+                  </VideoMeta>
                 </VideoInfo>
               </VideoCard>
             ))}
           </VideoGrid>
+          
+          {/* 無限スクロール用の監視要素 */}
+          <div ref={observerRef} />
+          
+          {loading && (
+            <LoadingIndicator
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              読み込み中...
+            </LoadingIndicator>
+          )}
+          
+          {!hasMore && videos.length > 0 && (
+            <EndMessage>
+              すべての動画を表示しました
+            </EndMessage>
+          )}
           
           <ChannelButton
             onClick={handleChannelClick}

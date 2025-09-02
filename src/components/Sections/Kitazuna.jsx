@@ -80,29 +80,6 @@ const SubTitle = styled(motion.h3)`
   }
 `;
 
-const DevelopmentBadge = styled(motion.div)`
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  box-shadow: 
-    0 0 20px rgba(239, 68, 68, 0.5),
-    inset 0 0 10px rgba(255, 255, 255, 0.2);
-  animation: pulse-badge 2s ease-in-out infinite;
-  
-  @keyframes pulse-badge {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.9rem;
-    padding: 0.4rem 1.2rem;
-  }
-`;
 
 const GameDescription = styled(motion.div)`
   background: rgba(20, 20, 20, 0.95);
@@ -326,10 +303,6 @@ const Kitazuna = () => {
           <SubTitle variants={itemVariants}>
             -未来杉の守護者-
           </SubTitle>
-          
-          <DevelopmentBadge variants={itemVariants}>
-            🚧 開発中 🚧
-          </DevelopmentBadge>
           
           <GameDescription variants={itemVariants} className="cyber-frame">
             <DescriptionText>

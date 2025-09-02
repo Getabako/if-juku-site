@@ -29,8 +29,7 @@ import Kitazuna from '../components/Sections/Kitazuna';
 import Contact from '../components/Sections/Contact';
 
 // ナビゲーション
-import CyberNav from '../components/Navigation/CyberNav';
-import MobileNav from '../components/Navigation/MobileNav';
+import HamburgerNav from '../components/Navigation/HamburgerNav';
 
 const sections = [
   { id: 'main-visual', component: MainVisual },
@@ -92,8 +91,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <CyberNav swiperRef={swiperRef} sections={sections} />
-      <MobileNav swiperRef={swiperRef} sections={sections} />
+      <HamburgerNav />
       <Swiper {...swiperConfig} ref={swiperRef}>
         {sections.map((section) => {
           const SectionComponent = section.component;

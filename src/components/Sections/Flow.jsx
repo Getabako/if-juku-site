@@ -150,29 +150,18 @@ const FlowImage = styled.img`
 `;
 
 const FlowDescription = styled(motion.div)`
-  margin-top: 2rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  background: rgba(0, 255, 255, 0.1);
-  border: 1px solid ${theme.colors.primary.main};
-  border-radius: 8px;
-  padding: 1.5rem;
+  z-index: 2;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    padding: 1rem;
+    bottom: 1rem;
   }
 `;
 
-const FlowText = styled.p`
-  color: ${theme.colors.text.primary};
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-  
-  @media (max-width: ${theme.breakpoints.mobile}) {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-`;
 
 const ContactButton = styled(motion.button)`
   background: linear-gradient(45deg, ${theme.colors.secondary.main}, ${theme.colors.secondary.dark});
@@ -258,7 +247,6 @@ const Flow = () => {
             />
             
             <FlowDescription variants={itemVariants}>
-              
               <ContactButton
                 onClick={handleContactClick}
                 whileHover={{ scale: 1.05 }}

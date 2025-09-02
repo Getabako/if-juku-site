@@ -79,7 +79,7 @@ const ChallengeImage = styled(motion.img)`
 `;
 
 const MessageContainer = styled(motion.div)`
-  background: rgba(26, 26, 26, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
   padding: 2rem;

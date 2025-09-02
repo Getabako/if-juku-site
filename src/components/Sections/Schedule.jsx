@@ -69,7 +69,7 @@ const SectionTitle = styled(motion.h2)`
 
 const CalendarFrame = styled(motion.div)`
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   background: rgba(26, 26, 26, 0.9);
   border: 2px solid ${theme.colors.primary.main};
   border-radius: 12px;
@@ -128,7 +128,7 @@ const CalendarContainer = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 600px;
+  height: 450px;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid ${theme.colors.primary.main};
   border-radius: 8px;
@@ -141,7 +141,7 @@ const CalendarContainer = styled.div`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    height: 400px;
+    height: 300px;
   }
 `;
 
@@ -250,8 +250,8 @@ const Schedule = () => {
             <CalendarContainer>
               <iframe 
                 src="https://calendar.google.com/calendar/embed?src=174aa31d4668c641c1effc41bfc289a6fc9d351d9ab822ade65d1d4c2621732d%40group.calendar.google.com&ctz=Asia%2FTokyo" 
-                width="800" 
-                height="600" 
+                width="700" 
+                height="450" 
                 frameBorder="0" 
                 scrolling="no"
                 title="授業スケジュール"

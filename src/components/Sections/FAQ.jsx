@@ -13,7 +13,7 @@ const FAQContainer = styled.section`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #1a1a3a 0%, #2a2a5a 50%, #3a3a7a 100%);
+  background: linear-gradient(135deg, #1a1a2a 0%, #2a2a3a 50%, #1e1e2e 100%);
 `;
 
 const QuestionMarkBackground = styled.div`
@@ -134,8 +134,8 @@ const QuestionButtonsLeft = styled.div`
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 280px;
+    gap: 1.5rem;
+    max-width: 300px;
     z-index: 10;
   }
   
@@ -152,8 +152,8 @@ const QuestionButtonsRight = styled.div`
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 280px;
+    gap: 1.5rem;
+    max-width: 300px;
     z-index: 10;
   }
   
@@ -163,23 +163,26 @@ const QuestionButtonsRight = styled.div`
 `;
 
 const QuestionButton = styled.button`
-  background: rgba(0, 0, 0, 0.8);
-  border: 2px solid ${theme.colors.primary.main};
-  color: ${theme.colors.text.primary};
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  background: rgba(26, 26, 46, 0.85);
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
   cursor: pointer;
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   
   &:hover {
-    background: rgba(0, 255, 255, 0.2);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px ${theme.colors.primary.main};
+    background: rgba(0, 255, 255, 0.15);
+    transform: scale(1.02);
+    border-color: rgba(0, 255, 255, 0.6);
+    box-shadow: 0 6px 25px rgba(0, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 1);
   }
   
   &:active {
@@ -208,18 +211,20 @@ const QuestionButton = styled.button`
 
 const MessageWindow = styled.div`
   position: absolute;
-  bottom: 2rem;
+  bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  max-width: 800px;
-  min-height: 150px;
-  background: rgba(255, 0, 0, 0.9);
-  border: 5px solid #00ffff;
-  border-radius: 15px;
-  padding: 1.5rem;
+  max-width: 850px;
+  min-height: 160px;
+  background: rgba(26, 26, 46, 0.95);
+  border: 3px solid rgba(0, 255, 255, 0.5);
+  border-radius: 18px;
+  padding: 2rem;
   z-index: 10;
   pointer-events: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     width: 95%;
@@ -230,25 +235,26 @@ const MessageWindow = styled.div`
 `;
 
 const MessageText = styled.div`
-  color: white;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  font-weight: bold;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-weight: 500;
   margin-bottom: 1rem;
+  letter-spacing: 0.3px;
 `;
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  top: 0.8rem;
+  right: 0.8rem;
   background: transparent;
-  border: 2px solid #00ffff;
-  color: #00ffff;
-  width: 30px;
-  height: 30px;
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  color: rgba(0, 255, 255, 0.8);
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -256,8 +262,10 @@ const CloseButton = styled.button`
   transition: all 0.3s;
   
   &:hover {
-    background: #00ffff;
-    color: #000;
+    background: rgba(0, 255, 255, 0.15);
+    border-color: rgba(0, 255, 255, 0.8);
+    color: rgba(0, 255, 255, 1);
+    transform: scale(1.05);
   }
 `;
 
@@ -454,13 +462,6 @@ const FAQ = () => {
         </MessageWindow>
       )}
       
-      {/* デバッグ用の情報表示 */}
-      <div style={{position: 'fixed', top: '10px', left: '10px', background: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px', fontSize: '12px', zIndex: 20000}}>
-        <div>currentMessage: {currentMessage ? 'あり' : 'なし'}</div>
-        <div>displayedText: {displayedText || 'なし'}</div>
-        <div>isTyping: {isTyping ? 'はい' : 'いいえ'}</div>
-        <div>isTalking: {isTalking ? 'はい' : 'いいえ'}</div>
-      </div>
     </FAQContainer>
   );
 };
